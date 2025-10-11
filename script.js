@@ -7,26 +7,27 @@ const DATA = {
 };
 
 async function getJSON(url){
-  const res = await fetch(url, {cache:'no-store'});
+  const res = await fetch(url, { cache: 'no-store' });
   return res.json();
 }
 
 function el(tag, attrs={}, children=[]){
   const n = document.createElement(tag);
   Object.entries(attrs).forEach(([k,v]) => {
-    if(k === 'class') n.className = v;
-    else if(k === 'html') n.innerHTML = v;
+    if (k === 'class') n.className = v;
+    else if (k === 'html') n.innerHTML = v;
     else n.setAttribute(k, v);
   });
   (Array.isArray(children) ? children : [children]).forEach(c => {
-    if(!c) return;
-    if(typeof c === 'string') n.appendChild(document.createTextNode(c));
+    if (!c) return;
+    if (typeof c === 'string') n.appendChild(document.createTextNode(c));
     else n.appendChild(c);
   });
   return n;
 }
 
-function renderProducts(list){
+function renderProducts(data){
+  const list = Array.isArray(data) ? data : (data?.items || []);
   const wrap = document.getElementById('products');
   wrap.innerHTML = '';
   list.forEach(p => {
@@ -41,7 +42,8 @@ function renderProducts(list){
   });
 }
 
-function renderCombos(list){
+function renderCombos(data){
+  const list = Array.isArray(data) ? data : (data?.items || []);
   const wrap = document.getElementById('combos-list');
   wrap.innerHTML = '';
   list.forEach(c => {
@@ -49,14 +51,15 @@ function renderCombos(list){
       el('article', {class:'card'}, [
         el('img', {src: c.image || 'img/card-bags.svg', alt: c.title || 'Combo'}),
         el('h3', {}, c.title || 'Combo'),
-        el('ul', {}, c.items?.map(i => el('li', {}, i)) || []),
+        el('ul', {}, (c.items || []).map(i => el('li', {}, typeof i === 'string' ? i : String(i)))),
         el('p', {class:'desde'}, `Precio ${c.price ? '$ ' + c.price : 'consultar'}`)
       ])
     );
   });
 }
 
-function renderGallery(list){
+function renderGallery(data){
+  const list = Array.isArray(data) ? data : (data?.items || []);
   const wrap = document.getElementById('gallery');
   wrap.innerHTML = '';
   list.forEach(g => {
@@ -72,15 +75,15 @@ async function boot(){
     getJSON(DATA.gallery)
   ]);
 
-  // Header/hero links and text
+  // Links y textos
   document.getElementById('cta-whatsapp').href = settings.whatsapp_link;
   document.getElementById('cta-instagram').href = settings.instagram;
   document.getElementById('footer-whatsapp').href = settings.whatsapp_link;
   document.getElementById('footer-email').href = `mailto:${settings.email}`;
   document.getElementById('footer-ig').href = settings.instagram;
 
-  if(settings.hero_title) document.getElementById('hero-title').innerHTML = settings.hero_title;
-  if(settings.hero_sub) document.getElementById('hero-sub').textContent = settings.hero_sub;
+  if (settings.hero_title) document.getElementById('hero-title').innerHTML = settings.hero_title;
+  if (settings.hero_sub) document.getElementById('hero-sub').textContent = settings.hero_sub;
 
   renderProducts(products);
   renderCombos(combos);
