@@ -1,12 +1,28 @@
 <!doctype html>
-<html>
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Manos & Magia Studio — Admin</title>
     <link rel="icon" href="../img/favicon.png">
-    <script src="https://unpkg.com/netlify-cms@^2.10.192/dist/netlify-cms.js"></script>
+    <!-- Identity widget (necesaria para login con Git Gateway) -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- CMS (Decap/Netlify CMS) -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <!-- Fallback de Netlify CMS por si el CDN anterior falla -->
+    <script>
+      if (!window.CMS) {
+        var s = document.createElement('script');
+        s.src = "https://unpkg.com/netlify-cms@^2.10.192/dist/netlify-cms.js";
+        document.head.appendChild(s);
+      }
+    </script>
+    <style>
+      body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+      .hint{max-width:680px;margin:30px auto;font-size:14px;color:#555;text-align:center}
+    </style>
   </head>
   <body>
+    <div class="hint">Cargando panel… si ves esta pantalla más de unos segundos, refrescá con Ctrl/Cmd+Shift+R.</div>
   </body>
 </html>
