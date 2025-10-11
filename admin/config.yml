@@ -1,0 +1,71 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "img/uploads"
+public_folder: "/img/uploads"
+
+local_backend: false
+
+collections:
+  - name: "settings"
+    label: "Ajustes"
+    files:
+      - file: "data/texts.json"
+        label: "Textos y enlaces"
+        name: "texts"
+        fields:
+          - {label: "Título Hero", name: hero_title, widget: text, default: "Decoración <span class='resaltado'>100% personalizada</span> para tu fiesta"}
+          - {label: "Subtítulo Hero", name: hero_sub, widget: text, default: "Papelería creativa, toppers con luz, piñatas, letras 3D, bolsitas y souvenirs. Hecho con amor desde el alma 💫"}
+          - {label: "WhatsApp Link", name: whatsapp_link, widget: string, default: "https://wa.me/5491167286443"}
+          - {label: "Instagram", name: instagram, widget: string, default: "https://www.instagram.com/manosymagia_studio/"}
+          - {label: "Email", name: email, widget: string, default: "manosymagiastudio@gmail.com"}
+
+  - name: "products"
+    label: "Productos"
+    label_singular: "Producto"
+    editor:
+      preview: false
+    files:
+      - file: "data/products.json"
+        label: "Listado de productos"
+        name: "products_list"
+        fields:
+          - label: "Productos"
+            name: items
+            widget: list
+            fields:
+              - {label: "Título", name: title, widget: string}
+              - {label: "Descripción", name: description, widget: text, required: false}
+              - {label: "Precio desde", name: price_from, widget: string, required: false}
+              - {label: "Imagen", name: image, widget: image, required: false}
+
+  - name: "combos"
+    label: "Combos de fiesta"
+    files:
+      - file: "data/combos.json"
+        label: "Listado de combos"
+        name: "combos_list"
+        fields:
+          - label: "Combos"
+            name: items
+            widget: list
+            fields:
+              - {label: "Título", name: title, widget: string}
+              - {label: "Ítems", name: items, widget: list, field: {label: "Ítem", name: item, widget: string}}
+              - {label: "Precio", name: price, widget: string, required: false}
+              - {label: "Imagen", name: image, widget: image, required: false}
+
+  - name: "gallery"
+    label: "Galería"
+    files:
+      - file: "data/gallery.json"
+        label: "Fotos de galería"
+        name: "gallery_list"
+        fields:
+          - label: "Fotos"
+            name: items
+            widget: list
+            fields:
+              - {label: "Imagen", name: src, widget: image}
+              - {label: "Alt", name: alt, widget: string, required: false}

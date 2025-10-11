@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "title": "Combo Básico Fiesta",
+      "items": [
+        "Topper cake",
+        "10 toppers cupcake",
+        "20 bolsitas golosineras"
+      ],
+      "price": "50000",
+      "image": ""
+    },
+    {
+      "title": "Combo Plus",
+      "items": [
+        "Topper con luz",
+        "Letras 3D (1)",
+        "Piñata redonda"
+      ],
+      "price": "—",
+      "image": ""
+    }
+  ]
+}
