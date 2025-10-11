@@ -3,20 +3,25 @@
     {
       "title": "Topper cake con luz",
       "description": "Personalizado con nombre y temática. Opción con/ sin luz.",
-      "price_from": "6000",
+      "price_from": "20.000",
       "image": "img/card-topper.svg"
     },
     {
       "title": "Letras 3D",
       "description": "Con glitter y detalles premium. Alturas a elección.",
-      "price_from": "5000",
+      "price_from": "7000",
       "image": "img/card-letras.svg"
     },
     {
-      "title": "Bolsitas golosineras",
-      "description": "Diseños únicos por temática. Pack desde 10 unidades.",
-      "price_from": "",
+      "title": "Cajas/Bolsitas golosineras",
+      "description": "Diseños únicos por temática. ",
+      "price_from": "2500 por unidad",
       "image": "img/card-bags.svg"
+    },
+    {
+      "title": "Banderines 3d con o sin luces",
+      "description": "Banderines en relieve de la tematica que quieras. ",
+      "price_from": "$ 3.000 por letra"
     }
   ]
 }
