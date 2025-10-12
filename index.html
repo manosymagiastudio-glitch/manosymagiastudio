@@ -45,6 +45,25 @@
 </script>
 
   <head>
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S7Q5H6YF55"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  // No enviar page_view automático: lo disparamos nosotros (para excluir /admin)
+  gtag('config', 'G-S7Q5H6YF55', { send_page_view: false });
+
+  // Enviar page_view solo si NO estás en /admin
+  if (!location.pathname.startsWith('/admin')) {
+    gtag('event', 'page_view', {
+      page_path: location.pathname + location.search,
+      page_title: document.title
+    });
+  }
+</script>
+
   <meta name="google-site-verification" content="7Mac3ErjXHlrGIM8dhcjCUo7RglRPLLJZLUTE6EO3vg" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
