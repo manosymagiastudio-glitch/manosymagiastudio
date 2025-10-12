@@ -91,3 +91,32 @@ async function boot(){
 }
 
 document.addEventListener('DOMContentLoaded', boot);
+// Track WhatsApp & Instagram
+['cta-whatsapp','footer-whatsapp'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', () => {
+    gtag('event', 'click_whatsapp', { location: id });
+  });
+});
+['cta-instagram','footer-ig'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', () => {
+    gtag('event', 'click_instagram', { location: id });
+  });
+});
+
+// Track vista de cards de productos (al renderizar)
+function trackProductsImpression(list){
+  try {
+    (Array.isArray(list) ? list : (list?.items || [])).forEach(p => {
+      gtag('event', 'view_item', {
+        item_id: p.title || '(sin título)',
+        item_name: p.title || '(sin título)',
+        price_from: p.price_from || ''
+      });
+    });
+  } catch(e){}
+}
+// Llamalo después de renderProducts(products) en boot():
+// trackProductsImpression(products);
+
