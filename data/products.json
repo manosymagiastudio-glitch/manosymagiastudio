@@ -7,12 +7,6 @@
       "image": "/img/uploads/cake-topper-con-luces.jpg"
     },
     {
-      "title": "Letras 3D con luces",
-      "description": "Con glitter y detalles premium. Alturas a elección.",
-      "price_from": "7000",
-      "image": "/img/uploads/letras-3d-con-luces.jpg"
-    },
-    {
       "title": "Cake Topper tipo Escenario",
       "description": "Con base para darle mayor profundidad a los diseños.",
       "price_from": "25.000",
@@ -28,6 +22,18 @@
       "title": "Banderines 3d con o sin luces",
       "description": "Banderines en relieve de la tematica que quieras. ",
       "price_from": "$ 3.000 por letra"
+    },
+    {
+      "title": "Cake Topper Clasico",
+      "description": "Para decorar tu torta y darle un detalle unico a la fiesta ",
+      "price_from": "20000",
+      "image": "/img/uploads/cake-topper.jpg"
+    },
+    {
+      "title": "Letras 3D con luces",
+      "description": "Con glitter y detalles premium. Alturas a elección.",
+      "price_from": "7000",
+      "image": "/img/uploads/letras-3d-con-luces.jpg"
     }
   ]
 }
