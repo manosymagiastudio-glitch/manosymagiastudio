@@ -4,13 +4,19 @@
       "title": "Topper cake con luz",
       "description": "Personalizado con nombre y temática. Opción con/ sin luz.",
       "price_from": "20.000",
-      "image": "/img/uploads/chatgpt-image-12-oct-2025-20_28_55.png"
+      "image": "/img/uploads/cake-topper-con-luces.jpg"
     },
     {
-      "title": "Letras 3D",
+      "title": "Letras 3D con luces",
       "description": "Con glitter y detalles premium. Alturas a elección.",
       "price_from": "7000",
-      "image": "img/card-letras.svg"
+      "image": "/img/uploads/letras-3d-con-luces.jpg"
+    },
+    {
+      "title": "Cake Topper tipo Escenario",
+      "description": "Con base para darle mayor profundidad a los diseños.",
+      "price_from": "25.000",
+      "image": "/img/uploads/topper-tipo-escenario.jpg"
     },
     {
       "title": "Cajas/Bolsitas golosineras",
