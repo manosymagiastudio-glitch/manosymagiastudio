@@ -13,17 +13,6 @@
       "image": "/img/uploads/topper-tipo-escenario.jpg"
     },
     {
-      "title": "Cajas/Bolsitas golosineras",
-      "description": "Diseños únicos por temática. ",
-      "price_from": "2500 por unidad",
-      "image": "img/card-bags.svg"
-    },
-    {
-      "title": "Banderines 3d con o sin luces",
-      "description": "Banderines en relieve de la tematica que quieras. ",
-      "price_from": "$ 3.000 por letra"
-    },
-    {
       "title": "Cake Topper Clasico",
       "description": "Para decorar tu torta y darle un detalle unico a la fiesta ",
       "price_from": "20000",
@@ -34,6 +23,17 @@
       "description": "Con glitter y detalles premium. Alturas a elección.",
       "price_from": "7000",
       "image": "/img/uploads/letras-3d-con-luces.jpg"
+    },
+    {
+      "title": "Banderines 3d con o sin luces",
+      "description": "Banderines en relieve de la tematica que quieras. ",
+      "price_from": "$ 3.000 por letra"
+    },
+    {
+      "title": "Cajas/Bolsitas golosineras",
+      "description": "Diseños únicos por temática. ",
+      "price_from": "2500 por unidad",
+      "image": "img/card-bags.svg"
     }
   ]
 }
