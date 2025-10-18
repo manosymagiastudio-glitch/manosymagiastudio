@@ -1,9 +1,9 @@
 // Carga de datos desde /data y render dinámico
 const DATA = {
-  settings: '/data/texts.json',
-  products: '/data/products.json',
-  combos: '/data/combos.json',
-  gallery: '/data/gallery.json'
+  settings: 'data/texts.json',
+  products: 'data/products.json',
+  combos: 'data/combos.json',
+  gallery: 'data/gallery.json'
 };
 
 async function getJSON(url){
