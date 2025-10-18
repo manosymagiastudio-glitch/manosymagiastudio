@@ -1,24 +1,6 @@
 {
   "items": [
-    {
-      "title": "Combo Básico Fiesta",
-      "items": [
-        "Topper cake",
-        "10 toppers cupcake",
-        "20 bolsitas golosineras"
-      ],
-      "price": "60000",
-      "image": ""
-    },
-    {
-      "title": "Combo Plus",
-      "items": [
-        "Topper con luz",
-        "Letras 3D (1) con LUZ",
-        "Piñata "
-      ],
-      "price": "85000",
-      "image": ""
-    }
+    { "title":"Combo Cumple Básico", "price":"$19.900", "tags":["Topper","10 bolsitas"], "image":"img/sample-combo1.jpg" },
+    { "title":"Combo Cumple Premium", "price":"$39.900", "tags":["Topper LED","Letras 3D","20 bolsitas"], "image":"img/sample-combo2.jpg" }
   ]
 }
