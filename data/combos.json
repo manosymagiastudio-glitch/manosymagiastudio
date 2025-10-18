@@ -1,6 +1,23 @@
 {
   "items": [
-    { "title":"Combo Cumple Básico", "price":"$19.900", "tags":["Topper","10 bolsitas"], "image":"img/sample-combo1.jpg" },
-    { "title":"Combo Cumple Premium", "price":"$39.900", "tags":["Topper LED","Letras 3D","20 bolsitas"], "image":"img/sample-combo2.jpg" }
+    {
+      "title": "Combo Cumple Básico",
+      "price": "consulta",
+      "tags": [
+        "Topper",
+        "10 bolsitas"
+      ],
+      "image": "img/sample-combo1.jpg"
+    },
+    {
+      "title": "Combo Cumple Premium",
+      "price": "consulta",
+      "tags": [
+        "Topper LED",
+        "Letras 3D",
+        "20 bolsitas"
+      ],
+      "image": "img/sample-combo2.jpg"
+    }
   ]
 }
