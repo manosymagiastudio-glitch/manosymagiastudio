@@ -79,7 +79,76 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="google-site-verification" content="T_kuBJB66Qu-Jb974aWubDX2bBszMHtWQ6qDPFC-_NA" />
 </head>
-<body>
+<!-- POPUP Newsletter - Manos & Magia (Netlify Forms) -->
+<div id="mm-popup" aria-hidden="true" style="position:fixed;inset:0;display:none;">
+  <div id="mm-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,.45);"></div>
+  <div role="dialog" aria-modal="true" aria-labelledby="mm-title"
+       style="position:relative;max-width:420px;margin:8vh auto;background:#fff;border-radius:18px;padding:28px;
+              box-shadow:0 20px 60px rgba(0,0,0,.25);font-family:system-ui,-apple-system,'Segoe UI',Roboto,Ubuntu,Arial;">
+    <button id="mm-close" aria-label="Cerrar"
+            style="position:absolute;top:12px;right:12px;border:none;background:transparent;font-size:22px;cursor:pointer;">×</button>
+
+    <h2 id="mm-title" style="margin:0 0 8px;font-size:22px;">✨ Unite a la magia</h2>
+    <p style="margin:0 0 16px;line-height:1.5;">
+      Recibí <strong>ofertas</strong>, <strong>lanzamientos</strong> y <strong>descuentos exclusivos</strong>.
+    </p>
+
+    <!-- Netlify Form -->
+    <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+          action="/gracias.html" id="mm-form">
+      <input type="hidden" name="form-name" value="newsletter">
+      <p style="display:none;">
+        <label>No completar si sos humano: <input name="bot-field"></label>
+      </p>
+      <input type="email" name="email" required placeholder="Tu correo electrónico"
+             style="width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;margin:0 0 10px;">
+      <button type="submit"
+              style="width:100%;padding:12px 14px;border:none;border-radius:10px;cursor:pointer;
+                     background:#ffb6c1;font-weight:600;">
+        Quiero suscribirme
+      </button>
+      <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;margin-top:10px;line-height:1.3;">
+        <input type="checkbox" required>
+        Acepto recibir novedades por email. Puedo desuscribirme cuando quiera.
+      </label>
+    </form>
+
+    <p style="text-align:center;color:#666;font-size:12px;margin-top:10px;">
+      #HechoConAmor · Manos & Magia Studio
+    </p>
+  </div>
+</div>
+
+<script>
+(function(){
+  const LS_KEY = "mm_popup_seen";
+  const SHOW_AFTER_MS = 5000;
+  const SEEN_DAYS = 7;
+
+  const popup = document.getElementById('mm-popup');
+  const overlay = document.getElementById('mm-overlay');
+  const closeBtn = document.getElementById('mm-close');
+
+  function openPopup(){ if(popup){ popup.style.display='block'; popup.setAttribute('aria-hidden','false'); } }
+  function closePopup(){
+    if(popup){ popup.style.display='none'; popup.setAttribute('aria-hidden','true'); }
+    const exp = Date.now() + SEEN_DAYS*24*60*60*1000;
+    localStorage.setItem(LS_KEY, String(exp));
+  }
+  function shouldShow(){
+    const v = localStorage.getItem(LS_KEY);
+    if(!v) return true;
+    return Date.now() > Number(v);
+  }
+
+  if(shouldShow()){ setTimeout(openPopup, SHOW_AFTER_MS); }
+  overlay && overlay.addEventListener('click', closePopup);
+  closeBtn && closeBtn.addEventListener('click', closePopup);
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePopup(); });
+})();
+</script>
+<!-- /POPUP Newsletter -->
+  <body>
   <header class="site-header">
     <div class="wrap">
       <a class="brand" href="#inicio">
