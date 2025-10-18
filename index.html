@@ -69,6 +69,59 @@
     "keywords": "papelería creativa, toppers personalizados, letras 3D, decoración de cumpleaños, combos de fiesta, Manos y Magia Studio"
   }
   </script>
+
+  <!-- Estilos mínimos para Newsletter + FAQ (podés moverlos a styles.css cuando quieras) -->
+  <style>
+    .section.alt { background: #fff7f9; }
+    .box { background:#fff; border:1px solid #eee; border-radius:12px; padding:18px; }
+    .grid-2 { display:grid; gap:24px; grid-template-columns: 1.2fr 1fr; }
+    @media (max-width: 900px){ .grid-2 { grid-template-columns: 1fr; } }
+
+    /* FAQ pastel con animación */
+    .faq.fancy details{
+      border:1px solid #f6e5ec;
+      background:#fff;
+      border-radius:14px;
+      margin:12px 0;
+      overflow:hidden;
+      box-shadow: 0 6px 18px rgba(255,182,193,.15);
+    }
+    .faq.fancy summary{
+      display:grid;
+      grid-template-columns: 28px 1fr 24px;
+      align-items:center;
+      gap:10px;
+      cursor:pointer;
+      padding:16px 16px;
+      list-style:none;
+      user-select:none;
+    }
+    .faq.fancy summary::-webkit-details-marker{ display:none; }
+    .faq.fancy .icon{
+      width:28px; height:28px; display:grid; place-items:center;
+      border-radius:8px; background:#ffeaf1; font-size:16px;
+    }
+    .faq.fancy .chev{ width:14px; height:14px; justify-self:end; position:relative; }
+    .faq.fancy .chev::before{
+      content:""; position:absolute; inset:0;
+      border-right:2px solid #ff86ae; border-bottom:2px solid #ff86ae;
+      transform: rotate(45deg); transition: transform .28s ease;
+    }
+    .faq.fancy details[open] .chev::before{ transform: rotate(-135deg); }
+    .faq.fancy .faq-a{
+      padding:0 16px 16px 54px; color:#555; line-height:1.6;
+      display:grid; grid-template-rows: 0fr;
+      transition: grid-template-rows .28s ease, padding-top .28s ease;
+    }
+    .faq.fancy details[open] .faq-a{ grid-template-rows: 1fr; padding-top: 4px; }
+    .faq.fancy .faq-a > *{ overflow:hidden; }
+    .faq.fancy a{ color:#ff7fa3; text-decoration:none; }
+    .faq.fancy a:hover{ text-decoration:underline; }
+    .faq.fancy summary:focus{ outline:2px dashed #ffb6c1; outline-offset:4px; }
+    @media (prefers-reduced-motion: reduce){
+      .faq.fancy .chev::before, .faq.fancy .faq-a{ transition:none; }
+    }
+  </style>
 </head>
 
 <body>
@@ -79,17 +132,17 @@
         <span>Manos & Magia Studio</span>
         <small class="brand-sub">Papelería creativa &amp; decoración personalizada</small>
       </a>
+      <!-- MENÚ con Newsletter + FAQ -->
       <nav>
-  <a href="#productos">Productos</a>
-  <a href="#combos">Combos</a>
-  <a href="#tematicas">Temáticas</a>
-  <a href="#como-comprar">Cómo pedir</a>
-  <a href="#newsletter">Newsletter</a>
-  <a href="#faq">FAQ</a>
-  <a href="#contacto" class="btn">Pedir por WhatsApp</a>
-</nav>
-
-      </div>
+        <a href="#productos">Productos</a>
+        <a href="#combos">Combos</a>
+        <a href="#tematicas">Temáticas</a>
+        <a href="#como-comprar">Cómo pedir</a>
+        <a href="#newsletter">Newsletter</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto" class="btn">Pedir por WhatsApp</a>
+      </nav>
+    </div>
   </header>
 
   <main id="inicio">
@@ -188,6 +241,87 @@
         </div>
       </div>
     </section>
+
+    <!-- Newsletter (en página) -->
+    <section id="newsletter" class="section alt">
+      <div class="wrap grid-2">
+        <div>
+          <h2>💌 Newsletter</h2>
+          <p>Recibí <strong>promos</strong>, <strong>lanzamientos</strong> y <strong>descuentos exclusivos</strong> de Manos &amp; Magia Studio.</p>
+          <p class="nota">Nos gusta cuidar tu tiempo: enviamos solo info útil y podés desuscribirte cuando quieras.</p>
+        </div>
+        <div class="box">
+          <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias.html">
+            <input type="hidden" name="form-name" value="newsletter">
+            <p style="display:none;">
+              <label>No completar si sos humano: <input name="bot-field"></label>
+            </p>
+            <label style="display:block;margin-bottom:8px;">Correo electrónico</label>
+            <input type="email" name="email" required placeholder="tu@mail.com"
+                   style="width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;margin:0 0 12px;">
+            <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;margin:6px 0 12px;">
+              <input type="checkbox" required>
+              Acepto recibir novedades por email.
+            </label>
+            <button type="submit" class="btn" style="width:100%;">Quiero suscribirme</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preguntas Frecuentes (FAQ) · versión con íconos y animación -->
+    <section id="faq" class="section">
+      <div class="wrap">
+        <h2>Preguntas frecuentes</h2>
+
+        <div class="faq fancy">
+          <details open>
+            <summary><span class="icon">⏰</span><strong>¿Con cuánta anticipación tengo que hacer el pedido?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Recomendamos <strong>7 días</strong> para GBA/Interior y <strong>3 días</strong> para CABA. ¿Urgente? Escribinos por WhatsApp y vemos disponibilidad 💪.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">🎨</span><strong>¿Los productos son personalizados?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Sí 💕. Cada pieza se hace <strong>100% a medida</strong> (nombre, edad, colores y temática).</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">💳</span><strong>¿Qué métodos de pago aceptan?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p><strong>Transferencia</strong> y <strong>Mercado Pago</strong>. Seña del <strong>50%</strong> para reservar producción.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">🚚</span><strong>¿Hacen envíos?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Sí. Correo a todo el país y <strong>moto</strong> en CABA/GBA.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">📝</span><strong>¿Puedo cancelar o modificar un pedido?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Dentro de las <strong>24 h</strong> de confirmado. Luego arranca la producción y no hay reembolso, pero si es un ajuste menor siempre intentamos ayudarte 💫.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">🛠️</span><strong>¿Qué materiales usan?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Papeles premium, PVC cristal brillante, vinilos adhesivos y cartulinas metalizadas; terminaciones artesanales.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">✨</span><strong>¿Puedo pedir un diseño fuera de catálogo?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>¡Sí! Contanos tu idea y la diseñamos exclusivamente para vos.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">🧼</span><strong>¿Cómo cuido mis productos?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Guardalos en lugar seco, sin sol directo. Si tienen luz, evitá agua o calor. Usá el empaque hasta el evento.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">📷</span><strong>¿Dónde veo más trabajos?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Mirá la <a href="#galeria">Galería</a> o nuestro <a href="https://www.instagram.com/manosymagia_studio" target="_blank" rel="noopener">@manosymagia_studio</a>.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer id="contacto" class="site-footer">
@@ -258,9 +392,9 @@
 
   <script>
   (function(){
-    const LS_KEY = "mm_popup_seen_v2";
-    const SHOW_AFTER_MS = 100;
-    const SEEN_DAYS = 7;
+    const LS_KEY = "mm_popup_seen_v2";   // marca para no repetir el pop-up
+    const SHOW_AFTER_MS = 100;           // 0.1s para test (podés subirlo a 3000)
+    const SEEN_DAYS = 7;                 // no volver a mostrar por 7 días
 
     const popup = document.getElementById('mm-popup');
     const overlay = document.getElementById('mm-overlay');
@@ -270,21 +404,40 @@
     function closePopup(){
       if(popup){ popup.style.display='none'; popup.setAttribute('aria-hidden','true'); }
       const exp = Date.now() + SEEN_DAYS*24*60*60*1000;
-      localStorage.setItem(LS_KEY, String(exp));
+      try { localStorage.setItem(LS_KEY, String(exp)); } catch(e){}
     }
     function shouldShow(){
-      const v = localStorage.getItem(LS_KEY);
+      const v = Number(localStorage.getItem(LS_KEY));
       if(!v) return true;
-      return Date.now() > Number(v);
+      return Date.now() > v;
     }
 
     if(shouldShow()){ setTimeout(openPopup, SHOW_AFTER_MS); }
     overlay && overlay.addEventListener('click', closePopup);
     closeBtn && closeBtn.addEventListener('click', closePopup);
     document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePopup(); });
+
+    // Helpers para pruebas (opcional)
+    window.mmPopup = {
+      open: openPopup,
+      reset: () => localStorage.removeItem(LS_KEY),
+      seenUntil: () => Number(localStorage.getItem(LS_KEY))
+    };
   })();
   </script>
   <!-- /Pop-up Newsletter -->
+
+  <!-- Acordeón estricto (opcional): solo una pregunta abierta a la vez -->
+  <script>
+  (function(){
+    const all = document.querySelectorAll('#faq details');
+    all.forEach(d=>{
+      d.addEventListener('toggle', ()=>{
+        if(d.open){ all.forEach(o => { if(o!==d) o.open = false; }); }
+      });
+    });
+  })();
+  </script>
 
   <script src="script.js" defer></script>
 </body>
