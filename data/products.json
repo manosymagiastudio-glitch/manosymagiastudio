@@ -1,7 +1,30 @@
 {
   "items": [
-    { "title":"Topper con luz", "price":"$8.900", "tags":["Personalizado","LED"], "image":"img/sample-topper.jpg" },
-    { "title":"Letras 3D", "price":"$12.500", "tags":["Decoración","Personalizado"], "image":"img/sample-letras3d.jpg" },
-    { "title":"Bolsitas golosineras", "price":"$6.800", "tags":["Souvenir"], "image":"img/sample-bolsitas.jpg" }
+    {
+      "title": "Topper con luz",
+      "price": "",
+      "tags": [
+        "Personalizado",
+        "LED"
+      ],
+      "image": "img/sample-topper.jpg"
+    },
+    {
+      "title": "Letras 3D",
+      "price": "",
+      "tags": [
+        "Decoración",
+        "Personalizado"
+      ],
+      "image": "img/sample-letras3d.jpg"
+    },
+    {
+      "title": "Bolsitas golosineras",
+      "price": "",
+      "tags": [
+        "Souvenir"
+      ],
+      "image": "img/sample-bolsitas.jpg"
+    }
   ]
 }
