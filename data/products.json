@@ -1,39 +1,7 @@
 {
   "items": [
-    {
-      "title": "Topper cake con luz",
-      "description": "Personalizado con nombre y temática. Opción con/ sin luz.",
-      "price_from": "20.000",
-      "image": "/img/uploads/cake-topper-con-luces.jpg"
-    },
-    {
-      "title": "Cake Topper tipo Escenario",
-      "description": "Con base para darle mayor profundidad a los diseños.",
-      "price_from": "25.000",
-      "image": "/img/uploads/topper-tipo-escenario.jpg"
-    },
-    {
-      "title": "Cake Topper Clasico",
-      "description": "Para decorar tu torta y darle un detalle unico a la fiesta ",
-      "price_from": "20000",
-      "image": "/img/uploads/cake-topper.jpg"
-    },
-    {
-      "title": "Letras 3D con luces",
-      "description": "Con glitter y detalles premium. Alturas a elección.",
-      "price_from": "7000",
-      "image": "/img/uploads/letras-3d-con-luces.jpg"
-    },
-    {
-      "title": "Banderines 3d con o sin luces",
-      "description": "Banderines en relieve de la tematica que quieras. ",
-      "price_from": "$ 3.000 por letra"
-    },
-    {
-      "title": "Cajas/Bolsitas golosineras",
-      "description": "Diseños únicos por temática. ",
-      "price_from": "2500 por unidad",
-      "image": "img/card-bags.svg"
-    }
+    { "title":"Topper con luz", "price":"$8.900", "tags":["Personalizado","LED"], "image":"img/sample-topper.jpg" },
+    { "title":"Letras 3D", "price":"$12.500", "tags":["Decoración","Personalizado"], "image":"img/sample-letras3d.jpg" },
+    { "title":"Bolsitas golosineras", "price":"$6.800", "tags":["Souvenir"], "image":"img/sample-bolsitas.jpg" }
   ]
 }
