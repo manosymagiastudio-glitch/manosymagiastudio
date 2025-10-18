@@ -2,89 +2,61 @@ backend:
   name: git-gateway
   branch: main
 
-# (opcional) modo simple de publicación
-publish_mode: simple
-local_backend: false
-
-# Dónde se suben las imágenes desde el panel
-media_folder: "img/uploads"
-public_folder: "/img/uploads"
+media_folder: "img"
+public_folder: "/img"
 
 collections:
-  # ===== Ajustes generales (texto del hero, links, email) =====
+  # Textos / links generales del sitio
   - name: "settings"
-    label: "Ajustes"
+    label: "Ajustes del sitio"
     files:
       - file: "data/texts.json"
         label: "Textos y enlaces"
         name: "texts"
         format: "json"
-        editor:
-          preview: false
         fields:
-          - { label: "Título Hero (HTML permitido)", name: "hero_title", widget: "text", default: "Decoración <span class='resaltado'>100% personalizada</span> para tu fiesta" }
-          - { label: "Subtítulo Hero", name: "hero_sub", widget: "text", default: "Papelería creativa, toppers con luz, piñatas, letras 3D, bolsitas y souvenirs. Hecho con amor desde el alma 💫" }
-          - { label: "WhatsApp (link completo)", name: "whatsapp_link", widget: "string", default: "https://wa.me/5491167286443?text=Hola!%20Quiero%20cotizar%20mi%20cumple%20con%20Manos%20%26%20Magia%20Studio" }
-          - { label: "Instagram (URL)", name: "instagram", widget: "string", default: "https://www.instagram.com/manosymagia_studio/" }
-          - { label: "Email", name: "email", widget: "string", default: "manosymagiastudio@gmail.com" }
+          - { label: "WhatsApp Link", name: "whatsapp_link", widget: "string" }
+          - { label: "Instagram", name: "instagram", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Título Hero (HTML)", name: "hero_title", widget: "text" }
+          - { label: "Subtítulo Hero", name: "hero_sub", widget: "text" }
 
-  # ===== Productos destacados =====
+  # Productos (un único JSON con lista)
   - name: "products"
     label: "Productos"
     files:
       - file: "data/products.json"
         label: "Listado de productos"
-        name: "products_list"
+        name: "products"
         format: "json"
-        editor:
-          preview: false
         fields:
-          - label: "Productos"
+          - label: "Items"
             name: "items"
             widget: "list"
+            minimize_collapsed: true
             fields:
               - { label: "Título", name: "title", widget: "string" }
-              - { label: "Descripción", name: "description", widget: "text", required: false }
-              - { label: "Precio desde", name: "price_from", widget: "string", required: false }
+              - { label: "Precio", name: "price", widget: "string", required: false }
+              - { label: "Tags", name: "tags", widget: "list", required: false }
               - { label: "Imagen", name: "image", widget: "image", required: false }
+              - { label: "WhatsApp URL (opcional)", name: "whatsapp", widget: "string", required: false }
 
-  # ===== Combos de fiesta =====
+  # Combos (otro JSON con lista)
   - name: "combos"
-    label: "Combos de fiesta"
+    label: "Combos"
     files:
       - file: "data/combos.json"
         label: "Listado de combos"
-        name: "combos_list"
+        name: "combos"
         format: "json"
-        editor:
-          preview: false
         fields:
-          - label: "Combos"
+          - label: "Items"
             name: "items"
             widget: "list"
+            minimize_collapsed: true
             fields:
               - { label: "Título", name: "title", widget: "string" }
-              - label: "Ítems del combo"
-                name: "items"
-                widget: "list"
-                field: { label: "Ítem", name: "item", widget: "string" }
               - { label: "Precio", name: "price", widget: "string", required: false }
+              - { label: "Tags", name: "tags", widget: "list", required: false }
               - { label: "Imagen", name: "image", widget: "image", required: false }
-
-  # ===== Galería =====
-  - name: "gallery"
-    label: "Galería"
-    files:
-      - file: "data/gallery.json"
-        label: "Fotos de galería"
-        name: "gallery_list"
-        format: "json"
-        editor:
-          preview: false
-        fields:
-          - label: "Fotos"
-            name: "items"
-            widget: "list"
-            fields:
-              - { label: "Imagen", name: "src", widget: "image" }
-              - { label: "Alt (texto alternativo)", name: "alt", widget: "string", required: false }
+              - { label: "WhatsApp URL (opcional)", name: "whatsapp", widget: "string", required: false }
