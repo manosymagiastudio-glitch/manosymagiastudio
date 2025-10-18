@@ -5,58 +5,63 @@ backend:
 media_folder: "img"
 public_folder: "/img"
 
+logo_url: "/img/logo.png"
+
+site_url: "https://manosymagiastudio.netlify.app"
+display_url: "https://manosymagiastudio.netlify.app"
+
 collections:
-  # Textos / links generales del sitio
+  # --- Ajustes del sitio ---
   - name: "settings"
-    label: "Ajustes del sitio"
+    label: "⚙️ Ajustes del sitio"
     files:
       - file: "data/texts.json"
-        label: "Textos y enlaces"
+        label: "Textos y enlaces principales"
         name: "texts"
         format: "json"
         fields:
           - { label: "WhatsApp Link", name: "whatsapp_link", widget: "string" }
           - { label: "Instagram", name: "instagram", widget: "string" }
           - { label: "Email", name: "email", widget: "string" }
-          - { label: "Título Hero (HTML)", name: "hero_title", widget: "text" }
-          - { label: "Subtítulo Hero", name: "hero_sub", widget: "text" }
+          - { label: "Título principal (HTML)", name: "hero_title", widget: "text" }
+          - { label: "Subtítulo principal", name: "hero_sub", widget: "text" }
 
-  # Productos (un único JSON con lista)
+  # --- Productos ---
   - name: "products"
-    label: "Productos"
+    label: "🎁 Productos"
     files:
       - file: "data/products.json"
         label: "Listado de productos"
         name: "products"
         format: "json"
         fields:
-          - label: "Items"
+          - label: "Productos"
             name: "items"
             widget: "list"
             minimize_collapsed: true
             fields:
               - { label: "Título", name: "title", widget: "string" }
               - { label: "Precio", name: "price", widget: "string", required: false }
-              - { label: "Tags", name: "tags", widget: "list", required: false }
+              - { label: "Etiquetas (tags)", name: "tags", widget: "list", required: false }
               - { label: "Imagen", name: "image", widget: "image", required: false }
-              - { label: "WhatsApp URL (opcional)", name: "whatsapp", widget: "string", required: false }
+              - { label: "Link de WhatsApp (opcional)", name: "whatsapp", widget: "string", required: false }
 
-  # Combos (otro JSON con lista)
+  # --- Combos ---
   - name: "combos"
-    label: "Combos"
+    label: "🎀 Combos de fiesta"
     files:
       - file: "data/combos.json"
         label: "Listado de combos"
         name: "combos"
         format: "json"
         fields:
-          - label: "Items"
+          - label: "Combos"
             name: "items"
             widget: "list"
             minimize_collapsed: true
             fields:
               - { label: "Título", name: "title", widget: "string" }
               - { label: "Precio", name: "price", widget: "string", required: false }
-              - { label: "Tags", name: "tags", widget: "list", required: false }
+              - { label: "Etiquetas (tags)", name: "tags", widget: "list", required: false }
               - { label: "Imagen", name: "image", widget: "image", required: false }
-              - { label: "WhatsApp URL (opcional)", name: "whatsapp", widget: "string", required: false }
+              - { label: "Link de WhatsApp (opcional)", name: "whatsapp", widget: "string", required: false }
