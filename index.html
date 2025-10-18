@@ -1,159 +1,83 @@
 <!doctype html>
 <html lang="es">
-<!-- SEO meta -->
-<title>Manos & Magia Studio | Papelería creativa y decoración personalizada</title>
-<meta name="description" content="Papelería creativa, toppers con luz, letras 3D, bolsitas golosineras y combos de fiesta hechos a mano. Diseños personalizados con amor. Envíos a toda Argentina.">
-<meta name="keywords" content="papelería creativa, toppers con luz, letras 3D, decoración personalizada, bolsitas golosineras, combos de fiesta, souvenirs, artesanal, Argentina">
-
-<!-- Open Graph (para compartir en redes) -->
-<meta property="og:title" content="Manos & Magia Studio – Papelería creativa y decoración personalizada">
-<meta property="og:description" content="Diseños hechos a mano para que tu fiesta sea única. Topper con luz, letras 3D, bolsitas y más.">
-<meta property="og:image" content="https://manosymagiastudio.netlify.app/img/og-banner.jpg">
-<meta property="og:url" content="https://manosymagiastudio.netlify.app/">
-<meta property="og:type" content="website">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Manos & Magia Studio – Papelería creativa y decoración personalizada">
-<meta name="twitter:description" content="Toppers, letras 3D y decoración artesanal hecha con amor 💕">
-<meta name="twitter:image" content="https://manosymagiastudio.netlify.app/img/og-banner.jpg">
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Manos & Magia Studio",
-  "image": "https://manosymagiastudio.netlify.app/og-banner.jpg",
-  "logo": "https://manosymagiastudio.netlify.app/img/logo.png",
-  "url": "https://manosymagiastudio.netlify.app",
-  "email": "manosymagiastudio@gmail.com",
-  "telephone": "+54 9 11 6728 6443",
-  "description": "Papelería creativa, toppers con luz, letras 3D, bolsitas golosineras y combos de fiesta personalizados. Hecho con amor desde el alma 💫",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "AR",
-    "addressLocality": "Buenos Aires",
-    "addressRegion": "Buenos Aires"
-  },
-  "sameAs": [
-    "https://www.instagram.com/manosymagia_studio"
-  ],
-  "openingHours": "Mo-Fr 10:00-18:00",
-  "areaServed": "Argentina",
-  "keywords": "papelería creativa, toppers personalizados, letras 3D, decoración de cumpleaños, combos de fiesta, Manos y Magia Studio"
-}
-</script>
-
-  <head>
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S7Q5H6YF55"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  // No enviar page_view automático: lo disparamos nosotros (para excluir /admin)
-  gtag('config', 'G-S7Q5H6YF55', { send_page_view: false });
-
-  // Enviar page_view solo si NO estás en /admin
-  if (!location.pathname.startsWith('/admin')) {
-    gtag('event', 'page_view', {
-      page_path: location.pathname + location.search,
-      page_title: document.title
-    });
-  }
-</script>
-
-  <meta name="google-site-verification" content="7Mac3ErjXHlrGIM8dhcjCUo7RglRPLLJZLUTE6EO3vg" />
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Manos & Magia Studio — Papelería creativa y decoración personalizada</title>
-  <meta name="description" content="Papelería creativa y decoración personalizada para fiestas: toppers con luz, piñatas, letras 3D, bolsitas golosineras y souvenirs. Hecho a mano en Argentina.">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="img/favicon.png" type="image/png">
-  <meta property="og:title" content="Manos & Magia Studio — Papelería creativa y decoración personalizada">
-  <meta property="og:description" content="Papelería creativa y decoración personalizada para tus momentos más especiales.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="img/og-image.png">
+
+  <title>Manos & Magia Studio | Papelería creativa y decoración personalizada</title>
+  <meta name="description" content="Papelería creativa, toppers con luz, letras 3D, bolsitas golosineras y combos de fiesta hechos a mano. Diseños personalizados con amor. Envíos a toda Argentina.">
+  <meta name="keywords" content="papelería creativa, toppers con luz, letras 3D, decoración personalizada, bolsitas golosineras, combos de fiesta, souvenirs, artesanal, Argentina">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Manos & Magia Studio – Papelería creativa y decoración personalizada">
+  <meta property="og:description" content="Diseños hechos a mano para que tu fiesta sea única. Topper con luz, letras 3D, bolsitas y más.">
+  <meta property="og:image" content="https://manosymagiastudio.netlify.app/img/og-banner.jpg">
   <meta property="og:url" content="https://manosymagiastudio.netlify.app/">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="google-site-verification" content="T_kuBJB66Qu-Jb974aWubDX2bBszMHtWQ6qDPFC-_NA" />
+  <meta name="twitter:title" content="Manos & Magia Studio – Papelería creativa y decoración personalizada">
+  <meta name="twitter:description" content="Toppers, letras 3D y decoración artesanal hecha con amor 💕">
+  <meta name="twitter:image" content="https://manosymagiastudio.netlify.app/img/og-banner.jpg">
+
+  <!-- Google Verification -->
+  <meta name="google-site-verification" content="7Mac3ErjXHlrGIM8dhcjCUo7RglRPLLJZLUTE6EO3vg">
+  <meta name="google-site-verification" content="T_kuBJB66Qu-Jb974aWubDX2bBszMHtWQ6qDPFC-_NA">
+
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S7Q5H6YF55"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S7Q5H6YF55', { send_page_view: false });
+
+    if (!location.pathname.startsWith('/admin')) {
+      gtag('event', 'page_view', {
+        page_path: location.pathname + location.search,
+        page_title: document.title
+      });
+    }
+  </script>
+
+  <!-- Schema JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Manos & Magia Studio",
+    "image": "https://manosymagiastudio.netlify.app/og-banner.jpg",
+    "logo": "https://manosymagiastudio.netlify.app/img/logo.png",
+    "url": "https://manosymagiastudio.netlify.app",
+    "email": "manosymagiastudio@gmail.com",
+    "telephone": "+54 9 11 6728 6443",
+    "description": "Papelería creativa, toppers con luz, letras 3D, bolsitas golosineras y combos de fiesta personalizados. Hecho con amor desde el alma 💫",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "AR",
+      "addressLocality": "Buenos Aires",
+      "addressRegion": "Buenos Aires"
+    },
+    "sameAs": ["https://www.instagram.com/manosymagia_studio"],
+    "openingHours": "Mo-Fr 10:00-18:00",
+    "areaServed": "Argentina",
+    "keywords": "papelería creativa, toppers personalizados, letras 3D, decoración de cumpleaños, combos de fiesta, Manos y Magia Studio"
+  }
+  </script>
 </head>
-<!-- POPUP Newsletter - Manos & Magia (Netlify Forms) -->
-<div id="mm-popup" aria-hidden="true" style="position:fixed;inset:0;display:none;">
-  <div id="mm-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,.45);"></div>
-  <div role="dialog" aria-modal="true" aria-labelledby="mm-title"
-       style="position:relative;max-width:420px;margin:8vh auto;background:#fff;border-radius:18px;padding:28px;
-              box-shadow:0 20px 60px rgba(0,0,0,.25);font-family:system-ui,-apple-system,'Segoe UI',Roboto,Ubuntu,Arial;">
-    <button id="mm-close" aria-label="Cerrar"
-            style="position:absolute;top:12px;right:12px;border:none;background:transparent;font-size:22px;cursor:pointer;">×</button>
 
-    <h2 id="mm-title" style="margin:0 0 8px;font-size:22px;">✨ Unite a la magia</h2>
-    <p style="margin:0 0 16px;line-height:1.5;">
-      Recibí <strong>ofertas</strong>, <strong>lanzamientos</strong> y <strong>descuentos exclusivos</strong>.
-    </p>
-
-    <!-- Netlify Form -->
-    <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-          action="/gracias.html" id="mm-form">
-      <input type="hidden" name="form-name" value="newsletter">
-      <p style="display:none;">
-        <label>No completar si sos humano: <input name="bot-field"></label>
-      </p>
-      <input type="email" name="email" required placeholder="Tu correo electrónico"
-             style="width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;margin:0 0 10px;">
-      <button type="submit"
-              style="width:100%;padding:12px 14px;border:none;border-radius:10px;cursor:pointer;
-                     background:#ffb6c1;font-weight:600;">
-        Quiero suscribirme
-      </button>
-      <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;margin-top:10px;line-height:1.3;">
-        <input type="checkbox" required>
-        Acepto recibir novedades por email. Puedo desuscribirme cuando quiera.
-      </label>
-    </form>
-
-    <p style="text-align:center;color:#666;font-size:12px;margin-top:10px;">
-      #HechoConAmor · Manos & Magia Studio
-    </p>
-  </div>
-</div>
-
-<script>
-(function(){
-  const LS_KEY = "mm_popup_seen";
-  const SHOW_AFTER_MS = 5000;
-  const SEEN_DAYS = 7;
-
-  const popup = document.getElementById('mm-popup');
-  const overlay = document.getElementById('mm-overlay');
-  const closeBtn = document.getElementById('mm-close');
-
-  function openPopup(){ if(popup){ popup.style.display='block'; popup.setAttribute('aria-hidden','false'); } }
-  function closePopup(){
-    if(popup){ popup.style.display='none'; popup.setAttribute('aria-hidden','true'); }
-    const exp = Date.now() + SEEN_DAYS*24*60*60*1000;
-    localStorage.setItem(LS_KEY, String(exp));
-  }
-  function shouldShow(){
-    const v = localStorage.getItem(LS_KEY);
-    if(!v) return true;
-    return Date.now() > Number(v);
-  }
-
-  if(shouldShow()){ setTimeout(openPopup, SHOW_AFTER_MS); }
-  overlay && overlay.addEventListener('click', closePopup);
-  closeBtn && closeBtn.addEventListener('click', closePopup);
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePopup(); });
-})();
-</script>
-<!-- /POPUP Newsletter -->
-  <body>
+<body>
   <header class="site-header">
     <div class="wrap">
       <a class="brand" href="#inicio">
         <img src="img/logo.png" alt="Manos & Magia Studio" width="40" height="40">
-        <span>Manos & Magia Studio</span><small class="brand-sub">Papelería creativa &amp; decoración personalizada</small>
+        <span>Manos & Magia Studio</span>
+        <small class="brand-sub">Papelería creativa &amp; decoración personalizada</small>
       </a>
       <nav>
         <a href="#productos">Productos</a>
@@ -170,8 +94,8 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <h1 id="hero-title">Decoración <span class="resaltado">100% personalizada</span> para tu fiesta</h1>
-          <p id="hero-sub">Papelería creativa, toppers con luz, piñatas, letras 3D, bolsitas y souvenirs. Hecho con amor desde el alma 💫</p>
+          <h1>Decoración <span class="resaltado">100% personalizada</span> para tu fiesta</h1>
+          <p>Papelería creativa, toppers con luz, piñatas, letras 3D, bolsitas y souvenirs. Hecho con amor desde el alma 💫</p>
           <div class="cta-group">
             <a class="btn" id="cta-whatsapp" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a>
             <a class="btn ghost" id="cta-instagram" href="#" target="_blank" rel="noopener">Ver Instagram</a>
@@ -274,7 +198,7 @@
         <h4>Contacto</h4>
         <ul class="contact">
           <li><a id="footer-whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a id="footer-email" href="mailto:" target="_blank" rel="noopener">manosymagiastudio@gmail.com</a></li>
+          <li><a id="footer-email" href="mailto:manosymagiastudio@gmail.com">manosymagiastudio@gmail.com</a></li>
           <li><a id="footer-ig" href="#" target="_blank" rel="noopener">@manosymagia_studio</a></li>
         </ul>
       </div>
@@ -290,6 +214,75 @@
     </div>
     <p class="copy">© 2025 Manos & Magia Studio. Todos los derechos reservados.</p>
   </footer>
+
+  <!-- Pop-up Newsletter -->
+  <div id="mm-popup" aria-hidden="true" style="position:fixed;inset:0;display:none;">
+    <div id="mm-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,.45);"></div>
+    <div role="dialog" aria-modal="true" aria-labelledby="mm-title"
+         style="position:relative;max-width:420px;margin:8vh auto;background:#fff;border-radius:18px;padding:28px;
+                box-shadow:0 20px 60px rgba(0,0,0,.25);font-family:system-ui,-apple-system,'Segoe UI',Roboto,Ubuntu,Arial;">
+      <button id="mm-close" aria-label="Cerrar"
+              style="position:absolute;top:12px;right:12px;border:none;background:transparent;font-size:22px;cursor:pointer;">×</button>
+
+      <h2 id="mm-title" style="margin:0 0 8px;font-size:22px;">✨ Unite a la magia</h2>
+      <p style="margin:0 0 16px;line-height:1.5;">
+        Recibí <strong>ofertas</strong>, <strong>lanzamientos</strong> y <strong>descuentos exclusivos</strong>.
+      </p>
+
+      <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+            action="/gracias.html" id="mm-form">
+        <input type="hidden" name="form-name" value="newsletter">
+        <p style="display:none;">
+          <label>No completar si sos humano: <input name="bot-field"></label>
+        </p>
+        <input type="email" name="email" required placeholder="Tu correo electrónico"
+               style="width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;margin:0 0 10px;">
+        <button type="submit"
+                style="width:100%;padding:12px 14px;border:none;border-radius:10px;cursor:pointer;
+                       background:#ffb6c1;font-weight:600;">
+          Quiero suscribirme
+        </button>
+        <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;margin-top:10px;line-height:1.3;">
+          <input type="checkbox" required>
+          Acepto recibir novedades por email. Puedo desuscribirme cuando quiera.
+        </label>
+      </form>
+
+      <p style="text-align:center;color:#666;font-size:12px;margin-top:10px;">
+        #HechoConAmor · Manos & Magia Studio
+      </p>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    const LS_KEY = "mm_popup_seen_v2";
+    const SHOW_AFTER_MS = 100;
+    const SEEN_DAYS = 7;
+
+    const popup = document.getElementById('mm-popup');
+    const overlay = document.getElementById('mm-overlay');
+    const closeBtn = document.getElementById('mm-close');
+
+    function openPopup(){ if(popup){ popup.style.display='block'; popup.setAttribute('aria-hidden','false'); } }
+    function closePopup(){
+      if(popup){ popup.style.display='none'; popup.setAttribute('aria-hidden','true'); }
+      const exp = Date.now() + SEEN_DAYS*24*60*60*1000;
+      localStorage.setItem(LS_KEY, String(exp));
+    }
+    function shouldShow(){
+      const v = localStorage.getItem(LS_KEY);
+      if(!v) return true;
+      return Date.now() > Number(v);
+    }
+
+    if(shouldShow()){ setTimeout(openPopup, SHOW_AFTER_MS); }
+    overlay && overlay.addEventListener('click', closePopup);
+    closeBtn && closeBtn.addEventListener('click', closePopup);
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePopup(); });
+  })();
+  </script>
+  <!-- /Pop-up Newsletter -->
 
   <script src="script.js" defer></script>
 </body>
