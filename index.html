@@ -1,103 +1,444 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Catálogo artesanal de Manos & Magia Studio – toppers, cajas, piñatas, tote bags, letras 3D y más. Diseños personalizados hechos con amor desde el alma.">
-  <title>Manos & Magia Studio – Colección Creativa</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Estilos base (no modifican lo que ya tengas) -->
+  <title>Manos & Magia Studio | Papelería creativa y decoración personalizada</title>
+  <meta name="description" content="Papelería creativa, toppers con luz, letras 3D, bolsitas golosineras y combos de fiesta hechos a mano. Diseños personalizados con amor. Envíos a toda Argentina.">
+  <meta name="keywords" content="papelería creativa, toppers con luz, letras 3D, decoración personalizada, bolsitas golosineras, combos de fiesta, souvenirs, artesanal, Argentina">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Manos & Magia Studio – Papelería creativa y decoración personalizada">
+  <meta property="og:description" content="Diseños hechos a mano para que tu fiesta sea única. Topper con luz, letras 3D, bolsitas y más.">
+  <meta property="og:image" content="https://manosymagiastudio.netlify.app/img/og-banner.jpg">
+  <meta property="og:url" content="https://manosymagiastudio.netlify.app/">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Manos & Magia Studio – Papelería creativa y decoración personalizada">
+  <meta name="twitter:description" content="Toppers, letras 3D y decoración artesanal hecha con amor 💕">
+  <meta name="twitter:image" content="https://manosymagiastudio.netlify.app/img/og-banner.jpg">
+
+  <!-- Google Verification -->
+  <meta name="google-site-verification" content="7Mac3ErjXHlrGIM8dhcjCUo7RglRPLLJZLUTE6EO3vg">
+  <meta name="google-site-verification" content="T_kuBJB66Qu-Jb974aWubDX2bBszMHtWQ6qDPFC-_NA">
+
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S7Q5H6YF55"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S7Q5H6YF55', { send_page_view: false });
+
+    if (!location.pathname.startsWith('/admin')) {
+      gtag('event', 'page_view', {
+        page_path: location.pathname + location.search,
+        page_title: document.title
+      });
+    }
+  </script>
+
+  <!-- Schema JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Manos & Magia Studio",
+    "image": "https://manosymagiastudio.netlify.app/og-banner.jpg",
+    "logo": "https://manosymagiastudio.netlify.app/img/logo.png",
+    "url": "https://manosymagiastudio.netlify.app",
+    "email": "manosymagiastudio@gmail.com",
+    "telephone": "+54 9 11 6728 6443",
+    "description": "Papelería creativa, toppers con luz, letras 3D, bolsitas golosineras y combos de fiesta personalizados. Hecho con amor desde el alma 💫",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "AR",
+      "addressLocality": "Buenos Aires",
+      "addressRegion": "Buenos Aires"
+    },
+    "sameAs": ["https://www.instagram.com/manosymagia_studio"],
+    "openingHours": "Mo-Fr 10:00-18:00",
+    "areaServed": "Argentina",
+    "keywords": "papelería creativa, toppers personalizados, letras 3D, decoración de cumpleaños, combos de fiesta, Manos y Magia Studio"
+  }
+  </script>
+
+  <!-- Estilos mínimos para Newsletter + FAQ (podés moverlos a styles.css cuando quieras) -->
   <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fff9f4;
-      color: #444;
-    }
+    .section.alt { background: #fff7f9; }
+    .box { background:#fff; border:1px solid #eee; border-radius:12px; padding:18px; }
+    .grid-2 { display:grid; gap:24px; grid-template-columns: 1.2fr 1fr; }
+    @media (max-width: 900px){ .grid-2 { grid-template-columns: 1fr; } }
 
-    h2 {
-      text-align: center;
-      font-size: 1.8rem;
-      color: #d8b973;
-      margin-top: 60px;
-      margin-bottom: 20px;
-      font-weight: 600;
+    /* FAQ pastel con animación */
+    .faq.fancy details{
+      border:1px solid #f6e5ec;
+      background:#fff;
+      border-radius:14px;
+      margin:12px 0;
+      overflow:hidden;
+      box-shadow: 0 6px 18px rgba(255,182,193,.15);
     }
-
-    section#catalogo {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 20px 80px 20px;
+    .faq.fancy summary{
+      display:grid;
+      grid-template-columns: 28px 1fr 24px;
+      align-items:center;
+      gap:10px;
+      cursor:pointer;
+      padding:16px 16px;
+      list-style:none;
+      user-select:none;
     }
-
-    .catalogo-frame {
-      position: relative;
-      width: 100%;
-      height: 0;
-      padding-top: 141.4286%;
-      padding-bottom: 0;
-      box-shadow: 0 2px 8px 0 rgba(63, 69, 81, 0.16);
-      margin-top: 1.6em;
-      margin-bottom: 0.9em;
-      overflow: hidden;
-      border-radius: 8px;
-      will-change: transform;
+    .faq.fancy summary::-webkit-details-marker{ display:none; }
+    .faq.fancy .icon{
+      width:28px; height:28px; display:grid; place-items:center;
+      border-radius:8px; background:#ffeaf1; font-size:16px;
     }
-
-    .catalogo-frame iframe {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      border: none;
-      padding: 0;
-      margin: 0;
+    .faq.fancy .chev{ width:14px; height:14px; justify-self:end; position:relative; }
+    .faq.fancy .chev::before{
+      content:""; position:absolute; inset:0;
+      border-right:2px solid #ff86ae; border-bottom:2px solid #ff86ae;
+      transform: rotate(45deg); transition: transform .28s ease;
     }
-
-    .catalogo-link {
-      display: block;
-      text-align: center;
-      font-size: 0.9rem;
-      margin-top: 10px;
-      color: #d8b973;
-      text-decoration: none;
+    .faq.fancy details[open] .chev::before{ transform: rotate(-135deg); }
+    .faq.fancy .faq-a{
+      padding:0 16px 16px 54px; color:#555; line-height:1.6;
+      display:grid; grid-template-rows: 0fr;
+      transition: grid-template-rows .28s ease, padding-top .28s ease;
     }
-
-    .catalogo-link:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 0;
-      font-size: 0.9rem;
-      color: #a97f7f;
+    .faq.fancy details[open] .faq-a{ grid-template-rows: 1fr; padding-top: 4px; }
+    .faq.fancy .faq-a > *{ overflow:hidden; }
+    .faq.fancy a{ color:#ff7fa3; text-decoration:none; }
+    .faq.fancy a:hover{ text-decoration:underline; }
+    .faq.fancy summary:focus{ outline:2px dashed #ffb6c1; outline-offset:4px; }
+    @media (prefers-reduced-motion: reduce){
+      .faq.fancy .chev::before, .faq.fancy .faq-a{ transition:none; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Aquí va el resto de tu contenido existente -->
-
-  <!-- === SECCIÓN DEL CATÁLOGO === -->
-  <section id="catalogo">
-    <h2>✨ Colección Creativa – Catálogo Online ✨</h2>
-    <div class="catalogo-frame">
-      <iframe loading="lazy" src="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?embed"
-        allowfullscreen="allowfullscreen" allow="fullscreen">
-      </iframe>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#inicio">
+        <img src="img/logo.png" alt="Manos & Magia Studio" width="40" height="40">
+        <span>Manos & Magia Studio</span>
+        <small class="brand-sub">Papelería creativa &amp; decoración personalizada</small>
+      </a>
+      <!-- MENÚ con Newsletter + FAQ -->
+      <nav>
+        <a href="#productos">Productos</a>
+        <a href="#combos">Combos</a>
+        <a href="#tematicas">Temáticas</a>
+        <a href="#como-comprar">Cómo pedir</a>
+        <a href="#newsletter">Newsletter</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto" class="btn">Pedir por WhatsApp</a>
+      </nav>
     </div>
-    <a class="catalogo-link"
-      href="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?utm_content=DAG2QQznRaA&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
-      target="_blank" rel="noopener">
-      Ver catálogo completo en Canva
-    </a>
-  </section>
+  </header>
 
-  <footer>
-    © 2025 Manos & Magia Studio · Hecho con amor desde el alma ✨
+  <main id="inicio">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1>Decoración <span class="resaltado">100% personalizada</span> para tu fiesta</h1>
+          <p>Papelería creativa, toppers con luz, piñatas, letras 3D, bolsitas y souvenirs. Hecho con amor desde el alma 💫</p>
+          <div class="cta-group">
+            <a class="btn" id="cta-whatsapp" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+            <a class="btn ghost" id="cta-instagram" href="#" target="_blank" rel="noopener">Ver Instagram</a>
+          </div>
+          <ul class="badges">
+            <li>Diseños exclusivos</li>
+            <li>Hecho a mano</li>
+            <li>Envíos a todo el país</li>
+          </ul>
+        </div>
+        <div class="hero-img">
+          <img src="img/hero-placeholder.svg" alt="Decoración personalizada">
+        </div>
+      </div>
+    </section>
+
+    <section id="productos" class="section">
+      <div class="wrap">
+        <h2>Productos destacados</h2>
+        <div id="products" class="cards"></div>
+      </div>
+    </section>
+
+    <section id="combos" class="section alt">
+      <div class="wrap">
+        <h2>Combos de fiesta</h2>
+        <div id="combos-list" class="cards"></div>
+      </div>
+    </section>
+
+    <section id="tematicas" class="section">
+      <div class="wrap">
+        <h2>Temáticas</h2>
+        <div class="chips">
+          <span class="chip">Bluey</span>
+          <span class="chip">Minecraft</span>
+          <span class="chip">Stitch</span>
+          <span class="chip">Frozen</span>
+          <span class="chip">Princesas</span>
+          <span class="chip">Superhéroes</span>
+          <span class="chip">Sanrio</span>
+          <span class="chip">Animales</span>
+        </div>
+        <p class="nota">¿Otra temática? ¡La diseñamos desde cero para vos!</p>
+      </div>
+    </section>
+
+    <section id="como-comprar" class="section">
+      <div class="wrap grid-2">
+        <div>
+          <h2>Cómo pedir</h2>
+          <ol class="pasos">
+            <li>Escribinos por WhatsApp con fecha del evento y temática.</li>
+            <li>Definimos productos y te enviamos un presupuesto.</li>
+            <li>Seña del 50% para reservar la fecha de producción.</li>
+            <li>Envío por correo/moto o retiro por punto a coordinar.</li>
+          </ol>
+          <p class="nota">Tiempo de producción sugerido: <strong>7 días</strong> antes (GBA/Interior) y <strong>3 días</strong> (CABA).</p>
+        </div>
+        <div class="box">
+          <h3>Medios de pago</h3>
+          <ul>
+            <li>Transferencia / Depósito</li>
+            <li>Mercado Pago</li>
+          </ul>
+          <h3>Envíos</h3>
+          <ul>
+            <li>Correo a todo el país</li>
+            <li>Moto en CABA y GBA</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria" class="section alt">
+      <div class="wrap">
+        <h2>Galería</h2>
+        <div id="gallery" class="masonry"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>Testimonios</h2>
+        <div class="quotes">
+          <blockquote>“Todo hermoso y súper puntual. ¡Amé el topper con luz!” <cite>— Cami</cite></blockquote>
+          <blockquote>“La piñata quedó perfecta y los detalles, increíbles.” <cite>— Sofi</cite></blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter (en página) -->
+    <section id="newsletter" class="section alt">
+      <div class="wrap grid-2">
+        <div>
+          <h2>💌 Newsletter</h2>
+          <p>Recibí <strong>promos</strong>, <strong>lanzamientos</strong> y <strong>descuentos exclusivos</strong> de Manos &amp; Magia Studio.</p>
+          <p class="nota">Nos gusta cuidar tu tiempo: enviamos solo info útil y podés desuscribirte cuando quieras.</p>
+        </div>
+        <div class="box">
+          <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias.html">
+            <input type="hidden" name="form-name" value="newsletter">
+            <p style="display:none;">
+              <label>No completar si sos humano: <input name="bot-field"></label>
+            </p>
+            <label style="display:block;margin-bottom:8px;">Correo electrónico</label>
+            <input type="email" name="email" required placeholder="tu@mail.com"
+                   style="width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;margin:0 0 12px;">
+            <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;margin:6px 0 12px;">
+              <input type="checkbox" required>
+              Acepto recibir novedades por email.
+            </label>
+            <button type="submit" class="btn" style="width:100%;">Quiero suscribirme</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preguntas Frecuentes (FAQ) · versión con íconos y animación -->
+    <section id="faq" class="section">
+      <div class="wrap">
+        <h2>Preguntas frecuentes</h2>
+
+        <div class="faq fancy">
+          <details open>
+            <summary><span class="icon">⏰</span><strong>¿Con cuánta anticipación tengo que hacer el pedido?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Recomendamos <strong>7 días</strong> para GBA/Interior y <strong>3 días</strong> para CABA. ¿Urgente? Escribinos por WhatsApp y vemos disponibilidad 💪.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">🎨</span><strong>¿Los productos son personalizados?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Sí 💕. Cada pieza se hace <strong>100% a medida</strong> (nombre, edad, colores y temática).</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">💳</span><strong>¿Qué métodos de pago aceptan?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p><strong>Transferencia</strong> y <strong>Mercado Pago</strong>. Seña del <strong>50%</strong> para reservar producción.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">🚚</span><strong>¿Hacen envíos?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Sí. Correo a todo el país y <strong>moto</strong> en CABA/GBA.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">📝</span><strong>¿Puedo cancelar o modificar un pedido?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Dentro de las <strong>24 h</strong> de confirmado. Luego arranca la producción y no hay reembolso, pero si es un ajuste menor siempre intentamos ayudarte 💫.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">🛠️</span><strong>¿Qué materiales usan?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Papeles premium, PVC cristal brillante, vinilos adhesivos y cartulinas metalizadas; terminaciones artesanales.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">✨</span><strong>¿Puedo pedir un diseño fuera de catálogo?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>¡Sí! Contanos tu idea y la diseñamos exclusivamente para vos.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">🧼</span><strong>¿Cómo cuido mis productos?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Guardalos en lugar seco, sin sol directo. Si tienen luz, evitá agua o calor. Usá el empaque hasta el evento.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">📷</span><strong>¿Dónde veo más trabajos?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Mirá la <a href="#galeria">Galería</a> o nuestro <a href="https://www.instagram.com/manosymagia_studio" target="_blank" rel="noopener">@manosymagia_studio</a>.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto" class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <h3>Manos & Magia Studio</h3>
+        <p>Hecho con amor desde el alma 💫 — Papelería creativa y decoración personalizada para tus momentos más especiales.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="contact">
+          <li><a id="footer-whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a id="footer-email" href="mailto:manosymagiastudio@gmail.com">manosymagiastudio@gmail.com</a></li>
+          <li><a id="footer-ig" href="#" target="_blank" rel="noopener">@manosymagia_studio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Links útiles</h4>
+        <ul class="contact">
+          <li><a href="sitemap.xml">Sitemap</a></li>
+          <li><a href="robots.txt">Robots</a></li>
+          <li><a href="#como-comprar">Cómo pedir</a></li>
+          <li><a href="admin/" target="_blank" rel="noopener">Panel /admin</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">© 2025 Manos & Magia Studio. Todos los derechos reservados.</p>
   </footer>
+
+  <!-- Pop-up Newsletter -->
+  <div id="mm-popup" aria-hidden="true" style="position:fixed;inset:0;display:none;">
+    <div id="mm-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,.45);"></div>
+    <div role="dialog" aria-modal="true" aria-labelledby="mm-title"
+         style="position:relative;max-width:420px;margin:8vh auto;background:#fff;border-radius:18px;padding:28px;
+                box-shadow:0 20px 60px rgba(0,0,0,.25);font-family:system-ui,-apple-system,'Segoe UI',Roboto,Ubuntu,Arial;">
+      <button id="mm-close" aria-label="Cerrar"
+              style="position:absolute;top:12px;right:12px;border:none;background:transparent;font-size:22px;cursor:pointer;">×</button>
+
+      <h2 id="mm-title" style="margin:0 0 8px;font-size:22px;">✨ Unite a la magia</h2>
+      <p style="margin:0 0 16px;line-height:1.5;">
+        Recibí <strong>ofertas</strong>, <strong>lanzamientos</strong> y <strong>descuentos exclusivos</strong>.
+      </p>
+
+      <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+            action="/gracias.html" id="mm-form">
+        <input type="hidden" name="form-name" value="newsletter">
+        <p style="display:none;">
+          <label>No completar si sos humano: <input name="bot-field"></label>
+        </p>
+        <input type="email" name="email" required placeholder="Tu correo electrónico"
+               style="width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;margin:0 0 10px;">
+        <button type="submit"
+                style="width:100%;padding:12px 14px;border:none;border-radius:10px;cursor:pointer;
+                       background:#ffb6c1;font-weight:600;">
+          Quiero suscribirme
+        </button>
+        <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;margin-top:10px;line-height:1.3;">
+          <input type="checkbox" required>
+          Acepto recibir novedades por email. Puedo desuscribirme cuando quiera.
+        </label>
+      </form>
+
+      <p style="text-align:center;color:#666;font-size:12px;margin-top:10px;">
+        #HechoConAmor · Manos & Magia Studio
+      </p>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    const LS_KEY = "mm_popup_seen_v2";   // marca para no repetir el pop-up
+    const SHOW_AFTER_MS = 100;           // 0.1s para test (podés subirlo a 3000)
+    const SEEN_DAYS = 7;                 // no volver a mostrar por 7 días
+
+    const popup = document.getElementById('mm-popup');
+    const overlay = document.getElementById('mm-overlay');
+    const closeBtn = document.getElementById('mm-close');
+
+    function openPopup(){ if(popup){ popup.style.display='block'; popup.setAttribute('aria-hidden','false'); } }
+    function closePopup(){
+      if(popup){ popup.style.display='none'; popup.setAttribute('aria-hidden','true'); }
+      const exp = Date.now() + SEEN_DAYS*24*60*60*1000;
+      try { localStorage.setItem(LS_KEY, String(exp)); } catch(e){}
+    }
+    function shouldShow(){
+      const v = Number(localStorage.getItem(LS_KEY));
+      if(!v) return true;
+      return Date.now() > v;
+    }
+
+    if(shouldShow()){ setTimeout(openPopup, SHOW_AFTER_MS); }
+    overlay && overlay.addEventListener('click', closePopup);
+    closeBtn && closeBtn.addEventListener('click', closePopup);
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePopup(); });
+
+    // Helpers para pruebas (opcional)
+    window.mmPopup = {
+      open: openPopup,
+      reset: () => localStorage.removeItem(LS_KEY),
+      seenUntil: () => Number(localStorage.getItem(LS_KEY))
+    };
+  })();
+  </script>
+  <!-- /Pop-up Newsletter -->
+
+  <!-- Acordeón estricto (opcional): solo una pregunta abierta a la vez -->
+  <script>
+  (function(){
+    const all = document.querySelectorAll('#faq details');
+    all.forEach(d=>{
+      d.addEventListener('toggle', ()=>{
+        if(d.open){ all.forEach(o => { if(o!==d) o.open = false; }); }
+      });
+    });
+  })();
+  </script>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
