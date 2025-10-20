@@ -46,14 +46,6 @@
 
   <!-- Schema JSON-LD -->
   <script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"FAQPage",
- "mainEntity":[ ... ]
-}
-</script>
-
-  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -75,6 +67,24 @@
     "openingHours": "Mo-Fr 10:00-18:00",
     "areaServed": "Argentina",
     "keywords": "papelería creativa, toppers personalizados, letras 3D, decoración de cumpleaños, combos de fiesta, Manos y Magia Studio"
+  }
+  </script>
+
+  <!-- FAQPage SEO (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+   "@context":"https://schema.org",
+   "@type":"FAQPage",
+   "mainEntity":[
+     {"@type":"Question","name":"¿Con cuánta anticipación tengo que hacer el pedido?","acceptedAnswer":{"@type":"Answer","text":"Recomendamos 7 días para GBA/Interior y 3 días para CABA. Para urgentes, escribinos y vemos disponibilidad."}},
+     {"@type":"Question","name":"¿Los productos son personalizados?","acceptedAnswer":{"@type":"Answer","text":"Sí, 100% a medida: nombre, edad, colores y temática."}},
+     {"@type":"Question","name":"¿Qué métodos de pago aceptan?","acceptedAnswer":{"@type":"Answer","text":"Transferencia y Mercado Pago. Seña del 50% para reservar la fecha de producción."}},
+     {"@type":"Question","name":"¿Hacen envíos?","acceptedAnswer":{"@type":"Answer","text":"Sí. Correo a todo el país y moto en CABA/GBA."}},
+     {"@type":"Question","name":"¿Puedo cancelar o modificar un pedido?","acceptedAnswer":{"@type":"Answer","text":"Dentro de las 24 h de confirmado. Luego comienza la producción, pero si es un ajuste menor intentamos ayudarte."}},
+     {"@type":"Question","name":"¿Qué materiales usan?","acceptedAnswer":{"@type":"Answer","text":"Papeles premium, PVC cristal brillante, vinilos adhesivos y cartulinas metalizadas; terminaciones artesanales."}},
+     {"@type":"Question","name":"¿Puedo pedir un diseño fuera de catálogo?","acceptedAnswer":{"@type":"Answer","text":"Sí, contanos tu idea y la diseñamos especialmente para vos."}},
+     {"@type":"Question","name":"¿Cómo cuido mis productos?","acceptedAnswer":{"@type":"Answer","text":"Guardalos en lugar seco, sin sol directo. Si tienen luz, evitá agua o calor. Usá el empaque hasta el evento."}}
+   ]
   }
   </script>
 
@@ -131,31 +141,6 @@
     }
   </style>
 </head>
-<!-- WhatsApp sticky -->
-<a href="https://wa.me/5491167286443?text=Hola%20Manos%20%26%20Magia%20Studio%2C%20quiero%20pedir%20un%20presupuesto%20%F0%9F%92%95"
-   target="_blank" rel="noopener" aria-label="WhatsApp"
-   style="position:fixed;right:16px;bottom:16px;z-index:9999;width:56px;height:56px;border-radius:50%;
-          background:#25D366;box-shadow:0 8px 24px rgba(0,0,0,.25);display:grid;place-items:center;color:#fff;text-decoration:none;">
-  <!-- ícono simple -->
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M20.52 3.48A11.77 11.77 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.5 5.82L0 24l6.34-1.64A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.3-6.1-3.48-8.52zM12 21.6c-1.84 0-3.55-.5-5.04-1.36l-.36-.21-3.76.98.99-3.67-.24-.38A9.62 9.62 0 0 1 2.4 12C2.4 6.69 6.69 2.4 12 2.4S21.6 6.69 21.6 12 17.31 21.6 12 21.6zm5.2-6.11c-.29-.15-1.71-.84-1.98-.93-.27-.1-.47-.15-.67.15-.2.29-.77.93-.95 1.12-.18.2-.35.22-.64.07-.29-.15-1.23-.45-2.34-1.44-.86-.76-1.44-1.7-1.61-1.98-.17-.29-.02-.45.13-.6.14-.14.29-.35.44-.53.15-.18.2-.29.29-.49.1-.2.05-.37-.02-.53-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.08-.81.37-.29.29-1.07 1.05-1.07 2.56 0 1.5 1.09 2.95 1.24 3.16.15.2 2.14 3.27 5.19 4.58.72.31 1.29.49 1.73.63.73.23 1.39.2 1.92.12.59-.09 1.71-.7 1.95-1.37.24-.67.24-1.25.17-1.37-.07-.12-.27-.2-.56-.35z"/>
-  </svg>
-</a>
-<!-- Back to top -->
-<button id="backTop" aria-label="Volver arriba"
-  style="position:fixed;right:16px;bottom:86px;z-index:9998;width:44px;height:44px;border-radius:50%;
-         border:none;background:#d8b973;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer;display:none;">
-  ↑
-</button>
-<script>
-(function(){
-  const b = document.getElementById('backTop');
-  window.addEventListener('scroll', ()=> {
-    b.style.display = window.scrollY > 600 ? 'block' : 'none';
-  });
-  b.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
-})();
-</script>
 
 <body>
   <header class="site-header">
@@ -170,7 +155,7 @@
         <a href="#productos">Productos</a>
         <a href="#combos">Combos</a>
         <a href="#tematicas">Temáticas</a>
-        <a href="#catalogo">Catálogo</a>
+        <a href="#catalogo">Catálogo</a> <!-- NUEVO -->
         <a href="#como-comprar">Cómo pedir</a>
         <a href="#newsletter">Newsletter</a>
         <a href="#faq">FAQ</a>
@@ -186,8 +171,8 @@
           <h1>Decoración <span class="resaltado">100% personalizada</span> para tu fiesta</h1>
           <p>Papelería creativa, toppers con luz, piñatas, letras 3D, bolsitas y souvenirs. Hecho con amor desde el alma 💫</p>
           <div class="cta-group">
-            <a class="btn" id="cta-whatsapp" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a>
-            <a class="btn ghost" id="cta-instagram" href="#" target="_blank" rel="noopener">Ver Instagram</a>
+            <a class="btn" id="cta-whatsapp" href="https://wa.me/5491167286443?text=Hola%20Manos%20%26%20Magia%20Studio%2C%20quiero%20pedir%20un%20presupuesto%20%F0%9F%92%95" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+            <a class="btn ghost" id="cta-instagram" href="https://instagram.com/manosymagia_studio" target="_blank" rel="noopener">Ver Instagram</a>
           </div>
           <ul class="badges">
             <li>Diseños exclusivos</li>
@@ -196,7 +181,7 @@
           </ul>
         </div>
         <div class="hero-img">
-          <img src="img/hero-placeholder.svg" alt="Decoración personalizada">
+          <img src="img/hero-placeholder.svg" alt="Decoración personalizada" loading="lazy">
         </div>
       </div>
     </section>
@@ -231,28 +216,30 @@
         <p class="nota">¿Otra temática? ¡La diseñamos desde cero para vos!</p>
       </div>
     </section>
-    <!-- === Sección Especial: Catálogo Online === -->
-<section id="catalogo" class="section alt">
-  <div class="wrap">
-    <h2>Colección Creativa – Catálogo Online</h2>
 
-    <div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%;
-      padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
-      border-radius: 8px; will-change: transform;">
-      <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-        src="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?embed"
-        allowfullscreen="allowfullscreen" allow="fullscreen">
-      </iframe>
-    </div>
+    <!-- === Sección Especial: Catálogo Online (NUEVA) === -->
+    <section id="catalogo" class="section alt">
+      <div class="wrap">
+        <h2>Colección Creativa – Catálogo Online</h2>
 
-    <p class="nota" style="text-align:center;">
-      Si no se carga correctamente, podés abrirlo en una pestaña nueva:
-      <a href="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?utm_content=DAG2QQznRaA&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
-         target="_blank" rel="noopener">Ver catálogo completo en Canva</a>.
-    </p>
-  </div>
-</section>
-<!-- === /Sección Catálogo === -->
+        <div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%;
+          padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+          border-radius: 8px; will-change: transform;">
+          <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+            src="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?embed"
+            allowfullscreen="allowfullscreen" allow="fullscreen">
+          </iframe>
+        </div>
+
+        <p class="nota" style="text-align:center;">
+          Si no se carga correctamente, abrilo en una pestaña nueva:
+          <a href="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?utm_content=DAG2QQznRaA&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+             target="_blank" rel="noopener">Ver catálogo en Canva</a>.
+        </p>
+      </div>
+    </section>
+    <!-- === /Sección Catálogo === -->
+
     <section id="como-comprar" class="section">
       <div class="wrap grid-2">
         <div>
@@ -388,9 +375,9 @@
       <div>
         <h4>Contacto</h4>
         <ul class="contact">
-          <li><a id="footer-whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a id="footer-whatsapp" href="https://wa.me/5491167286443?text=Hola%20%F0%9F%92%95" target="_blank" rel="noopener">WhatsApp</a></li>
           <li><a id="footer-email" href="mailto:manosymagiastudio@gmail.com">manosymagiastudio@gmail.com</a></li>
-          <li><a id="footer-ig" href="#" target="_blank" rel="noopener">@manosymagia_studio</a></li>
+          <li><a id="footer-ig" href="https://instagram.com/manosymagia_studio" target="_blank" rel="noopener">@manosymagia_studio</a></li>
         </ul>
       </div>
       <div>
@@ -496,3 +483,60 @@
 
   <script src="script.js" defer></script>
 
+  <!-- WhatsApp sticky -->
+  <a href="https://wa.me/5491167286443?text=Hola%20Manos%20%26%20Magia%20Studio%2C%20quiero%20pedir%20un%20presupuesto%20%F0%9F%92%95"
+     target="_blank" rel="noopener" aria-label="WhatsApp"
+     style="position:fixed;right:16px;bottom:16px;z-index:9999;width:56px;height:56px;border-radius:50%;
+            background:#25D366;box-shadow:0 8px 24px rgba(0,0,0,.25);display:grid;place-items:center;color:#fff;text-decoration:none;">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.52 3.48A11.77 11.77 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.5 5.82L0 24l6.34-1.64A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.3-6.1-3.48-8.52zM12 21.6c-1.84 0-3.55-.5-5.04-1.36l-.36-.21-3.76.98.99-3.67-.24-.38A9.62 9.62 0 0 1 2.4 12C2.4 6.69 6.69 2.4 12 2.4S21.6 6.69 21.6 12 17.31 21.6 12 21.6zm5.2-6.11c-.29-.15-1.71-.84-1.98-.93-.27-.1-.47-.15-.67.15-.2.29-.77.93-.95 1.12-.18.2-.35.22-.64.07-.29-.15-1.23-.45-2.34-1.44-.86-.76-1.44-1.7-1.61-1.98-.17-.29-.02-.45.13-.6.14-.14.29-.35.44-.53.15-.18.2-.29.29-.49.1-.2.05-.37-.02-.53-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.08-.81.37-.29.29-1.07 1.05-1.07 2.56 0 1.5 1.09 2.95 1.24 3.16.15.2 2.14 3.27 5.19 4.58.72.31 1.29.49 1.73.63.73.23 1.39.2 1.92.12.59-.09 1.71-.7 1.95-1.37.24-.67.24-1.25.17-1.37-.07-.12-.27-.2-.56-.35z"/>
+    </svg>
+  </a>
+
+  <!-- Back to top -->
+  <button id="backTop" aria-label="Volver arriba"
+    style="position:fixed;right:16px;bottom:86px;z-index:9998;width:44px;height:44px;border-radius:50%;
+           border:none;background:#d8b973;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer;display:none;">
+    ↑
+  </button>
+  <script>
+  (function(){
+    const b = document.getElementById('backTop');
+    window.addEventListener('scroll', ()=> {
+      b.style.display = window.scrollY > 600 ? 'block' : 'none';
+    });
+    b.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+  })();
+  </script>
+
+  <!-- Lightbox minimal para #gallery -->
+  <div id="lb" style="position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:9999;">
+    <button id="lbClose" aria-label="Cerrar" style="position:absolute;top:16px;right:16px;font-size:28px;color:#fff;background:transparent;border:none;cursor:pointer;">×</button>
+    <img id="lbImg" alt="" style="max-width:92vw;max-height:92vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5);" />
+  </div>
+  <script>
+  (function(){
+    const g = document.getElementById('gallery');
+    const lb = document.getElementById('lb');
+    const img = document.getElementById('lbImg');
+    const close = document.getElementById('lbClose');
+
+    if(g){
+      g.addEventListener('click', (e)=>{
+        const t = e.target;
+        if(t && t.tagName === 'IMG'){
+          img.src = t.currentSrc || t.src;
+          lb.style.display = 'flex';
+          document.body.style.overflow='hidden';
+        }
+      });
+    }
+    function hide(){ lb.style.display='none'; img.src=''; document.body.style.overflow=''; }
+    close.addEventListener('click', hide);
+    lb.addEventListener('click', (e)=>{ if(e.target === lb) hide(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') hide(); });
+  })();
+  </script>
+
+</body>
+</html>
