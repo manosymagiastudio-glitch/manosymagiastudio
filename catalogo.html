@@ -10,31 +10,41 @@
 </head>
 <body>
   <header class="site-header">
-    <nav class="nav">
-      <a href="./" class="logo" aria-label="Manos & Magia Studio">
-        <img src="./img/logo.png" alt="Manos & Magia Studio" height="40" />
-      </a>
-      <ul class="menu">
-        <li><a href="./index.html#catalogo">Inicio</a></li>
-        <li><a href="./index.html#contacto">Contacto</a></li>
-        <li><a href="#" id="menu-tienda">Tienda</a></li>
-      </ul>
-      <button id="openShopBtn" class="btn btn-primary">Tienda</button>
-    </nav>
+    <div class="container">
+      <nav class="nav">
+        <a href="./" class="logo" aria-label="Manos & Magia Studio">
+          <img src="./img/logo.png" alt="Manos & Magia Studio" />
+        </a>
+        <ul class="menu">
+          <li><a href="./index.html#catalogo">Inicio</a></li>
+          <li><a href="./index.html#contacto">Contacto</a></li>
+          <li><a href="#" id="menu-tienda">Tienda</a></li>
+        </ul>
+        <button id="openShopBtn" class="btn btn-primary">Tienda</button>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section>
-      <h1>Catálogo completo</h1>
-      <!-- Render del catálogo -->
-      <div id="catalogo-grid">
-        <!-- Tu JS (script.js) puede poblar este contenedor -->
+      <div class="container">
+        <h1>Catálogo completo</h1>
+        <div id="catalogo-grid" class="grid">
+          <!-- Tu script.js puede inyectar tarjetas acá -->
+          <article class="card">
+            <img src="./img/og-banner.jpg" alt="Producto" />
+            <h3>Producto demo</h3>
+            <p>Descripción breve</p>
+          </article>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <small>© <span id="year"></span> Manos & Magia Studio.</small>
+    <div class="container">
+      <small>© <span id="year"></span> Manos & Magia Studio.</small>
+    </div>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
