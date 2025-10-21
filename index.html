@@ -6,43 +6,82 @@
   <title>Manos & Magia Studio | Papelería creativa y decoración personalizada</title>
   <meta name="description" content="Papelería creativa, toppers con luz, letras 3D, bolsitas y combos hechos a mano. Diseños personalizados con amor. Envíos a toda Argentina." />
   <link rel="icon" href="./img/logo.png" />
+  <!-- (opcional) fuente de marca -->
+  <!--
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  -->
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
+  <!-- Header -->
   <header class="site-header">
-    <nav class="nav">
-      <a href="./" class="logo" aria-label="Manos & Magia Studio">
-        <img src="./img/logo.png" alt="Manos & Magia Studio" height="40" />
-      </a>
-      <ul class="menu">
-        <li><a href="#catalogo">Catálogo</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-        <li><a href="#" id="menu-tienda">Tienda</a></li>
-        <li><a href="./catalogo.html">Ver catálogo completo</a></li>
-      </ul>
-      <button id="openShopBtn" class="btn btn-primary">Tienda</button>
-    </nav>
+    <div class="container">
+      <nav class="nav">
+        <a href="./" class="logo" aria-label="Manos & Magia Studio">
+          <img src="./img/logo.png" alt="Manos & Magia Studio" />
+        </a>
+
+        <ul class="menu">
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#" id="menu-tienda">Tienda</a></li>
+          <li><a href="./catalogo.html">Ver catálogo completo</a></li>
+        </ul>
+
+        <button id="openShopBtn" class="btn btn-primary">Tienda</button>
+      </nav>
+    </div>
   </header>
 
+  <!-- Main -->
   <main>
+    <!-- Hero -->
     <section id="hero">
-      <h1>Papelería creativa hecha con amor</h1>
-      <p>Toppers con luz, letras 3D, bolsitas y más — personalizados para tu evento.</p>
+      <div class="container">
+        <span class="eyebrow">Papelería artesanal</span>
+        <h1>Papelería creativa hecha con amor</h1>
+        <p>Toppers con luz, letras 3D, bolsitas y más — personalizados para tu evento.</p>
+        <a class="btn btn-primary" href="#catalogo">Ver catálogo</a>
+      </div>
     </section>
 
+    <!-- Catálogo -->
     <section id="catalogo">
-      <h2>Catálogo</h2>
-      <!-- Aquí tu listado/preview de productos -->
+      <div class="container">
+        <h2>Catálogo</h2>
+
+        <!-- Grid de muestra (se ve prolijo aunque aún no cargues data dinámica) -->
+        <div class="grid">
+          <article class="card">
+            <img src="./img/og-banner.jpg" alt="Topper con luz" />
+            <h3>Topper con luz</h3>
+            <p>Personalizado • Hecho a mano</p>
+          </article>
+          <article class="card">
+            <img src="./img/og-banner.jpg" alt="Letra 3D" />
+            <h3>Letra 3D</h3>
+            <p>Diseño original • Premium</p>
+          </article>
+        </div>
+      </div>
     </section>
 
+    <!-- Contacto -->
     <section id="contacto">
-      <h2>Contacto</h2>
-      <!-- Tu formulario de contacto -->
+      <div class="container">
+        <h2>Contacto</h2>
+        <!-- Tu formulario o links -->
+      </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
-    <small>© <span id="year"></span> Manos & Magia Studio. Hecho con amor.</small>
+    <div class="container">
+      <small>© <span id="year"></span> Manos & Magia Studio. Hecho con amor.</small>
+    </div>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
@@ -68,13 +107,13 @@
         window.location.href = "https://manosmagiastudio.mitiendanube.com/";
         return;
       }
-      // reemplazá por tu modal o página de login
+      // tu flujo de login (modal o página)
       window.location.href = "/login.html";
     }
     window.__openShop = openShop;
   </script>
 
-  <!-- Enganche de botones DESPUÉS de definir openShop -->
+  <!-- Enganche de botones (después de definir openShop) -->
   <script>
     (function attachShopButtons(){
       function onClick(e){ e.preventDefault(); openShop(); }
@@ -83,7 +122,7 @@
     })();
   </script>
 
-  <!-- Tu JS principal en raíz -->
+  <!-- Tu JS principal -->
   <script src="./script.js" defer></script>
 </body>
 </html>
