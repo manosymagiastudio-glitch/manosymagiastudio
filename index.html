@@ -28,6 +28,13 @@
   <link rel="icon" href="img/favicon.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
 
+  <!-- Estilos mínimos locales -->
+  <style>
+    .section.alt { background: #fff7f9; }
+    .box { background:#fff; border:1px solid #eee; border-radius:12px; padding:18px; }
+    .grid-2 { display:grid; gap:24px; grid-template-columns: 1.2fr 1fr; }
+    @media (max-width: 900px){ .grid-2 { grid-template-columns: 1fr; } }
+const FIREBASE_CONFIG = {
   // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -49,14 +56,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-
-  <!-- Estilos mínimos locales -->
-  <style>
-    .section.alt { background: #fff7f9; }
-    .box { background:#fff; border:1px solid #eee; border-radius:12px; padding:18px; }
-    .grid-2 { display:grid; gap:24px; grid-template-columns: 1.2fr 1fr; }
-    @media (max-width: 900px){ .grid-2 { grid-template-columns: 1fr; } }
-
     /* FAQ pastel con animación */
     .faq.fancy details{ border:1px solid #f6e5ec; background:#fff; border-radius:14px; margin:12px 0; overflow:hidden; box-shadow:0 6px 18px rgba(255,182,193,.15); }
     .faq.fancy summary{ display:grid; grid-template-columns: 28px 1fr 24px; align-items:center; gap:10px; cursor:pointer; padding:16px 16px; list-style:none; user-select:none; }
