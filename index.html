@@ -28,8 +28,27 @@
   <link rel="icon" href="img/favicon.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
 
-  <!-- FirebaseUI CSS -->
-  <link rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css">
+  // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAsg3eLYef-KVXWU1QSyaCId2oWQV48xbg",
+  authDomain: "manosymagiastudio-66912.firebaseapp.com",
+  projectId: "manosymagiastudio-66912",
+  storageBucket: "manosymagiastudio-66912.firebasestorage.app",
+  messagingSenderId: "255624716715",
+  appId: "1:255624716715:web:cd97b355bfa6d202e7f2ee",
+  measurementId: "G-BLG93VB9F1"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
   <!-- Estilos mínimos locales -->
   <style>
