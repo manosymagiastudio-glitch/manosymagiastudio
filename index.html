@@ -1,725 +1,152 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Manos & Magia Studio | Papelería creativa y decoración personalizada</title>
-  <meta name="description" content="Papelería creativa, toppers con luz, letras 3D, bolsitas golosineras y combos de fiesta hechos a mano. Diseños personalizados con amor. Envíos a toda Argentina.">
-  <meta name="keywords" content="papelería creativa, toppers con luz, letras 3D, decoración personalizada, bolsitas golosineras, combos de fiesta, souvenirs, artesanal, Argentina">
+  <meta name="description" content="Papelería creativa, toppers con luz, letras 3D, bolsitas y combos hechos a mano. Diseños personalizados con amor. Envíos a toda Argentina." />
+  <meta name="keywords" content="papelería creativa, toppers con luz, letras 3D, decoración personalizada, bolsitas golosineras, combos, artesanal, Argentina" />
+  <link rel="icon" href="/img/favicon.png" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Manos & Magia Studio – Papelería creativa y decoración personalizada">
-  <meta property="og:description" content="Diseños hechos a mano para que tu fiesta sea única. Topper con luz, letras 3D, bolsitas y más.">
-  <meta property="og:image" content="https://manosymagiastudio.netlify.app/img/og-banner.jpg">
-  <meta property="og:url" content="https://manosymagiastudio.netlify.app/">
-  <meta property="og:type" content="website">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Manos & Magia Studio – Papelería creativa y decoración personalizada">
-  <meta name="twitter:description" content="Toppers, letras 3D y decoración artesanal hecha con amor 💕">
-  <meta name="twitter:image" content="https://manosymagiastudio.netlify.app/img/og-banner.jpg">
-
-  <!-- Google Verification -->
-  <meta name="google-site-verification" content="7Mac3ErjXHlrGIM8dhcjCUo7RglRPLLJZLUTE6EO3vg">
-  <meta name="google-site-verification" content="T_kuBJB66Qu-Jb974aWubDX2bBszMHtWQ6qDPFC-_NA">
-
-  <link rel="icon" href="img/favicon.png" type="image/png">
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- FirebaseUI CSS -->
-  <link rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css">
-
-  <!-- Estilos mínimos locales -->
-  <style>
-    .section.alt { background: #fff7f9; }
-    .box { background:#fff; border:1px solid #eee; border-radius:12px; padding:18px; }
-    .grid-2 { display:grid; gap:24px; grid-template-columns: 1.2fr 1fr; }
-    @media (max-width: 900px){ .grid-2 { grid-template-columns: 1fr; } }
-
-    /* FAQ pastel con animación */
-    .faq.fancy details{ border:1px solid #f6e5ec; background:#fff; border-radius:14px; margin:12px 0; overflow:hidden; box-shadow:0 6px 18px rgba(255,182,193,.15); }
-    .faq.fancy summary{ display:grid; grid-template-columns: 28px 1fr 24px; align-items:center; gap:10px; cursor:pointer; padding:16px 16px; list-style:none; user-select:none; }
-    .faq.fancy summary::-webkit-details-marker{ display:none; }
-    .faq.fancy .icon{ width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:#ffeaf1;font-size:16px; }
-    .faq.fancy .chev{ width:14px;height:14px;justify-self:end;position:relative; }
-    .faq.fancy .chev::before{ content:""; position:absolute; inset:0; border-right:2px solid #ff86ae; border-bottom:2px solid #ff86ae; transform: rotate(45deg); transition: transform .28s ease; }
-    .faq.fancy details[open] .chev::before{ transform: rotate(-135deg); }
-    .faq.fancy .faq-a{ padding:0 16px 16px 54px; color:#555; line-height:1.6; display:grid; grid-template-rows:0fr; transition: grid-template-rows .28s ease, padding-top .28s ease; }
-    .faq.fancy details[open] .faq-a{ grid-template-rows:1fr; padding-top:4px; }
-    .faq.fancy .faq-a > *{ overflow:hidden; }
-    .faq.fancy a{ color:#ff7fa3; text-decoration:none; }
-    .faq.fancy a:hover{ text-decoration:underline; }
-    .faq.fancy summary:focus{ outline:2px dashed #ffb6c1; outline-offset:4px; }
-    @media (prefers-reduced-motion: reduce){ .faq.fancy .chev::before, .faq.fancy .faq-a{ transition:none; }
-
-    }
-
-    /* Fab Tienda */
-    .shop-fab{position:fixed;left:16px;bottom:16px;z-index:9999;display:grid;place-items:center;
-      width:56px;height:56px;border-radius:50%;background:#d8b973;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.25);
-      cursor:pointer;text-decoration:none;font-weight:700}
-    .shop-fab span{font-size:11px;line-height:1.1;text-align:center;padding:6px}
-    @media(min-width:700px){.shop-fab{width:auto;height:auto;border-radius:999px;padding:12px 16px}
-      .shop-fab span{font-size:14px;padding:0}}
-
-    /* Modal Auth */
-    #authModal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;z-index:10000;align-items:center;justify-content:center}
-    #authModal[aria-hidden="false"]{display:flex}
-    .auth-card{background:#fff;border-radius:16px;max-width:440px;width:92vw;padding:18px 18px 8px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
-    .auth-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-    .auth-close{border:none;background:transparent;font-size:22px;cursor:pointer}
-    .user-pill{font-size:12px;background:#ffeaf1;border:1px solid #f6c8d7;border-radius:999px;padding:4px 8px;margin-left:8px}
-  </style>
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S7Q5H6YF55"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-S7Q5H6YF55', { send_page_view: false });
-    if (!location.pathname.startsWith('/admin')) {
-      gtag('event', 'page_view', { page_path: location.pathname + location.search, page_title: document.title });
-    }
-  </script>
-
-  <!-- JSON-LD (LocalBusiness + FAQ + ItemList) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Manos & Magia Studio",
-    "image": "https://manosymagiastudio.netlify.app/og-banner.jpg",
-    "logo": "https://manosymagiastudio.netlify.app/img/logo.png",
-    "url": "https://manosymagiastudio.netlify.app",
-    "email": "manosymagiastudio@gmail.com",
-    "telephone": "+54 9 11 6728 6443",
-    "description": "Papelería creativa, toppers con luz, letras 3D, bolsitas golosineras y combos de fiesta personalizados. Hecho con amor desde el alma 💫",
-    "priceRange": "$$",
-    "address": { "@type": "PostalAddress", "addressCountry": "AR", "addressLocality": "Buenos Aires", "addressRegion": "Buenos Aires" },
-    "sameAs": ["https://www.instagram.com/manosymagia_studio"],
-    "openingHours": "Mo-Fr 10:00-18:00",
-    "areaServed": "Argentina",
-    "keywords": "papelería creativa, toppers personalizados, letras 3D, decoración de cumpleaños, combos de fiesta, Manos y Magia Studio"
-  }
-  </script>
-  <script type="application/ld+json">
-  { "@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-    {"@type":"Question","name":"¿Con cuánta anticipación tengo que hacer el pedido?","acceptedAnswer":{"@type":"Answer","text":"Recomendamos 7 días para GBA/Interior y 3 días para CABA. Para urgentes, escribinos y vemos disponibilidad."}},
-    {"@type":"Question","name":"¿Los productos son personalizados?","acceptedAnswer":{"@type":"Answer","text":"Sí, 100% a medida: nombre, edad, colores y temática."}},
-    {"@type":"Question","name":"¿Qué métodos de pago aceptan?","acceptedAnswer":{"@type":"Answer","text":"Transferencia y Mercado Pago. Seña del 50% para reservar la fecha de producción."}},
-    {"@type":"Question","name":"¿Hacen envíos?","acceptedAnswer":{"@type":"Answer","text":"Sí. Correo a todo el país y moto en CABA/GBA."}},
-    {"@type":"Question","name":"¿Puedo cancelar o modificar un pedido?","acceptedAnswer":{"@type":"Answer","text":"Dentro de las 24 h de confirmado. Luego comienza la producción, pero si es un ajuste menor intentamos ayudarte."}},
-    {"@type":"Question","name":"¿Qué materiales usan?","acceptedAnswer":{"@type":"Answer","text":"Papeles premium, PVC cristal brillante, vinilos adhesivos y cartulinas metalizadas; terminaciones artesanales."}},
-    {"@type":"Question","name":"¿Puedo pedir un diseño fuera de catálogo?","acceptedAnswer":{"@type":"Answer","text":"Sí, contanos tu idea y la diseñamos especialmente para vos."}},
-    {"@type":"Question","name":"¿Cómo cuido mis productos?","acceptedAnswer":{"@type":"Answer","text":"Guardalos en lugar seco, sin sol directo. Si tienen luz, evitá agua o calor. Usá el empaque hasta el evento."}}
-  ]}
-  </script>
-  <script type="application/ld+json">
-  { "@context":"https://schema.org","@type":"ItemList","itemListElement":[
-    {"@type":"ListItem","position":1,"name":"Topper personalizados"},
-    {"@type":"ListItem","position":2,"name":"Cajas golosineras"},
-    {"@type":"ListItem","position":3,"name":"Piñatas artesanales"},
-    {"@type":"ListItem","position":4,"name":"Letras 3D"},
-    {"@type":"ListItem","position":5,"name":"Tote bags PVC"},
-    {"@type":"ListItem","position":6,"name":"Banderines"},
-    {"@type":"ListItem","position":7,"name":"Carteles 3D"},
-    {"@type":"ListItem","position":8,"name":"Centros de mesa"}
-  ]}
-  </script>
+  <!-- Tus estilos existentes -->
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
-
 <body>
+  <!-- ========================= -->
+  <!-- Header / Nav existente   -->
+  <!-- ========================= -->
   <header class="site-header">
-    <div class="wrap">
-      <a class="brand" href="#inicio">
-        <img src="img/logo.png" alt="Manos & Magia Studio" width="40" height="40">
-        <span>Manos & Magia Studio</span>
-        <small class="brand-sub">Papelería creativa &amp; decoración personalizada</small>
+    <nav class="nav">
+      <a href="/" class="logo" aria-label="Manos & Magia Studio">
+        <img src="/img/logo.png" alt="Manos & Magia Studio" height="40" />
       </a>
-      <nav>
-        <a href="#productos">Productos</a>
-        <a href="#combos">Combos</a>
-        <a href="#tematicas">Temáticas</a>
-        <a href="#catalogo">Catálogo</a>
-        <a href="#como-comprar">Cómo pedir</a>
-        <a href="#newsletter">Newsletter</a>
-        <a href="#faq">FAQ</a>
-        <!-- Acceso a Tienda (Firebase Auth) -->
-        <a href="#" id="menu-tienda" class="btn">Tienda</a>
-        <a href="#contacto" class="btn ghost">Pedir por WhatsApp</a>
-      </nav>
-    </div>
+
+      <ul class="menu">
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <!-- Importante: este es el ítem de menú que abre la tienda -->
+        <li><a href="#" id="menu-tienda">Tienda</a></li>
+      </ul>
+
+      <!-- Importante: este es el botón que abre la tienda -->
+      <button id="openShopBtn" class="btn btn-primary">Tienda</button>
+    </nav>
   </header>
 
-  <main id="inicio">
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <h1>Decoración <span class="resaltado">100% personalizada</span> para tu fiesta</h1>
-          <p>Papelería creativa, toppers con luz, piñatas, letras 3D, bolsitas y souvenirs. Hecho con amor desde el alma 💫</p>
-          <div class="cta-group">
-            <a class="btn" id="cta-whatsapp" href="https://wa.me/5491167286443?text=Hola%20Manos%20%26%20Magia%20Studio%2C%20quiero%20pedir%20un%20presupuesto%20%F0%9F%92%95" target="_blank" rel="noopener">Pedir por WhatsApp</a>
-            <a class="btn ghost" id="cta-instagram" href="https://instagram.com/manosymagia_studio" target="_blank" rel="noopener">Ver Instagram</a>
-          </div>
-          <ul class="badges">
-            <li>Diseños exclusivos</li>
-            <li>Hecho a mano</li>
-            <li>Envíos a todo el país</li>
-          </ul>
-        </div>
-        <div class="hero-img">
-          <img src="img/hero-placeholder.svg" alt="Decoración personalizada" loading="lazy">
-        </div>
-      </div>
+  <!-- ========================= -->
+  <!-- Hero / Contenido          -->
+  <!-- ========================= -->
+  <main>
+    <!-- Dejá todo tu contenido existente: hero, secciones, catálogo, etc. -->
+    <!-- ................................................................ -->
+    <!-- ....................... TU HTML EXISTENTE ........................ -->
+    <!-- ................................................................ -->
+
+    <section id="catalogo">
+      <h2>Catálogo</h2>
+      <!-- Tu catálogo embebido/JS que ya tenés -->
     </section>
 
-    <section id="productos" class="section">
-      <div class="wrap">
-        <h2>Productos destacados</h2>
-        <div id="products" class="cards"></div>
-      </div>
-    </section>
-
-    <section id="combos" class="section alt">
-      <div class="wrap">
-        <h2>Combos de fiesta</h2>
-        <div id="combos-list" class="cards"></div>
-      </div>
-    </section>
-
-    <section id="tematicas" class="section">
-      <div class="wrap">
-        <h2>Temáticas</h2>
-        <div class="chips">
-          <span class="chip">Bluey</span>
-          <span class="chip">Minecraft</span>
-          <span class="chip">Stitch</span>
-          <span class="chip">Frozen</span>
-          <span class="chip">Princesas</span>
-          <span class="chip">Superhéroes</span>
-          <span class="chip">Sanrio</span>
-          <span class="chip">Animales</span>
-        </div>
-        <p class="nota">¿Otra temática? ¡La diseñamos desde cero para vos!</p>
-      </div>
-    </section>
-
-    <!-- === Sección Especial: Catálogo Online === -->
-    <section id="catalogo" class="section alt">
-      <div class="wrap">
-        <h2>Colección Creativa – Catálogo Online</h2>
-
-        <div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%;
-          padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
-          border-radius: 8px; will-change: transform;">
-          <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-            src="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?embed"
-            allowfullscreen="allowfullscreen" allow="fullscreen">
-          </iframe>
-        </div>
-
-        <p class="nota" style="text-align:center;">
-          Si no se carga correctamente, abrilo en una pestaña nueva:
-          <a href="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?utm_content=DAG2QQznRaA&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
-             target="_blank" rel="noopener">Ver catálogo en Canva</a>.
-        </p>
-      </div>
-    </section>
-    <!-- === /Sección Catálogo === -->
-
-    <section id="como-comprar" class="section">
-      <div class="wrap grid-2">
-        <div>
-          <h2>Cómo pedir</h2>
-          <ol class="pasos">
-            <li>Escribinos por WhatsApp con fecha del evento y temática.</li>
-            <li>Definimos productos y te enviamos un presupuesto.</li>
-            <li>Seña del 50% para reservar la fecha de producción.</li>
-            <li>Envío por correo/moto o retiro por punto a coordinar.</li>
-          </ol>
-          <p class="nota">Tiempo de producción sugerido: <strong>7 días</strong> antes (GBA/Interior) y <strong>3 días</strong> (CABA).</p>
-        </div>
-        <div class="box">
-          <h3>Medios de pago</h3>
-          <ul>
-            <li>Transferencia / Depósito</li>
-            <li>Mercado Pago</li>
-          </ul>
-          <h3>Envíos</h3>
-          <ul>
-            <li>Correo a todo el país</li>
-            <li>Moto en CABA y GBA</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="galeria" class="section alt">
-      <div class="wrap">
-        <h2>Galería</h2>
-        <div id="gallery" class="masonry"></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="wrap">
-        <h2>Testimonios</h2>
-        <div class="quotes">
-          <blockquote>“Todo hermoso y súper puntual. ¡Amé el topper con luz!” <cite>— Cami</cite></blockquote>
-          <blockquote>“La piñata quedó perfecta y los detalles, increíbles.” <cite>— Sofi</cite></blockquote>
-        </div>
-      </div>
-    </section>
-
-    <!-- Newsletter (en página) -->
-    <section id="newsletter" class="section alt">
-      <div class="wrap grid-2">
-        <div>
-          <h2>💌 Newsletter</h2>
-          <p>Recibí <strong>promos</strong>, <strong>lanzamientos</strong> y <strong>descuentos exclusivos</strong> de Manos &amp; Magia Studio.</p>
-          <p class="nota">Nos gusta cuidar tu tiempo: enviamos solo info útil y podés desuscribirte cuando quieras.</p>
-        </div>
-        <div class="box">
-          <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias.html">
-            <input type="hidden" name="form-name" value="newsletter">
-            <p style="display:none;">
-              <label>No completar si sos humano: <input name="bot-field"></label>
-            </p>
-            <label style="display:block;margin-bottom:8px;">Correo electrónico</label>
-            <input type="email" name="email" required placeholder="tu@mail.com"
-                   style="width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;margin:0 0 12px;">
-            <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;margin:6px 0 12px;">
-              <input type="checkbox" required>
-              Acepto recibir novedades por email.
-            </label>
-            <button type="submit" class="btn" style="width:100%;">Quiero suscribirme</button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- Preguntas Frecuentes (FAQ) -->
-    <section id="faq" class="section">
-      <div class="wrap">
-        <h2>Preguntas frecuentes</h2>
-
-        <div class="faq fancy">
-          <details open>
-            <summary><span class="icon">⏰</span><strong>¿Con cuánta anticipación tengo que hacer el pedido?</strong><span class="chev" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Recomendamos <strong>7 días</strong> para GBA/Interior y <strong>3 días</strong> para CABA. ¿Urgente? Escribinos por WhatsApp y vemos disponibilidad 💪.</p></div>
-          </details>
-
-          <details>
-            <summary><span class="icon">🎨</span><strong>¿Los productos son personalizados?</strong><span class="chev" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Sí 💕. Cada pieza se hace <strong>100% a medida</strong> (nombre, edad, colores y temática).</p></div>
-          </details>
-
-          <details>
-            <summary><span class="icon">💳</span><strong>¿Qué métodos de pago aceptan?</strong><span class="chev" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p><strong>Transferencia</strong> y <strong>Mercado Pago</strong>. Seña del <strong>50%</strong> para reservar producción.</p></div>
-          </details>
-
-          <details>
-            <summary><span class="icon">🚚</span><strong>¿Hacen envíos?</strong><span class="chev" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Sí. Correo a todo el país y <strong>moto</strong> en CABA/GBA.</p></div>
-          </details>
-
-          <details>
-            <summary><span class="icon">📝</span><strong>¿Puedo cancelar o modificar un pedido?</strong><span class="chev" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Dentro de las <strong>24 h</strong> de confirmado. Luego arranca la producción y no hay reembolso, pero si es un ajuste menor siempre intentamos ayudarte 💫.</p></div>
-          </details>
-
-          <details>
-            <summary><span class="icon">🛠️</span><strong>¿Qué materiales usan?</strong><span class="chev" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Papeles premium, PVC cristal brillante, vinilos adhesivos y cartulinas metalizadas; terminaciones artesanales.</p></div>
-          </details>
-
-          <details>
-            <summary><span class="icon">✨</span><strong>¿Puedo pedir un diseño fuera de catálogo?</strong><span class="chev" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>¡Sí! Contanos tu idea y la diseñamos exclusivamente para vos.</p></div>
-          </details>
-
-          <details>
-            <summary><span class="icon">🧼</span><strong>¿Cómo cuido mis productos?</strong><span class="chev" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Guardalos en lugar seco, sin sol directo. Si tienen luz, evitá agua o calor. Usá el empaque hasta el evento.</p></div>
-          </details>
-
-          <details>
-            <summary><span class="icon">📷</span><strong>¿Dónde veo más trabajos?</strong><span class="chev" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Mirá la <a href="#galeria">Galería</a> o nuestro <a href="https://www.instagram.com/manosymagia_studio" target="_blank" rel="noopener">@manosymagia_studio</a>.</p></div>
-          </details>
-        </div>
-      </div>
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <!-- Tu formulario/contacto existente -->
     </section>
   </main>
 
-  <footer id="contacto" class="site-footer">
-    <div class="wrap footer-grid">
-      <div>
-        <h3>Manos & Magia Studio</h3>
-        <p>Hecho con amor desde el alma 💫 — Papelería creativa y decoración personalizada para tus momentos más especiales.</p>
-      </div>
-      <div>
-        <h4>Contacto</h4>
-        <ul class="contact">
-          <li><a id="footer-whatsapp" href="https://wa.me/5491167286443?text=Hola%20%F0%9F%92%95" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a id="footer-email" href="mailto:manosymagiastudio@gmail.com">manosymagiastudio@gmail.com</a></li>
-          <li><a id="footer-ig" href="https://instagram.com/manosymagia_studio" target="_blank" rel="noopener">@manosymagia_studio</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Links útiles</h4>
-        <ul class="contact">
-          <li><a href="sitemap.xml">Sitemap</a></li>
-          <li><a href="robots.txt">Robots</a></li>
-          <li><a href="#como-comprar">Cómo pedir</a></li>
-          <li><a href="admin/" target="_blank" rel="noopener">Panel /admin</a></li>
-          <li><a href="#" id="logout-link">Cerrar sesión</a> <span id="user-pill" class="user-pill" style="display:none;"></span></li>
-        </ul>
-      </div>
-    </div>
-    <p class="copy">© 2025 Manos & Magia Studio. Todos los derechos reservados.</p>
+  <footer class="site-footer">
+    <small>© <span id="year"></span> Manos & Magia Studio. Hecho con amor.</small>
   </footer>
 
-  <!-- Pop-up Newsletter -->
-  <div id="mm-popup" aria-hidden="true" style="position:fixed;inset:0;display:none;">
-    <div id="mm-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,.45);"></div>
-    <div role="dialog" aria-modal="true" aria-labelledby="mm-title"
-         style="position:relative;max-width:420px;margin:8vh auto;background:#fff;border-radius:18px;padding:28px;
-                box-shadow:0 20px 60px rgba(0,0,0,.25);font-family:system-ui,-apple-system,'Segoe UI',Roboto,Ubuntu,Arial;">
-      <button id="mm-close" aria-label="Cerrar"
-              style="position:absolute;top:12px;right:12px;border:none;background:transparent;font-size:22px;cursor:pointer;">×</button>
-
-      <h2 id="mm-title" style="margin:0 0 8px;font-size:22px;">✨ Unite a la magia</h2>
-      <p style="margin:0 0 16px;line-height:1.5;">
-        Recibí <strong>ofertas</strong>, <strong>lanzamientos</strong> y <strong>descuentos exclusivos</strong>.
-      </p>
-
-      <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-            action="/gracias.html" id="mm-form">
-        <input type="hidden" name="form-name" value="newsletter">
-        <p style="display:none;">
-          <label>No completar si sos humano: <input name="bot-field"></label>
-        </p>
-        <input type="email" name="email" required placeholder="Tu correo electrónico"
-               style="width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;margin:0 0 10px;">
-        <button type="submit"
-                style="width:100%;padding:12px 14px;border:none;border-radius:10px;cursor:pointer;
-                       background:#ffb6c1;font-weight:600;">
-          Quiero suscribirme
-        </button>
-        <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;margin-top:10px;line-height:1.3;">
-          <input type="checkbox" required>
-          Acepto recibir novedades por email. Puedo desuscribirme cuando quiera.
-        </label>
-      </form>
-
-      <p style="text-align:center;color:#666;font-size:12px;margin-top:10px;">
-        #HechoConAmor · Manos & Magia Studio
-      </p>
-    </div>
-  </div>
-
-  <!-- Botón flotante TIENDA -->
-  <button id="openShopBtn" class="shop-fab"><span>🛍️ Tienda<br>online</span></button>
-
-  <!-- Back to top -->
-  <button id="backTop" aria-label="Volver arriba"
-    style="position:fixed;right:16px;bottom:86px;z-index:9998;width:44px;height:44px;border-radius:50%;
-           border:none;background:#d8b973;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer;display:none;">
-    ↑
-  </button>
-
-  <!-- Lightbox minimal para #gallery -->
-  <div id="lb" style="position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:9999;">
-    <button id="lbClose" aria-label="Cerrar" style="position:absolute;top:16px;right:16px;font-size:28px;color:#fff;background:transparent;border:none;cursor:pointer;">×</button>
-    <img id="lbImg" alt="" style="max-width:92vw;max-height:92vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5);" />
-  </div>
-
-  <!-- =================== Scripts UX ya existentes =================== -->
   <script>
-  (function(){
-    const LS_KEY = "mm_popup_seen_v2";   // marca para no repetir el pop-up
-    const SHOW_AFTER_MS = 100;           // 0.1s para test (podés subirlo a 3000)
-    const SEEN_DAYS = 7;                 // no volver a mostrar por 7 días
-
-    const popup = document.getElementById('mm-popup');
-    const overlay = document.getElementById('mm-overlay');
-    const closeBtn = document.getElementById('mm-close');
-
-    function openPopup(){ if(popup){ popup.style.display='block'; popup.setAttribute('aria-hidden','false'); } }
-    function closePopup(){
-      if(popup){ popup.style.display='none'; popup.setAttribute('aria-hidden','true'); }
-      const exp = Date.now() + SEEN_DAYS*24*60*60*1000;
-      try { localStorage.setItem(LS_KEY, String(exp)); } catch(e){}
-    }
-    function shouldShow(){
-      const v = Number(localStorage.getItem(LS_KEY));
-      if(!v) return true;
-      return Date.now() > v;
-    }
-
-    if(shouldShow()){ setTimeout(openPopup, SHOW_AFTER_MS); }
-    overlay && overlay.addEventListener('click', closePopup);
-    closeBtn && closeBtn.addEventListener('click', closePopup);
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePopup(); });
-
-    // Helpers para pruebas (opcional)
-    window.mmPopup = {
-      open: openPopup,
-      reset: () => localStorage.removeItem(LS_KEY),
-      seenUntil: () => Number(localStorage.getItem(LS_KEY))
-    };
-  })();
-  </script>
-  <script>
-  (function(){
-    const all = document.querySelectorAll('#faq details');
-    all.forEach(d=>{
-      d.addEventListener('toggle', ()=>{
-        if(d.open){ all.forEach(o => { if(o!==d) o.open = false; }); }
-      });
-    });
-  })();
-  </script>
-  <script>
-  (function(){
-    const b = document.getElementById('backTop');
-    window.addEventListener('scroll', ()=> {
-      b.style.display = window.scrollY > 600 ? 'block' : 'none';
-    });
-    b.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
-  })();
-  </script>
-  <script>
-  (function(){
-    const g = document.getElementById('gallery');
-    const lb = document.getElementById('lb');
-    const img = document.getElementById('lbImg');
-    const close = document.getElementById('lbClose');
-
-    if(g){
-      g.addEventListener('click', (e)=>{
-        const t = e.target;
-        if(t && t.tagName === 'IMG'){
-          img.src = t.currentSrc || t.src;
-          lb.style.display = 'flex';
-          document.body.style.overflow='hidden';
-        }
-      });
-    }
-    function hide(){ lb.style.display='none'; img.src=''; document.body.style.overflow=''; }
-    close.addEventListener('click', hide);
-    lb.addEventListener('click', (e)=>{ if(e.target === lb) hide(); });
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') hide(); });
-  })();
-  </script>
-  <script>
-  (function(){
-    function track(cat, act, lbl){
-      try{ gtag('event', act, { event_category: cat, event_label: lbl }); }catch(e){}
-    }
-    // Hero
-    document.getElementById('cta-whatsapp')?.addEventListener('click', ()=>track('CTA','whatsapp_click','hero'));
-    document.getElementById('cta-instagram')?.addEventListener('click', ()=>track('CTA','instagram_click','hero'));
-    // Footer
-    document.getElementById('footer-whatsapp')?.addEventListener('click', ()=>track('CTA','whatsapp_click','footer'));
-    document.getElementById('footer-ig')?.addEventListener('click', ()=>track('CTA','instagram_click','footer'));
-    // Catálogo (link a Canva dentro de la sección)
-    document.querySelector('#catalogo a[href*="canva.com"]')?.addEventListener('click', ()=>track('CATALOGO','open_canva','seccion_catalogo'));
-  })();
-  </script>
-  <script>
-  (function(){
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const targets = document.querySelectorAll('section.section, section.hero, header.site-header, footer.site-footer');
-    targets.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(10px)'; el.style.transition = 'opacity .6s ease, transform .6s ease'; });
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    targets.forEach(el => io.observe(el));
-  })();
-  </script>
-// Engancha los botones una vez que openShop ya existe
-  (function attachShopButtons(){
-    function onClick(e){ e.preventDefault(); openShop(); } // usa la función ya definida arriba
-    document.getElementById('openShopBtn')?.addEventListener('click', onClick);
-    document.getElementById('menu-tienda')?.addEventListener('click', onClick);
-  })();
- <script>
-  
-</script>
-
+    // Utilidad mínima: año en footer
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
-  <!-- =============== Firebase SDK + Auth UI (compat) =============== -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
+  <!-- ================================================================== -->
+  <!-- (1) NO PEGAR NADA QUE ENGANCHE BOTONES ANTES DE INICIALIZAR FIREBASE -->
+  <!--     Este era el bloque viejo que hay que BORRAR si lo tenías arriba:
+        <script>
+          (function(){
+            function onClick(e){ e.preventDefault(); window.__openShop && window.__openShop(); }
+            document.getElementById('openShopBtn')?.addEventListener('click', onClick);
+            document.getElementById('menu-tienda')?.addEventListener('click', onClick);
+          })();
+        </script>
+       FIN BLOQUE A ELIMINAR
+  -->
+  <!-- ================================================================== -->
 
+  <!-- ========================= -->
+  <!-- SDKs de Firebase          -->
+  <!-- (Usá los mismos que ya     tenías; los dejo como ejemplo.) -->
+  <!-- ========================= -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <!-- Agregá otros SDKs si ya los usás: firestore, analytics, etc. -->
+
+  <!-- ========================= -->
+  <!-- (2) Inicialización + openShop -->
+  <!-- Definimos openShop y window.__openShop -->
+  <!-- ========================= -->
   <script>
-  (function(){
-    // Config real de tu proyecto
-    const FIREBASE_CONFIG = {
-      apiKey: "AIzaSyAsg3eLYef-KVXWU1QSyaCId2oWQV48xbg",
-      authDomain: "manosymagiastudio-66912.firebaseapp.com",
-      projectId: "manosymagiastudio-66912",
-      storageBucket: "manosymagiastudio-66912.firebasestorage.app",
-      messagingSenderId: "255624716715",
-      appId: "1:255624716715:web:cd97b355bfa6d202e7f2ee",
-      measurementId: "G-BLG93VB9F1"
+    // >>>>>>> Reemplazá con tu config real <<<<<<<
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY",
+      authDomain: "TU_AUTH_DOMAIN",
+      projectId: "TU_PROJECT_ID",
+      appId: "TU_APP_ID",
     };
 
-    const TIENDA_URL = "https://manosmagiastudio.mitiendanube.com/";
-
-    // Inicializar Firebase
-    firebase.initializeApp(FIREBASE_CONFIG);
+    // Inicializar Firebase (usa compat si tus otros scripts usan compat)
+    const app = firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
-    // FirebaseUI
-    const ui = new firebaseui.auth.AuthUI(auth);
-    const uiConfig = {
-      signInFlow: 'popup',
-      signInOptions: [
-        firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID
-      ],
-      callbacks: {
-        signInSuccessWithAuthResult: function() {
-          closeModal();
-          goShop();
-          return false;
-        }
+    // Modal/login redir: ajustá según tu lógica actual
+    // - Si está logueado: redirige a la tienda
+    // - Si no: abrí tu modal de login (o popup)
+    function openShop() {
+      const isLoggedIn = !!auth.currentUser;
+      if (isLoggedIn) {
+        // Redirigir directo a tu Tienda Nube (o la ruta que uses)
+        window.location.href = "https://manosmagiastudio.mitiendanube.com/";
+        return;
       }
-    };
 
-    // Modal helpers
-    const modal = document.getElementById('authModal');
-    const btnClose = document.getElementById('authClose');
-    function openModal(){
-      modal.setAttribute('aria-hidden','false');
-      modal.style.display='flex';
-      document.body.style.overflow='hidden';
-      ui.start('#firebaseui-auth-container', uiConfig);
+      // Mostrar tu modal de login (ejemplo simple):
+      // Si ya tenés un modal propio, invocalo acá en vez de alert.
+      // showLoginModal();
+      // Ejemplo placeholder:
+      const go = confirm("Para continuar a la tienda, iniciá sesión. ¿Querés loguearte ahora?");
+      if (go) {
+        // Ejemplo: login anónimo / Google / lo que uses
+        // auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(()=>openShop());
+        // Placeholder: redirigir a una ruta /login tuya
+        window.location.href = "/login.html";
+      }
     }
-    function closeModal(){
-      modal.setAttribute('aria-hidden','true');
-      modal.style.display='none';
-      document.body.style.overflow='';
-      try{ ui.reset(); }catch(e){}
-    }
-    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
-    btnClose.addEventListener('click', closeModal);
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
 
-    // Redirección a Tienda
-    function goShop(){
-      const user = auth.currentUser;
-      const email = user?.email ? encodeURIComponent(user.email) : "";
-      const url = email ? `${TIENDA_URL}?utm_source=web&utm_medium=auth&utm_campaign=tienda&user=${email}` : TIENDA_URL;
-      window.location.href = url;
-    }
-    function openShop(){ if (auth.currentUser) goShop(); else openModal(); }
+    // Exponer global (por compatibilidad con otros scripts que lo llamen)
     window.__openShop = openShop;
-
-    // UI “Hola, …” y logout
-    const pill = document.getElementById('user-pill');
-    const logoutLink = document.getElementById('logout-link');
-    auth.onAuthStateChanged((user)=>{
-      if(user){
-        pill.style.display='inline-block';
-        pill.textContent = user.displayName ? `Hola, ${user.displayName}` : user.email;
-      }else{
-        pill.style.display='none';
-        pill.textContent = '';
-      }
-    });
-    logoutLink.addEventListener('click', function(e){
-      e.preventDefault();
-      if(auth.currentUser){ auth.signOut(); alert("Sesión cerrada."); }
-      else { alert("No hay sesión iniciada."); }
-    });
-  })();
   </script>
 
-  <!-- =============== MODAL AUTH (FirebaseUI) ================= -->
-  <div id="authModal" aria-hidden="true">
-    <div class="auth-card">
-      <div class="auth-header">
-        <h3 style="margin:6px 0 10px;">Accedé para comprar en la tienda</h3>
-        <button class="auth-close" id="authClose" aria-label="Cerrar">×</button>
-      </div>
-      <div id="firebaseui-auth-container"></div>
-      <p style="font-size:12px;color:#666;margin:8px 4px 10px;">Al continuar, aceptás nuestros Términos y Política de Privacidad.</p>
-    </div>
-  </div>
-  <!-- ========================================================= -->
-
-  <!-- Tu script principal -->
-  <script src="script.js" defer></script>
-
-  <!-- WhatsApp sticky -->
-  <a href="https://wa.me/5491167286443?text=Hola%20Manos%20%26%20Magia%20Studio%2C%20quiero%20pedir%20un%20presupuesto%20%F0%9F%92%95"
-     target="_blank" rel="noopener" aria-label="WhatsApp"
-     style="position:fixed;right:16px;bottom:16px;z-index:9999;width:56px;height:56px;border-radius:50%;
-            background:#25D366;box-shadow:0 8px 24px rgba(0,0,0,.25);display:grid;place-items:center;color:#fff;text-decoration:none;">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M20.52 3.48A11.77 11.77 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.5 5.82L0 24l6.34-1.64A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.3-6.1-3.48-8.52zM12 21.6c-1.84 0-3.55-.5-5.04-1.36l-.36-.21-3.76.98.99-3.67-.24-.38A9.62 9.62 0 0 1 2.4 12C2.4 6.69 6.69 2.4 12 2.4S21.6 6.69 21.6 12 17.31 21.6 12 21.6zm5.2-6.11c-.29-.15-1.71-.84-1.98-.93-.27-.1-.47-.15-.67.15-.2.29-.77.93-.95 1.12-.18.2-.35.22-.64.07-.29-.15-1.23-.45-2.34-1.44-.86-.76-1.44-1.7-1.61-1.98-.17-.29-.02-.45.13-.6.14-.14.29-.35.44-.53.15-.18.2-.29.29-.49.1-.2.05-.37-.02-.53-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.08-.81.37-.29.29-1.07 1.05-1.07 2.56 0 1.5 1.09 2.95 1.24 3.16.15.2 2.14 3.27 5.19 4.58.72.31 1.29.49 1.73.63.73.23 1.39.2 1.92.12.59-.09 1.71-.7 1.95-1.37.24-.67.24-1.25.17-1.37-.07-.12-.27-.2-.56-.35z"/>
-    </svg>
-  </a>
-
-  <!-- === ARREGLO DE IMÁGENES (normalize rutas + fallback) === -->
+  <!-- ========================= -->
+  <!-- (3) Enganchar botones DESPUÉS de definir openShop -->
+  <!-- ========================= -->
   <script>
-  (function(){
-    const PLACEHOLDER = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360"><rect width="100%" height="100%" fill="%23f6f6f6"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui,Arial" font-size="18" fill="%23999">Imagen no disponible</text></svg>';
-
-    function normalizeSrc(src){
-      if(!src) return '';
-      src = src.trim();
-      if (src.startsWith('static/img/')) return '/' + src.replace(/^static\//,'');
-      if (src.startsWith('/static/img/')) return src.replace('/static','');
-      if (src.startsWith('uploads/')) return '/img/' + src.split('/').slice(1).join('/');
-      if (src.startsWith('img/')) return '/' + src;
-      return src;
-    }
-
-    function fixImages(root=document){
-      const imgs = root.querySelectorAll('img');
-      imgs.forEach(img=>{
-        if (!img.dataset._normalized){
-          const normalized = normalizeSrc(img.getAttribute('src') || '');
-          if (normalized) img.setAttribute('src', normalized);
-          img.dataset._normalized = '1';
-        }
-        img.addEventListener('error', function onErr(){
-          img.removeEventListener('error', onErr);
-          img.src = PLACEHOLDER;
-        });
-        if(!img.hasAttribute('loading')) img.setAttribute('loading','lazy');
-      });
-    }
-    fixImages();
-
-    const mo = new MutationObserver(muts=>{
-      muts.forEach(m=>{
-        m.addedNodes.forEach(n=>{
-          if(n.nodeType===1){ if(n.tagName==='IMG') fixImages(n.parentNode); else fixImages(n); }
-        });
-      });
-    });
-    mo.observe(document.body, {childList:true, subtree:true});
-  })();
+    // Engancha los botones una vez que openShop ya existe
+    (function attachShopButtons(){
+      function onClick(e){ e.preventDefault(); openShop(); } // usa la función definida arriba
+      document.getElementById('openShopBtn')?.addEventListener('click', onClick);
+      document.getElementById('menu-tienda')?.addEventListener('click', onClick);
+    })();
   </script>
-  <!-- === /ARREGLO DE IMÁGENES === -->
 
+  <!-- ========================= -->
+  <!-- Tus otros scripts         -->
+  <!-- (dejá todo lo que ya tenías: catálogo, UI, etc.) -->
+  <!-- ========================= -->
+  <script src="/js/ui.js" defer></script>
+  <script src="/js/catalogo.js" defer></script>
 </body>
 </html>
