@@ -28,49 +28,60 @@
   <link rel="icon" href="img/favicon.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Estilos mínimos locales -->
+  <!-- FirebaseUI CSS -->
+  <link rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css">
+
+  <!-- Estilos mínimos locales (igual a lo que ya tenías) -->
   <style>
     .section.alt { background: #fff7f9; }
     .box { background:#fff; border:1px solid #eee; border-radius:12px; padding:18px; }
     .grid-2 { display:grid; gap:24px; grid-template-columns: 1.2fr 1fr; }
     @media (max-width: 900px){ .grid-2 { grid-template-columns: 1fr; } }
-const FIREBASE_CONFIG = {
-  // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyAsg3eLYef-KVXWU1QSyaCId2oWQV48xbg",
-  authDomain: "manosymagiastudio-66912.firebaseapp.com",
-  projectId: "manosymagiastudio-66912",
-  storageBucket: "manosymagiastudio-66912.firebasestorage.app",
-  messagingSenderId: "255624716715",
-  appId: "1:255624716715:web:cd97b355bfa6d202e7f2ee",
-  measurementId: "G-BLG93VB9F1"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
     /* FAQ pastel con animación */
-    .faq.fancy details{ border:1px solid #f6e5ec; background:#fff; border-radius:14px; margin:12px 0; overflow:hidden; box-shadow:0 6px 18px rgba(255,182,193,.15); }
-    .faq.fancy summary{ display:grid; grid-template-columns: 28px 1fr 24px; align-items:center; gap:10px; cursor:pointer; padding:16px 16px; list-style:none; user-select:none; }
+    .faq.fancy details{
+      border:1px solid #f6e5ec;
+      background:#fff;
+      border-radius:14px;
+      margin:12px 0;
+      overflow:hidden;
+      box-shadow: 0 6px 18px rgba(255,182,193,.15);
+    }
+    .faq.fancy summary{
+      display:grid;
+      grid-template-columns: 28px 1fr 24px;
+      align-items:center;
+      gap:10px;
+      cursor:pointer;
+      padding:16px 16px;
+      list-style:none;
+      user-select:none;
+    }
     .faq.fancy summary::-webkit-details-marker{ display:none; }
-    .faq.fancy .icon{ width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:#ffeaf1;font-size:16px; }
-    .faq.fancy .chev{ width:14px;height:14px;justify-self:end;position:relative; }
-    .faq.fancy .chev::before{ content:""; position:absolute; inset:0; border-right:2px solid #ff86ae; border-bottom:2px solid #ff86ae; transform: rotate(45deg); transition: transform .28s ease; }
+    .faq.fancy .icon{
+      width:28px; height:28px; display:grid; place-items:center;
+      border-radius:8px; background:#ffeaf1; font-size:16px;
+    }
+    .faq.fancy .chev{ width:14px; height:14px; justify-self:end; position:relative; }
+    .faq.fancy .chev::before{
+      content:""; position:absolute; inset:0;
+      border-right:2px solid #ff86ae; border-bottom:2px solid #ff86ae;
+      transform: rotate(45deg); transition: transform .28s ease;
+    }
     .faq.fancy details[open] .chev::before{ transform: rotate(-135deg); }
-    .faq.fancy .faq-a{ padding:0 16px 16px 54px; color:#555; line-height:1.6; display:grid; grid-template-rows:0fr; transition: grid-template-rows .28s ease, padding-top .28s ease; }
-    .faq.fancy details[open] .faq-a{ grid-template-rows:1fr; padding-top:4px; }
+    .faq.fancy .faq-a{
+      padding:0 16px 16px 54px; color:#555; line-height:1.6;
+      display:grid; grid-template-rows: 0fr;
+      transition: grid-template-rows .28s ease, padding-top .28s ease;
+    }
+    .faq.fancy details[open] .faq-a{ grid-template-rows: 1fr; padding-top: 4px; }
     .faq.fancy .faq-a > *{ overflow:hidden; }
     .faq.fancy a{ color:#ff7fa3; text-decoration:none; }
     .faq.fancy a:hover{ text-decoration:underline; }
     .faq.fancy summary:focus{ outline:2px dashed #ffb6c1; outline-offset:4px; }
-    @media (prefers-reduced-motion: reduce){ .faq.fancy .chev::before, .faq.fancy .faq-a{ transition:none; } }
+    @media (prefers-reduced-motion: reduce){
+      .faq.fancy .chev::before, .faq.fancy .faq-a{ transition:none; }
+    }
 
     /* Fab Tienda */
     .shop-fab{position:fixed;left:16px;bottom:16px;z-index:9999;display:grid;place-items:center;
@@ -163,7 +174,7 @@ const analytics = getAnalytics(app);
         <a href="#como-comprar">Cómo pedir</a>
         <a href="#newsletter">Newsletter</a>
         <a href="#faq">FAQ</a>
-        <!-- Acceso a Tienda (controlado por Firebase Auth) -->
+        <!-- Acceso a Tienda (Firebase Auth) -->
         <a href="#" id="menu-tienda" class="btn">Tienda</a>
         <a href="#contacto" class="btn ghost">Pedir por WhatsApp</a>
       </nav>
@@ -223,19 +234,28 @@ const analytics = getAnalytics(app);
       </div>
     </section>
 
-    <!-- Catálogo Canva -->
+    <!-- === Sección Especial: Catálogo Online === -->
     <section id="catalogo" class="section alt">
       <div class="wrap">
         <h2>Colección Creativa – Catálogo Online</h2>
-        <div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%; box-shadow: 0 2px 8px rgba(63,69,81,0.16); margin:1.6em 0 .9em; overflow:hidden; border-radius:8px;">
-          <iframe loading="lazy" style="position:absolute;width:100%;height:100%;top:0;left:0;border:none" src="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?embed" allowfullscreen></iframe>
+
+        <div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%;
+          padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+          border-radius: 8px; will-change: transform;">
+          <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+            src="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?embed"
+            allowfullscreen="allowfullscreen" allow="fullscreen">
+          </iframe>
         </div>
+
         <p class="nota" style="text-align:center;">
-          Si no se carga, abrilo en una pestaña nueva:
-          <a href="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?utm_content=DAG2QQznRaA&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener">Ver catálogo en Canva</a>.
+          Si no se carga correctamente, abrilo en una pestaña nueva:
+          <a href="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?utm_content=DAG2QQznRaA&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+             target="_blank" rel="noopener">Ver catálogo en Canva</a>.
         </p>
       </div>
     </section>
+    <!-- === /Sección Catálogo === -->
 
     <section id="como-comprar" class="section">
       <div class="wrap grid-2">
@@ -247,13 +267,19 @@ const analytics = getAnalytics(app);
             <li>Seña del 50% para reservar la fecha de producción.</li>
             <li>Envío por correo/moto o retiro por punto a coordinar.</li>
           </ol>
-          <p class="nota">Tiempo de producción sugerido: <strong>7 días</strong> (GBA/Interior) y <strong>3 días</strong> (CABA).</p>
+          <p class="nota">Tiempo de producción sugerido: <strong>7 días</strong> antes (GBA/Interior) y <strong>3 días</strong> (CABA).</p>
         </div>
         <div class="box">
           <h3>Medios de pago</h3>
-          <ul><li>Transferencia / Depósito</li><li>Mercado Pago</li></ul>
+          <ul>
+            <li>Transferencia / Depósito</li>
+            <li>Mercado Pago</li>
+          </ul>
           <h3>Envíos</h3>
-          <ul><li>Correo a todo el país</li><li>Moto en CABA y GBA</li></ul>
+          <ul>
+            <li>Correo a todo el país</li>
+            <li>Moto en CABA y GBA</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -275,22 +301,26 @@ const analytics = getAnalytics(app);
       </div>
     </section>
 
-    <!-- Newsletter -->
+    <!-- Newsletter (en página) -->
     <section id="newsletter" class="section alt">
       <div class="wrap grid-2">
         <div>
           <h2>💌 Newsletter</h2>
-          <p>Recibí <strong>promos</strong>, <strong>lanzamientos</strong> y <strong>descuentos exclusivos</strong>.</p>
-          <p class="nota">Enviamos solo info útil y podés desuscribirte cuando quieras.</p>
+          <p>Recibí <strong>promos</strong>, <strong>lanzamientos</strong> y <strong>descuentos exclusivos</strong> de Manos &amp; Magia Studio.</p>
+          <p class="nota">Nos gusta cuidar tu tiempo: enviamos solo info útil y podés desuscribirte cuando quieras.</p>
         </div>
         <div class="box">
           <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias.html">
             <input type="hidden" name="form-name" value="newsletter">
-            <p style="display:none;"><label>No completar si sos humano: <input name="bot-field"></label></p>
+            <p style="display:none;">
+              <label>No completar si sos humano: <input name="bot-field"></label>
+            </p>
             <label style="display:block;margin-bottom:8px;">Correo electrónico</label>
-            <input type="email" name="email" required placeholder="tu@mail.com" style="width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;margin:0 0 12px;">
+            <input type="email" name="email" required placeholder="tu@mail.com"
+                   style="width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;margin:0 0 12px;">
             <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;margin:6px 0 12px;">
-              <input type="checkbox" required> Acepto recibir novedades por email.
+              <input type="checkbox" required>
+              Acepto recibir novedades por email.
             </label>
             <button type="submit" class="btn" style="width:100%;">Quiero suscribirme</button>
           </form>
@@ -298,43 +328,52 @@ const analytics = getAnalytics(app);
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- Preguntas Frecuentes (FAQ) · versión con íconos y animación -->
     <section id="faq" class="section">
       <div class="wrap">
         <h2>Preguntas frecuentes</h2>
+
         <div class="faq fancy">
           <details open>
             <summary><span class="icon">⏰</span><strong>¿Con cuánta anticipación tengo que hacer el pedido?</strong><span class="chev" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Recomendamos <strong>7 días</strong> para GBA/Interior y <strong>3 días</strong> para CABA. ¿Urgente? Escribinos por WhatsApp y vemos disponibilidad.</p></div>
+            <div class="faq-a"><p>Recomendamos <strong>7 días</strong> para GBA/Interior y <strong>3 días</strong> para CABA. ¿Urgente? Escribinos por WhatsApp y vemos disponibilidad 💪.</p></div>
           </details>
+
           <details>
             <summary><span class="icon">🎨</span><strong>¿Los productos son personalizados?</strong><span class="chev" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Claro. Cada pieza se hace <strong>100% a medida</strong> (nombre, edad, colores y temática).</p></div>
+            <div class="faq-a"><p>Sí 💕. Cada pieza se hace <strong>100% a medida</strong> (nombre, edad, colores y temática).</p></div>
           </details>
+
           <details>
             <summary><span class="icon">💳</span><strong>¿Qué métodos de pago aceptan?</strong><span class="chev" aria-hidden="true"></span></summary>
             <div class="faq-a"><p><strong>Transferencia</strong> y <strong>Mercado Pago</strong>. Seña del <strong>50%</strong> para reservar producción.</p></div>
           </details>
+
           <details>
             <summary><span class="icon">🚚</span><strong>¿Hacen envíos?</strong><span class="chev" aria-hidden="true"></span></summary>
             <div class="faq-a"><p>Sí. Correo a todo el país y <strong>moto</strong> en CABA/GBA.</p></div>
           </details>
+
           <details>
             <summary><span class="icon">📝</span><strong>¿Puedo cancelar o modificar un pedido?</strong><span class="chev" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Dentro de las <strong>24 h</strong> de confirmado. Luego arranca la producción y no hay reembolso, pero si es un ajuste menor intentamos ayudarte.</p></div>
+            <div class="faq-a"><p>Dentro de las <strong>24 h</strong> de confirmado. Luego arranca la producción y no hay reembolso, pero si es un ajuste menor siempre intentamos ayudarte 💫.</p></div>
           </details>
+
           <details>
             <summary><span class="icon">🛠️</span><strong>¿Qué materiales usan?</strong><span class="chev" aria-hidden="true"></span></summary>
             <div class="faq-a"><p>Papeles premium, PVC cristal brillante, vinilos adhesivos y cartulinas metalizadas; terminaciones artesanales.</p></div>
           </details>
+
           <details>
             <summary><span class="icon">✨</span><strong>¿Puedo pedir un diseño fuera de catálogo?</strong><span class="chev" aria-hidden="true"></span></summary>
             <div class="faq-a"><p>¡Sí! Contanos tu idea y la diseñamos exclusivamente para vos.</p></div>
           </details>
+
           <details>
             <summary><span class="icon">🧼</span><strong>¿Cómo cuido mis productos?</strong><span class="chev" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Guardalos en lugar seco, sin sol directo. Si tienen luz, evitá agua o calor.</p></div>
+            <div class="faq-a"><p>Guardalos en lugar seco, sin sol directo. Si tienen luz, evitá agua o calor. Usá el empaque hasta el evento.</p></div>
           </details>
+
           <details>
             <summary><span class="icon">📷</span><strong>¿Dónde veo más trabajos?</strong><span class="chev" aria-hidden="true"></span></summary>
             <div class="faq-a"><p>Mirá la <a href="#galeria">Galería</a> o nuestro <a href="https://www.instagram.com/manosymagia_studio" target="_blank" rel="noopener">@manosymagia_studio</a>.</p></div>
@@ -378,29 +417,50 @@ const analytics = getAnalytics(app);
     <div role="dialog" aria-modal="true" aria-labelledby="mm-title"
          style="position:relative;max-width:420px;margin:8vh auto;background:#fff;border-radius:18px;padding:28px;
                 box-shadow:0 20px 60px rgba(0,0,0,.25);font-family:system-ui,-apple-system,'Segoe UI',Roboto,Ubuntu,Arial;">
-      <button id="mm-close" aria-label="Cerrar" style="position:absolute;top:12px;right:12px;border:none;background:transparent;font-size:22px;cursor:pointer;">×</button>
+      <button id="mm-close" aria-label="Cerrar"
+              style="position:absolute;top:12px;right:12px;border:none;background:transparent;font-size:22px;cursor:pointer;">×</button>
+
       <h2 id="mm-title" style="margin:0 0 8px;font-size:22px;">✨ Unite a la magia</h2>
-      <p style="margin:0 0 16px;line-height:1.5;">Recibí <strong>ofertas</strong>, <strong>lanzamientos</strong> y <strong>descuentos exclusivos</strong>.</p>
-      <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias.html" id="mm-form">
+      <p style="margin:0 0 16px;line-height:1.5;">
+        Recibí <strong>ofertas</strong>, <strong>lanzamientos</strong> y <strong>descuentos exclusivos</strong>.
+      </p>
+
+      <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+            action="/gracias.html" id="mm-form">
         <input type="hidden" name="form-name" value="newsletter">
-        <p style="display:none;"><label>No completar si sos humano: <input name="bot-field"></label></p>
-        <input type="email" name="email" required placeholder="Tu correo electrónico" style="width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;margin:0 0 10px;">
-        <button type="submit" style="width:100%;padding:12px 14px;border:none;border-radius:10px;cursor:pointer;background:#ffb6c1;font-weight:600;">Quiero suscribirme</button>
-        <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;margin-top:10px;line-height:1.3;"><input type="checkbox" required> Acepto recibir novedades por email.</label>
+        <p style="display:none;">
+          <label>No completar si sos humano: <input name="bot-field"></label>
+        </p>
+        <input type="email" name="email" required placeholder="Tu correo electrónico"
+               style="width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;margin:0 0 10px;">
+        <button type="submit"
+                style="width:100%;padding:12px 14px;border:none;border-radius:10px;cursor:pointer;
+                       background:#ffb6c1;font-weight:600;">
+          Quiero suscribirme
+        </button>
+        <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;margin-top:10px;line-height:1.3;">
+          <input type="checkbox" required>
+          Acepto recibir novedades por email. Puedo desuscribirme cuando quiera.
+        </label>
       </form>
-      <p style="text-align:center;color:#666;font-size:12px;margin-top:10px;">#HechoConAmor · Manos & Magia Studio</p>
+
+      <p style="text-align:center;color:#666;font-size:12px;margin-top:10px;">
+        #HechoConAmor · Manos & Magia Studio
+      </p>
     </div>
   </div>
 
-  <!-- Botón flotante TIENDA -->
+  <!-- Botón flotante TIENDA (abre login o redirige si logueado) -->
   <button id="openShopBtn" class="shop-fab"><span>🛍️ Tienda<br>online</span></button>
 
   <!-- Back to top -->
   <button id="backTop" aria-label="Volver arriba"
     style="position:fixed;right:16px;bottom:86px;z-index:9998;width:44px;height:44px;border-radius:50%;
-           border:none;background:#d8b973;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer;display:none;">↑</button>
+           border:none;background:#d8b973;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer;display:none;">
+    ↑
+  </button>
 
-  <!-- Lightbox -->
+  <!-- Lightbox minimal para #gallery -->
   <div id="lb" style="position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:9999;">
     <button id="lbClose" aria-label="Cerrar" style="position:absolute;top:16px;right:16px;font-size:28px;color:#fff;background:transparent;border:none;cursor:pointer;">×</button>
     <img id="lbImg" alt="" style="max-width:92vw;max-height:92vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5);" />
@@ -408,45 +468,108 @@ const analytics = getAnalytics(app);
 
   <!-- =================== Scripts UX ya existentes =================== -->
   <script>
-    (function(){const K="mm_popup_seen_v2",S=100,D=7,p=document.getElementById('mm-popup'),o=document.getElementById('mm-overlay'),c=document.getElementById('mm-close');
-      function open(){p&& (p.style.display='block',p.setAttribute('aria-hidden','false'))}
-      function close(){ if(!p) return; p.style.display='none'; p.setAttribute('aria-hidden','true'); const exp=Date.now()+D*24*60*60*1000; try{localStorage.setItem(K,String(exp))}catch(e){} }
-      function should(){ const v=Number(localStorage.getItem(K)); if(!v) return true; return Date.now()>v; }
-      if(should()) setTimeout(open,S);
-      o&&o.addEventListener('click',close); c&&c.addEventListener('click',close);
-      document.addEventListener('keydown',e=>{ if(e.key==='Escape') close(); });
-      window.mmPopup={open,reset:()=>localStorage.removeItem(K),seenUntil:()=>Number(localStorage.getItem(K))};
+    (function(){
+      const LS_KEY = "mm_popup_seen_v2";
+      const SHOW_AFTER_MS = 100;
+      const SEEN_DAYS = 7;
+      const popup = document.getElementById('mm-popup');
+      const overlay = document.getElementById('mm-overlay');
+      const closeBtn = document.getElementById('mm-close');
+
+      function open(){ if(popup){ popup.style.display='block'; popup.setAttribute('aria-hidden','false'); } }
+      function close(){
+        if(popup){ popup.style.display='none'; popup.setAttribute('aria-hidden','true'); }
+        const exp = Date.now() + SEEN_DAYS*24*60*60*1000;
+        try { localStorage.setItem(LS_KEY, String(exp)); } catch(e){}
+      }
+      function should(){ const v = Number(localStorage.getItem(LS_KEY)); if(!v) return true; return Date.now() > v; }
+
+      if(should()) setTimeout(open, SHOW_AFTER_MS);
+      overlay && overlay.addEventListener('click', close);
+      closeBtn && closeBtn.addEventListener('click', close);
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+
+      window.mmPopup = {
+        open,
+        reset: () => localStorage.removeItem(LS_KEY),
+        seenUntil: () => Number(localStorage.getItem(LS_KEY))
+      };
     })();
   </script>
+
   <script>
-    (function(){const all=document.querySelectorAll('#faq details'); all.forEach(d=>d.addEventListener('toggle',()=>{ if(d.open){ all.forEach(o=>{if(o!==d) o.open=false;}); }}));})();
-  </script>
-  <script>
-    (function(){const b=document.getElementById('backTop'); window.addEventListener('scroll',()=>{ b.style.display=window.scrollY>600?'block':'none';}); b.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));})();
-  </script>
-  <script>
-    (function(){const g=document.getElementById('gallery'),lb=document.getElementById('lb'),img=document.getElementById('lbImg'),close=document.getElementById('lbClose');
-      if(g){ g.addEventListener('click',e=>{ const t=e.target; if(t&&t.tagName==='IMG'){ img.src=t.currentSrc||t.src; lb.style.display='flex'; document.body.style.overflow='hidden'; }}); }
-      function hide(){ lb.style.display='none'; img.src=''; document.body.style.overflow='';}
-      close.addEventListener('click',hide); lb.addEventListener('click',e=>{ if(e.target===lb) hide();}); document.addEventListener('keydown',e=>{ if(e.key==='Escape') hide();});
+    (function(){
+      const all = document.querySelectorAll('#faq details');
+      all.forEach(d=>{
+        d.addEventListener('toggle', ()=>{
+          if(d.open){ all.forEach(o => { if(o!==d) o.open = false; }); }
+        });
+      });
     })();
   </script>
+
   <script>
-    (function(){function track(cat,act,lbl){try{gtag('event',act,{event_category:cat,event_label:lbl});}catch(e){}}
-      document.getElementById('cta-whatsapp')?.addEventListener('click',()=>track('CTA','whatsapp_click','hero'));
-      document.getElementById('cta-instagram')?.addEventListener('click',()=>track('CTA','instagram_click','hero'));
-      document.getElementById('footer-whatsapp')?.addEventListener('click',()=>track('CTA','whatsapp_click','footer'));
-      document.getElementById('footer-ig')?.addEventListener('click',()=>track('CTA','instagram_click','footer'));
-      document.querySelector('#catalogo a[href*="canva.com"]')?.addEventListener('click',()=>track('CATALOGO','open_canva','seccion_catalogo'));
+    (function(){
+      const b = document.getElementById('backTop');
+      window.addEventListener('scroll', ()=> {
+        b.style.display = window.scrollY > 600 ? 'block' : 'none';
+      });
+      b.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
     })();
   </script>
+
+  <script>
+    (function(){
+      const g = document.getElementById('gallery');
+      const lb = document.getElementById('lb');
+      const img = document.getElementById('lbImg');
+      const close = document.getElementById('lbClose');
+
+      if(g){
+        g.addEventListener('click', (e)=>{
+          const t = e.target;
+          if(t && t.tagName === 'IMG'){
+            img.src = t.currentSrc || t.src;
+            lb.style.display = 'flex';
+            document.body.style.overflow='hidden';
+          }
+        });
+      }
+      function hide(){ lb.style.display='none'; img.src=''; document.body.style.overflow=''; }
+      close.addEventListener('click', hide);
+      lb.addEventListener('click', (e)=>{ if(e.target === lb) hide(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') hide(); });
+    })();
+  </script>
+
+  <script>
+    (function(){
+      function track(cat, act, lbl){
+        try{ gtag('event', act, { event_category: cat, event_label: lbl }); }catch(e){}
+      }
+      document.getElementById('cta-whatsapp')?.addEventListener('click', ()=>track('CTA','whatsapp_click','hero'));
+      document.getElementById('cta-instagram')?.addEventListener('click', ()=>track('CTA','instagram_click','hero'));
+      document.getElementById('footer-whatsapp')?.addEventListener('click', ()=>track('CTA','whatsapp_click','footer'));
+      document.getElementById('footer-ig')?.addEventListener('click', ()=>track('CTA','instagram_click','footer'));
+      document.querySelector('#catalogo a[href*="canva.com"]')?.addEventListener('click', ()=>track('CATALOGO','open_canva','seccion_catalogo'));
+    })();
+  </script>
+
   <script>
     (function(){
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      const targets=document.querySelectorAll('section.section, section.hero, header.site-header, footer.site-footer');
-      targets.forEach(el=>{ el.style.opacity='0';el.style.transform='translateY(10px)';el.style.transition='opacity .6s ease, transform .6s ease';});
-      const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; io.unobserve(e.target);} });},{threshold:0.12});
-      targets.forEach(el=>io.observe(el));
+      const targets = document.querySelectorAll('section.section, section.hero, header.site-header, footer.site-footer');
+      targets.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(10px)'; el.style.transition = 'opacity .6s ease, transform .6s ease'; });
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'translateY(0)';
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      targets.forEach(el => io.observe(el));
     })();
   </script>
   <!-- =================== /Scripts existentes =================== -->
@@ -464,67 +587,63 @@ const analytics = getAnalytics(app);
   </div>
   <!-- ========================================================= -->
 
-  <!-- Botón flotante abre Tienda/Login -->
+  <!-- Botones que abren la tienda/login -->
   <script>
     (function(){
-      const b=document.getElementById('openShopBtn');
-      const m=document.getElementById('menu-tienda');
       function onClick(e){ e.preventDefault(); window.__openShop && window.__openShop(); }
-      b?.addEventListener('click',onClick); m?.addEventListener('click',onClick);
+      document.getElementById('openShopBtn')?.addEventListener('click', onClick);
+      document.getElementById('menu-tienda')?.addEventListener('click', onClick);
     })();
   </script>
 
-  <!-- =============== Firebase SDK + Auth UI =============== -->
-  <!-- Compat SDK (más simple para HTML plano) -->
+  <!-- =============== Firebase SDK + Auth UI (compat) =============== -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
 
   <script>
   (function(){
-    // 1) REEMPLAZAR por tu configuración (Firebase Console → Project settings → Your apps → Web app)
+    // Config real de tu proyecto (la que me pasaste)
     const FIREBASE_CONFIG = {
-      apiKey: "TU_API_KEY",
-      authDomain: "TU_AUTH_DOMAIN.firebaseapp.com",
-      projectId: "TU_PROJECT_ID",
-      appId: "TU_APP_ID",
-      // opcional: measurementId, etc.
+      apiKey: "AIzaSyAsg3eLYef-KVXWU1QSyaCId2oWQV48xbg",
+      authDomain: "manosymagiastudio-66912.firebaseapp.com",
+      projectId: "manosymagiastudio-66912",
+      storageBucket: "manosymagiastudio-66912.firebasestorage.app",
+      messagingSenderId: "255624716715",
+      appId: "1:255624716715:web:cd97b355bfa6d202e7f2ee",
+      measurementId: "G-BLG93VB9F1"
     };
 
-    // 2) URL de tu Tienda Nube
     const TIENDA_URL = "https://manosmagiastudio.mitiendanube.com/";
 
-    // ---------- Inicializar Firebase ----------
+    // Inicializar Firebase
     firebase.initializeApp(FIREBASE_CONFIG);
     const auth = firebase.auth();
 
-    // ---------- FirebaseUI ----------
+    // FirebaseUI
     const ui = new firebaseui.auth.AuthUI(auth);
     const uiConfig = {
       signInFlow: 'popup',
       signInOptions: [
-        // Email/Password:
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        // Google (podés quitarlo si no lo querés):
         firebase.auth.GoogleAuthProvider.PROVIDER_ID
       ],
       callbacks: {
-        signInSuccessWithAuthResult: function(authResult) {
+        signInSuccessWithAuthResult: function() {
           closeModal();
-          goShop(); // redirige a Tienda Nube
-          return false; // evita redirect interno de FirebaseUI
+          goShop();
+          return false;
         }
       }
     };
 
-    // ---------- Modal helpers ----------
+    // Modal helpers
     const modal = document.getElementById('authModal');
     const btnClose = document.getElementById('authClose');
     function openModal(){
       modal.setAttribute('aria-hidden','false');
       modal.style.display='flex';
       document.body.style.overflow='hidden';
-      // Render UI
       ui.start('#firebaseui-auth-container', uiConfig);
     }
     function closeModal(){
@@ -537,25 +656,19 @@ const analytics = getAnalytics(app);
     btnClose.addEventListener('click', closeModal);
     document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
 
-    // ---------- Shop flow ----------
+    // Redirección a Tienda
     function goShop(){
       const user = auth.currentUser;
       const email = user?.email ? encodeURIComponent(user.email) : "";
       const url = email ? `${TIENDA_URL}?utm_source=web&utm_medium=auth&utm_campaign=tienda&user=${email}` : TIENDA_URL;
       window.location.href = url;
     }
-
-    function openShop(){
-      if (auth.currentUser) { goShop(); }
-      else { openModal(); }
-    }
-    // expone para los botones
+    function openShop(){ if (auth.currentUser) goShop(); else openModal(); }
     window.__openShop = openShop;
 
-    // ---------- UI del menú según sesión ----------
+    // UI “Hola, …” y logout
     const pill = document.getElementById('user-pill');
     const logoutLink = document.getElementById('logout-link');
-
     auth.onAuthStateChanged((user)=>{
       if(user){
         pill.style.display='inline-block';
@@ -565,7 +678,6 @@ const analytics = getAnalytics(app);
         pill.textContent = '';
       }
     });
-
     logoutLink.addEventListener('click', function(e){
       e.preventDefault();
       if(auth.currentUser){ auth.signOut(); alert("Sesión cerrada."); }
