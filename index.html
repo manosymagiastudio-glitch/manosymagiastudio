@@ -550,13 +550,15 @@
   })();
   </script>
 
-  <!-- Botones que abren la tienda/login -->
-  <script>
-    (function(){
-      function onClick(e){ e.preventDefault(); window.__openShop && window.__openShop(); }
-      document.getElementById('openShopBtn')?.addEventListener('click', onClick);
-      document.getElementById('menu-tienda')?.addEventListener('click', onClick);
-    })();
+ <script>
+  // Engancha los botones una vez que openShop ya existe
+  (function attachShopButtons(){
+    function onClick(e){ e.preventDefault(); openShop(); } // usa la función ya definida arriba
+    document.getElementById('openShopBtn')?.addEventListener('click', onClick);
+    document.getElementById('menu-tienda')?.addEventListener('click', onClick);
+  })();
+</script>
+
   </script>
 
   <!-- =============== Firebase SDK + Auth UI (compat) =============== -->
