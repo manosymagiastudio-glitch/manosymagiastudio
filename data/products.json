@@ -1,13 +1,13 @@
 {
   "items": [
     {
-      "title": "Topper con luz",
+      "title": "Topper Simple",
       "price": "",
       "tags": [
         "Personalizado",
         "LED"
       ],
-      "image": "img/sample-topper.jpg"
+      "image": "/img/cake-topper.jpg"
     },
     {
       "title": "Letras 3D",
