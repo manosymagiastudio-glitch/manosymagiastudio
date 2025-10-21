@@ -10,29 +10,35 @@
 </head>
 <body>
   <header class="site-header">
-    <nav class="nav">
-      <a href="./" class="logo" aria-label="Manos & Magia Studio">
-        <img src="./img/logo.png" alt="Manos & Magia Studio" height="40" />
-      </a>
-      <ul class="menu">
-        <li><a href="./">Inicio</a></li>
-        <li><a href="./catalogo.html">Catálogo</a></li>
-        <li><a href="#" id="menu-tienda">Tienda</a></li>
-      </ul>
-      <button id="openShopBtn" class="btn btn-primary">Tienda</button>
-    </nav>
+    <div class="container">
+      <nav class="nav">
+        <a href="./" class="logo" aria-label="Manos & Magia Studio">
+          <img src="./img/logo.png" alt="Manos & Magia Studio" />
+        </a>
+        <ul class="menu">
+          <li><a href="./">Inicio</a></li>
+          <li><a href="./catalogo.html">Catálogo</a></li>
+          <li><a href="#" id="menu-tienda">Tienda</a></li>
+        </ul>
+        <button id="openShopBtn" class="btn btn-primary">Tienda</button>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section class="thanks">
-      <h1>¡Gracias por tu mensaje! ✨</h1>
-      <p>En breve nos pondremos en contacto.</p>
-      <p><a class="btn" href="./">Volver al inicio</a></p>
+      <div class="container stack-16">
+        <h1>¡Gracias por tu mensaje! ✨</h1>
+        <p>En breve nos pondremos en contacto.</p>
+        <p><a class="btn btn-primary" href="./">Volver al inicio</a></p>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <small>© <span id="year"></span> Manos & Magia Studio.</small>
+    <div class="container">
+      <small>© <span id="year"></span> Manos & Magia Studio.</small>
+    </div>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
