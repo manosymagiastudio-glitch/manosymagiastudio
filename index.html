@@ -120,4 +120,571 @@
       border-radius:14px;
       margin:12px 0;
       overflow:hidden;
-      box-shadow: 0 6px 18px rgba(255,
+      box-shadow: 0 6px 18px rgba(255,182,193,.15);
+    }
+    .faq.fancy summary{
+      display:grid;
+      grid-template-columns: 28px 1fr 24px;
+      align-items:center;
+      gap:10px;
+      cursor:pointer;
+      padding:16px 16px;
+      list-style:none;
+      user-select:none;
+    }
+    .faq.fancy summary::-webkit-details-marker{ display:none; }
+    .faq.fancy .icon{
+      width:28px; height:28px; display:grid; place-items:center;
+      border-radius:8px; background:#ffeaf1; font-size:16px;
+    }
+    .faq.fancy .chev{ width:14px; height:14px; justify-self:end; position:relative; }
+    .faq.fancy .chev::before{
+      content:""; position:absolute; inset:0;
+      border-right:2px solid #ff86ae; border-bottom:2px solid #ff86ae;
+      transform: rotate(45deg); transition: transform .28s ease;
+    }
+    .faq.fancy details[open] .chev::before{ transform: rotate(-135deg); }
+    .faq.fancy .faq-a{
+      padding:0 16px 16px 54px; color:#555; line-height:1.6;
+      display:grid; grid-template-rows: 0fr;
+      transition: grid-template-rows .28s ease, padding-top .28s ease;
+    }
+    .faq.fancy details[open] .faq-a{ grid-template-rows: 1fr; padding-top: 4px; }
+    .faq.fancy .faq-a > *{ overflow:hidden; }
+
+    .faq.fancy a{ color:#ff7fa3; text-decoration:none; }
+    .faq.fancy a:hover{ text-decoration:underline; }
+    .faq.fancy summary:focus{ outline:2px dashed #ffb6c1; outline-offset:4px; }
+
+    @media (prefers-reduced-motion: reduce){
+      .faq.fancy .chev::before, .faq.fancy .faq-a{ transition:none; }
+    }
+
+    /* Fab Tienda */
+    .shop-fab{position:fixed;left:16px;bottom:16px;z-index:9999;display:grid;place-items:center;
+      width:56px;height:56px;border-radius:50%;background:#d8b973;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.25);
+      cursor:pointer;text-decoration:none;font-weight:700}
+    .shop-fab span{font-size:11px;line-height:1.1;text-align:center;padding:6px}
+    @media(min-width:700px){.shop-fab{width:auto;height:auto;border-radius:999px;padding:12px 16px}
+      .shop-fab span{font-size:14px;padding:0}}
+  </style>
+
+  <!-- Netlify Identity (Widget oficial robusto) -->
+  <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#inicio">
+        <img src="img/logo.png" alt="Manos & Magia Studio" width="40" height="40">
+        <span>Manos & Magia Studio</span>
+        <small class="brand-sub">Papelería creativa &amp; decoración personalizada</small>
+      </a>
+      <!-- MENÚ -->
+      <nav>
+        <a href="#productos">Productos</a>
+        <a href="#combos">Combos</a>
+        <a href="#tematicas">Temáticas</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#como-comprar">Cómo pedir</a>
+        <a href="#newsletter">Newsletter</a>
+        <a href="#faq">FAQ</a>
+        <!-- NUEVO: botón de acceso a tienda con gate robusto -->
+        <a href="#" id="menu-tienda" class="btn" aria-controls="netlify-identity-widget">Tienda</a>
+        <a href="#contacto" class="btn ghost">Pedir por WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1>Decoración <span class="resaltado">100% personalizada</span> para tu fiesta</h1>
+          <p>Papelería creativa, toppers con luz, piñatas, letras 3D, bolsitas y souvenirs. Hecho con amor desde el alma 💫</p>
+          <div class="cta-group">
+            <a class="btn" id="cta-whatsapp" href="https://wa.me/5491167286443?text=Hola%20Manos%20%26%20Magia%20Studio%2C%20quiero%20pedir%20un%20presupuesto%20%F0%9F%92%95" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+            <a class="btn ghost" id="cta-instagram" href="https://instagram.com/manosymagia_studio" target="_blank" rel="noopener">Ver Instagram</a>
+          </div>
+          <ul class="badges">
+            <li>Diseños exclusivos</li>
+            <li>Hecho a mano</li>
+            <li>Envíos a todo el país</li>
+          </ul>
+        </div>
+        <div class="hero-img">
+          <img src="img/hero-placeholder.svg" alt="Decoración personalizada" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section id="productos" class="section">
+      <div class="wrap">
+        <h2>Productos destacados</h2>
+        <div id="products" class="cards"></div>
+      </div>
+    </section>
+
+    <section id="combos" class="section alt">
+      <div class="wrap">
+        <h2>Combos de fiesta</h2>
+        <div id="combos-list" class="cards"></div>
+      </div>
+    </section>
+
+    <section id="tematicas" class="section">
+      <div class="wrap">
+        <h2>Temáticas</h2>
+        <div class="chips">
+          <span class="chip">Bluey</span>
+          <span class="chip">Minecraft</span>
+          <span class="chip">Stitch</span>
+          <span class="chip">Frozen</span>
+          <span class="chip">Princesas</span>
+          <span class="chip">Superhéroes</span>
+          <span class="chip">Sanrio</span>
+          <span class="chip">Animales</span>
+        </div>
+        <p class="nota">¿Otra temática? ¡La diseñamos desde cero para vos!</p>
+      </div>
+    </section>
+
+    <!-- === Sección Especial: Catálogo Online === -->
+    <section id="catalogo" class="section alt">
+      <div class="wrap">
+        <h2>Colección Creativa – Catálogo Online</h2>
+
+        <div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%;
+          padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+          border-radius: 8px; will-change: transform;">
+          <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+            src="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?embed"
+            allowfullscreen="allowfullscreen" allow="fullscreen">
+          </iframe>
+        </div>
+
+        <p class="nota" style="text-align:center;">
+          Si no se carga correctamente, abrilo en una pestaña nueva:
+          <a href="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?utm_content=DAG2QQznRaA&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+             target="_blank" rel="noopener">Ver catálogo en Canva</a>.
+        </p>
+      </div>
+    </section>
+    <!-- === /Sección Catálogo === -->
+
+    <section id="como-comprar" class="section">
+      <div class="wrap grid-2">
+        <div>
+          <h2>Cómo pedir</h2>
+          <ol class="pasos">
+            <li>Escribinos por WhatsApp con fecha del evento y temática.</li>
+            <li>Definimos productos y te enviamos un presupuesto.</li>
+            <li>Seña del 50% para reservar la fecha de producción.</li>
+            <li>Envío por correo/moto o retiro por punto a coordinar.</li>
+          </ol>
+          <p class="nota">Tiempo de producción sugerido: <strong>7 días</strong> antes (GBA/Interior) y <strong>3 días</strong> (CABA).</p>
+        </div>
+        <div class="box">
+          <h3>Medios de pago</h3>
+          <ul>
+            <li>Transferencia / Depósito</li>
+            <li>Mercado Pago</li>
+          </ul>
+          <h3>Envíos</h3>
+          <ul>
+            <li>Correo a todo el país</li>
+            <li>Moto en CABA y GBA</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria" class="section alt">
+      <div class="wrap">
+        <h2>Galería</h2>
+        <div id="gallery" class="masonry"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>Testimonios</h2>
+        <div class="quotes">
+          <blockquote>“Todo hermoso y súper puntual. ¡Amé el topper con luz!” <cite>— Cami</cite></blockquote>
+          <blockquote>“La piñata quedó perfecta y los detalles, increíbles.” <cite>— Sofi</cite></blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter (en página) -->
+    <section id="newsletter" class="section alt">
+      <div class="wrap grid-2">
+        <div>
+          <h2>💌 Newsletter</h2>
+          <p>Recibí <strong>promos</strong>, <strong>lanzamientos</strong> y <strong>descuentos exclusivos</strong> de Manos &amp; Magia Studio.</p>
+          <p class="nota">Nos gusta cuidar tu tiempo: enviamos solo info útil y podés desuscribirte cuando quieras.</p>
+        </div>
+        <div class="box">
+          <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias.html">
+            <input type="hidden" name="form-name" value="newsletter">
+            <p style="display:none;">
+              <label>No completar si sos humano: <input name="bot-field"></label>
+            </p>
+            <label style="display:block;margin-bottom:8px;">Correo electrónico</label>
+            <input type="email" name="email" required placeholder="tu@mail.com"
+                   style="width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;margin:0 0 12px;">
+            <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;margin:6px 0 12px;">
+              <input type="checkbox" required>
+              Acepto recibir novedades por email.
+            </label>
+            <button type="submit" class="btn" style="width:100%;">Quiero suscribirme</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preguntas Frecuentes (FAQ) -->
+    <section id="faq" class="section">
+      <div class="wrap">
+        <h2>Preguntas frecuentes</h2>
+
+        <div class="faq fancy">
+          <details open>
+            <summary><span class="icon">⏰</span><strong>¿Con cuánta anticipación tengo que hacer el pedido?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Recomendamos <strong>7 días</strong> para GBA/Interior y <strong>3 días</strong> para CABA. ¿Urgente? Escribinos por WhatsApp y vemos disponibilidad 💪.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">🎨</span><strong>¿Los productos son personalizados?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Sí 💕. Cada pieza se hace <strong>100% a medida</strong> (nombre, edad, colores y temática).</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">💳</span><strong>¿Qué métodos de pago aceptan?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p><strong>Transferencia</strong> y <strong>Mercado Pago</strong>. Seña del <strong>50%</strong> para reservar producción.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">🚚</span><strong>¿Hacen envíos?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Sí. Correo a todo el país y <strong>moto</strong> en CABA/GBA.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">📝</span><strong>¿Puedo cancelar o modificar un pedido?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Dentro de las <strong>24 h</strong> de confirmado. Luego arranca la producción y no hay reembolso, pero si es un ajuste menor siempre intentamos ayudarte 💫.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">🛠️</span><strong>¿Qué materiales usan?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Papeles premium, PVC cristal brillante, vinilos adhesivos y cartulinas metalizadas; terminaciones artesanales.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">✨</span><strong>¿Puedo pedir un diseño fuera de catálogo?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>¡Sí! Contanos tu idea y la diseñamos exclusivamente para vos.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">🧼</span><strong>¿Cómo cuido mis productos?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Guardalos en lugar seco, sin sol directo. Si tienen luz, evitá agua o calor. Usá el empaque hasta el evento.</p></div>
+          </details>
+
+          <details>
+            <summary><span class="icon">📷</span><strong>¿Dónde veo más trabajos?</strong><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Mirá la <a href="#galeria">Galería</a> o nuestro <a href="https://www.instagram.com/manosymagia_studio" target="_blank" rel="noopener">@manosymagia_studio</a>.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto" class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <h3>Manos & Magia Studio</h3>
+        <p>Hecho con amor desde el alma 💫 — Papelería creativa y decoración personalizada para tus momentos más especiales.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="contact">
+          <li><a id="footer-whatsapp" href="https://wa.me/5491167286443?text=Hola%20%F0%9F%92%95" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a id="footer-email" href="mailto:manosymagiastudio@gmail.com">manosymagiastudio@gmail.com</a></li>
+          <li><a id="footer-ig" href="https://instagram.com/manosymagia_studio" target="_blank" rel="noopener">@manosymagia_studio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Links útiles</h4>
+        <ul class="contact">
+          <li><a href="sitemap.xml">Sitemap</a></li>
+          <li><a href="robots.txt">Robots</a></li>
+          <li><a href="#como-comprar">Cómo pedir</a></li>
+          <li><a href="admin/" target="_blank" rel="noopener">Panel /admin</a></li>
+          <li><a href="#" id="logout-link">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">© 2025 Manos & Magia Studio. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Pop-up Newsletter -->
+  <div id="mm-popup" aria-hidden="true" style="position:fixed;inset:0;display:none;">
+    <div id="mm-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,.45);"></div>
+    <div role="dialog" aria-modal="true" aria-labelledby="mm-title"
+         style="position:relative;max-width:420px;margin:8vh auto;background:#fff;border-radius:18px;padding:28px;
+                box-shadow:0 20px 60px rgba(0,0,0,.25);font-family:system-ui,-apple-system,'Segoe UI',Roboto,Ubuntu,Arial;">
+      <button id="mm-close" aria-label="Cerrar"
+              style="position:absolute;top:12px;right:12px;border:none;background:transparent;font-size:22px;cursor:pointer;">×</button>
+
+      <h2 id="mm-title" style="margin:0 0 8px;font-size:22px;">✨ Unite a la magia</h2>
+      <p style="margin:0 0 16px;line-height:1.5;">
+        Recibí <strong>ofertas</strong>, <strong>lanzamientos</strong> y <strong>descuentos exclusivos</strong>.
+      </p>
+
+      <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+            action="/gracias.html" id="mm-form">
+        <input type="hidden" name="form-name" value="newsletter">
+        <p style="display:none;">
+          <label>No completar si sos humano: <input name="bot-field"></label>
+        </p>
+        <input type="email" name="email" required placeholder="Tu correo electrónico"
+               style="width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;margin:0 0 10px;">
+        <button type="submit"
+                style="width:100%;padding:12px 14px;border:none;border-radius:10px;cursor:pointer;
+                       background:#ffb6c1;font-weight:600;">
+          Quiero suscribirme
+        </button>
+        <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;margin-top:10px;line-height:1.3;">
+          <input type="checkbox" required>
+          Acepto recibir novedades por email. Puedo desuscribirme cuando quiera.
+        </label>
+      </form>
+
+      <p style="text-align:center;color:#666;font-size:12px;margin-top:10px;">
+        #HechoConAmor · Manos & Magia Studio
+      </p>
+    </div>
+  </div>
+
+  <!-- Botón flotante TIENDA (abre login o redirige si logueado) -->
+  <button id="openShopBtn" class="shop-fab" aria-haspopup="dialog" aria-controls="netlify-identity-widget">
+    <span>🛍️ Tienda<br>online</span>
+  </button>
+
+  <!-- Back to top -->
+  <button id="backTop" aria-label="Volver arriba"
+    style="position:fixed;right:16px;bottom:86px;z-index:9998;width:44px;height:44px;border-radius:50%;
+           border:none;background:#d8b973;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer;display:none;">
+    ↑
+  </button>
+
+  <!-- Lightbox minimal para #gallery -->
+  <div id="lb" style="position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:9999;">
+    <button id="lbClose" aria-label="Cerrar" style="position:absolute;top:16px;right:16px;font-size:28px;color:#fff;background:transparent;border:none;cursor:pointer;">×</button>
+    <img id="lbImg" alt="" style="max-width:92vw;max-height:92vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5);" />
+  </div>
+
+  <!-- Scripts existentes -->
+  <script>
+  (function(){
+    const LS_KEY = "mm_popup_seen_v2";
+    const SHOW_AFTER_MS = 100;
+    const SEEN_DAYS = 7;
+
+    const popup = document.getElementById('mm-popup');
+    const overlay = document.getElementById('mm-overlay');
+    const closeBtn = document.getElementById('mm-close');
+
+    function openPopup(){ if(popup){ popup.style.display='block'; popup.setAttribute('aria-hidden','false'); } }
+    function closePopup(){
+      if(popup){ popup.style.display='none'; popup.setAttribute('aria-hidden','true'); }
+      const exp = Date.now() + SEEN_DAYS*24*60*60*1000;
+      try { localStorage.setItem(LS_KEY, String(exp)); } catch(e){}
+    }
+    function shouldShow(){
+      const v = Number(localStorage.getItem(LS_KEY));
+      if(!v) return true;
+      return Date.now() > v;
+    }
+
+    if(shouldShow()){ setTimeout(openPopup, SHOW_AFTER_MS); }
+    overlay && overlay.addEventListener('click', closePopup);
+    closeBtn && closeBtn.addEventListener('click', closePopup);
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePopup(); });
+
+    window.mmPopup = {
+      open: openPopup,
+      reset: () => localStorage.removeItem(LS_KEY),
+      seenUntil: () => Number(localStorage.getItem(LS_KEY))
+    };
+  })();
+  </script>
+
+  <script>
+  (function(){
+    const all = document.querySelectorAll('#faq details');
+    all.forEach(d=>{
+      d.addEventListener('toggle', ()=>{
+        if(d.open){ all.forEach(o => { if(o!==d) o.open = false; }); }
+      });
+    });
+  })();
+  </script>
+
+  <script>
+    (function(){
+      const b = document.getElementById('backTop');
+      window.addEventListener('scroll', ()=> {
+        b.style.display = window.scrollY > 600 ? 'block' : 'none';
+      });
+      b.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+    })();
+  </script>
+
+  <script>
+  (function(){
+    const g = document.getElementById('gallery');
+    const lb = document.getElementById('lb');
+    const img = document.getElementById('lbImg');
+    const close = document.getElementById('lbClose');
+
+    if(g){
+      g.addEventListener('click', (e)=>{
+        const t = e.target;
+        if(t && t.tagName === 'IMG'){
+          img.src = t.currentSrc || t.src;
+          lb.style.display = 'flex';
+          document.body.style.overflow='hidden';
+        }
+      });
+    }
+    function hide(){ lb.style.display='none'; img.src=''; document.body.style.overflow=''; }
+    close.addEventListener('click', hide);
+    lb.addEventListener('click', (e)=>{ if(e.target === lb) hide(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') hide(); });
+  })();
+  </script>
+
+  <script>
+  (function(){
+    function track(cat, act, lbl){
+      try{ gtag('event', act, { event_category: cat, event_label: lbl }); }catch(e){}
+    }
+    document.getElementById('cta-whatsapp')?.addEventListener('click', ()=>track('CTA','whatsapp_click','hero'));
+    document.getElementById('cta-instagram')?.addEventListener('click', ()=>track('CTA','instagram_click','hero'));
+    document.getElementById('footer-whatsapp')?.addEventListener('click', ()=>track('CTA','whatsapp_click','footer'));
+    document.getElementById('footer-ig')?.addEventListener('click', ()=>track('CTA','instagram_click','footer'));
+    document.querySelector('#catalogo a[href*="canva.com"]')?.addEventListener('click', ()=>track('CATALOGO','open_canva','seccion_catalogo'));
+  })();
+  </script>
+
+  <script>
+  (function(){
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const targets = document.querySelectorAll('section.section, section.hero, header.site-header, footer.site-footer');
+    targets.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(10px)'; el.style.transition = 'opacity .6s ease, transform .6s ease'; });
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    targets.forEach(el => io.observe(el));
+  })();
+  </script>
+
+  <!-- ====== AUTH ROBUSTA: Netlify Identity + Gate a Tienda Nube ====== -->
+  <script>
+  (function(){
+    const TIENDA_URL = "https://manosmagiastudio.mitiendanube.com/"; // << tu tienda
+    const menuTienda = document.getElementById('menu-tienda');
+    const fabTienda  = document.getElementById('openShopBtn');
+    const logoutLink = document.getElementById('logout-link');
+
+    // Helpers
+    function isLogged(){
+      return window.netlifyIdentity && netlifyIdentity.currentUser();
+    }
+    function goShop(){
+      // Puedes pasar el email como utm para identificar pedidos (opcional)
+      const u = netlifyIdentity.currentUser();
+      const email = u?.email ? encodeURIComponent(u.email) : "";
+      const url = email ? `${TIENDA_URL}?utm_source=web&utm_medium=gate&utm_campaign=tienda&user=${email}` : TIENDA_URL;
+      window.location.href = url;
+    }
+    function openAuth(){
+      if (!window.netlifyIdentity){ alert("Error cargando autenticación. Recargá la página."); return; }
+      netlifyIdentity.open(); // abre el widget oficial (signup/login/recovery/verificación)
+    }
+
+    function handleClickAccess(e){
+      e.preventDefault();
+      if(isLogged()){
+        goShop();
+      }else{
+        openAuth();
+      }
+    }
+
+    menuTienda?.addEventListener('click', handleClickAccess);
+    fabTienda?.addEventListener('click', handleClickAccess);
+
+    logoutLink?.addEventListener('click', function(e){
+      e.preventDefault();
+      if(isLogged()){
+        netlifyIdentity.logout();
+      }else{
+        alert("No hay sesión iniciada.");
+      }
+    });
+
+    // Eventos del widget: después de login/signup, vamos a la tienda
+    document.addEventListener('DOMContentLoaded', function(){
+      if (!window.netlifyIdentity) return;
+
+      netlifyIdentity.on('init', user => {
+        // Si volvieron desde la tienda y ya están logueados, no hacemos nada
+      });
+
+      netlifyIdentity.on('login', user => {
+        // Si el correo no está confirmado, Netlify Identity muestra aviso y permite re-envío.
+        // Igual permitimos acceso inmediato o podés exigir verificación antes:
+        // if(!user.confirmed_at){ alert("Confirmá tu email para completar el registro."); return; }
+        netlifyIdentity.close();
+        goShop();
+      });
+
+      netlifyIdentity.on('signup', user => {
+        // Netlify envía email de verificación automáticamente; redirigimos igual
+        netlifyIdentity.close();
+        goShop();
+      });
+
+      netlifyIdentity.on('logout', () => {
+        // Podés mostrar un toast si querés
+      });
+
+      // Inicializar explícitamente (permite currentUser()).
+      netlifyIdentity.init();
+    });
+  })();
+  </script>
+  <!-- ================================================================ -->
+
+  <script src="script.js" defer></script>
+
+  <!-- WhatsApp sticky -->
+  <a href="https://wa.me/5491167286443?text=Hola%20Manos%20%26%20Magia%20Studio%2C%20quiero%20pedir%20un%20presupuesto%20%F0%9F%92%95"
+     target="_blank" rel="noopener" aria-label="WhatsApp"
+     style="position:fixed;right:16px;bottom:16px;z-index:9999;width:56px;height:56px;border-radius:50%;
+            background:#25D366;box-shadow:0 8px 24px rgba(0,0,0,.25);display:grid;place-items:center;color:#fff;text-decoration:none;">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.52 3.48A11.77 11.77 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.5 5.82L0 24l6.34-1.64A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.3-6.1-3.48-8.52zM12 21.6c-1.84 0-3.55-.5-5.04-1.36l-.36-.21-3.76.98.99-3.67-.24-.38A9.62 9.62 0 0 1 2.4 12C2.4 6.69 6.69 2.4 12 2.4S21.6 6.69 21.6 12 17.31 21.6 12 21.6zm5.2-6.11c-.29-.15-1.71-.84-1.98-.93-.27-.1-.47-.15-.67.15-.2.29-.77.93-.95 1.12-.18.2-.35.22-.64.07-.29-.15-1.23-.45-2.34-1.44-.86-.76-1.44-1.7-1.61-1.98-.17-.29-.02-.45.13-.6.14-.14.29-.35.44-.53.15-.18.2-.29.29-.49.1-.2.05-.37-.02-.53-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.08-.81.37-.29.29-1.07 1.05-1.07 2.56 0 1.5 1.09 2.95 1.24 3.16.15.2 2.14 3.27 5.19 4.58.72.31 1.29.49 1.73.63.73.23 1.39.2 1.92.12.59-.09 1.71-.7 1.95-1.37.24-.67.24-1.25.17-1.37-.07-.12-.27-.2-.56-.35z"/>
+    </svg>
+  </a>
+
+</body>
+</html>
