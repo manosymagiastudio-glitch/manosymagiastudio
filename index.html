@@ -549,14 +549,14 @@
     targets.forEach(el => io.observe(el));
   })();
   </script>
-
- <script>
-  // Engancha los botones una vez que openShop ya existe
+// Engancha los botones una vez que openShop ya existe
   (function attachShopButtons(){
     function onClick(e){ e.preventDefault(); openShop(); } // usa la función ya definida arriba
     document.getElementById('openShopBtn')?.addEventListener('click', onClick);
     document.getElementById('menu-tienda')?.addEventListener('click', onClick);
   })();
+ <script>
+  
 </script>
 
   </script>
