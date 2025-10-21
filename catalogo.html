@@ -1,118 +1,79 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Catálogo | Manos & Magia Studio</title>
-  <meta name="description" content="Catálogo online de Manos & Magia Studio. Papelería creativa, toppers con luz, letras 3D, bolsitas y más. Hecho a mano con amor.">
-  <link rel="icon" href="img/favicon.png" type="image/png">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="canonical" href="https://manosymagiastudio.netlify.app/catalogo.html">
-  <meta property="og:title" content="Catálogo | Manos & Magia Studio">
-  <meta property="og:description" content="Explorá la Colección Creativa: toppers, piñatas, letras 3D, cajas y más.">
-  <meta property="og:image" content="https://manosymagiastudio.netlify.app/img/og-banner.jpg">
-  <meta property="og:url" content="https://manosymagiastudio.netlify.app/catalogo.html">
+  <meta name="description" content="Catálogo completo de productos personalizados de Manos & Magia Studio." />
+  <link rel="icon" href="./img/logo.png" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="wrap">
-      <a class="brand" href="index.html#inicio">
-        <img src="img/logo.png" alt="Manos & Magia Studio" width="40" height="40">
-        <span>Manos & Magia Studio</span>
-        <small class="brand-sub">Papelería creativa &amp; decoración personalizada</small>
+    <nav class="nav">
+      <a href="./" class="logo" aria-label="Manos & Magia Studio">
+        <img src="./img/logo.png" alt="Manos & Magia Studio" height="40" />
       </a>
-      <nav>
-        <a href="index.html#productos">Productos</a>
-        <a href="index.html#combos">Combos</a>
-        <a href="index.html#tematicas">Temáticas</a>
-        <a href="catalogo.html" aria-current="page">Catálogo</a>
-        <a href="index.html#como-comprar">Cómo pedir</a>
-        <a href="index.html#newsletter">Newsletter</a>
-        <a href="index.html#faq">FAQ</a>
-        <a href="index.html#contacto" class="btn">Pedir por WhatsApp</a>
-      </nav>
-    </div>
+      <ul class="menu">
+        <li><a href="./index.html#catalogo">Inicio</a></li>
+        <li><a href="./index.html#contacto">Contacto</a></li>
+        <li><a href="#" id="menu-tienda">Tienda</a></li>
+      </ul>
+      <button id="openShopBtn" class="btn btn-primary">Tienda</button>
+    </nav>
   </header>
 
-  <main id="catalogo">
-    <section class="section alt">
-      <div class="wrap">
-        <h1>Colección Creativa – Catálogo Online</h1>
-
-        <!-- Embed Canva (oficial) -->
-        <div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%;
-          padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
-          border-radius: 8px; will-change: transform;">
-          <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-            src="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?embed"
-            allowfullscreen="allowfullscreen" allow="fullscreen">
-          </iframe>
-        </div>
-
-        <p class="nota" style="text-align:center;">
-          ¿No carga? Abrilo en nueva pestaña:
-          <a href="https://www.canva.com/design/DAG2QQznRaA/5owkDUS1Sa8wr1jxUQu8nQ/view?utm_content=DAG2QQznRaA&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
-             target="_blank" rel="noopener">Ver catálogo en Canva</a>.
-        </p>
-
-        <p style="text-align:center;margin-top:24px;">
-          <a class="btn" href="index.html#contacto">Quiero pedir mi diseño</a>
-        </p>
+  <main>
+    <section>
+      <h1>Catálogo completo</h1>
+      <!-- Render del catálogo -->
+      <div id="catalogo-grid">
+        <!-- Tu JS (script.js) puede poblar este contenedor -->
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="wrap footer-grid">
-      <div>
-        <h3>Manos & Magia Studio</h3>
-        <p>Hecho con amor desde el alma 💫 — Papelería creativa y decoración personalizada.</p>
-      </div>
-      <div>
-        <h4>Contacto</h4>
-        <ul class="contact">
-          <li><a href="https://wa.me/5491167286443?text=Hola%20%F0%9F%92%95" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a href="mailto:manosymagiastudio@gmail.com">manosymagiastudio@gmail.com</a></li>
-          <li><a href="https://instagram.com/manosymagia_studio" target="_blank" rel="noopener">@manosymagia_studio</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Links útiles</h4>
-        <ul class="contact">
-          <li><a href="index.html#como-comprar">Cómo pedir</a></li>
-          <li><a href="sitemap.xml">Sitemap</a></li>
-          <li><a href="robots.txt">Robots</a></li>
-          <li><a href="admin/" target="_blank" rel="noopener">Panel /admin</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="copy">© 2025 Manos & Magia Studio. Todos los derechos reservados.</p>
+    <small>© <span id="year"></span> Manos & Magia Studio.</small>
   </footer>
 
-  <!-- WhatsApp sticky -->
-  <a href="https://wa.me/5491167286443?text=Hola%20Manos%20%26%20Magia%20Studio%2C%20quiero%20pedir%20un%20presupuesto%20%F0%9F%92%95"
-     target="_blank" rel="noopener" aria-label="WhatsApp"
-     style="position:fixed;right:16px;bottom:16px;z-index:9999;width:56px;height:56px;border-radius:50%;
-            background:#25D366;box-shadow:0 8px 24px rgba(0,0,0,.25);display:grid;place-items:center;color:#fff;text-decoration:none;">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M20.52 3.48A11.77 11.77 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.5 5.82L0 24l6.34-1.64A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.3-6.1-3.48-8.52zM12 21.6c-1.84 0-3.55-.5-5.04-1.36l-.36-.21-3.76.98.99-3.67-.24-.38A9.62 9.62 0 0 1 2.4 12C2.4 6.69 6.69 2.4 12 2.4S21.6 6.69 21.6 12 17.31 21.6 12 21.6zm5.2-6.11c-.29-.15-1.71-.84-1.98-.93-.27-.1-.47-.15-.67.15-.2.29-.77.93-.95 1.12-.18.2-.35.22-.64.07-.29-.15-1.23-.45-2.34-1.44-.86-.76-1.44-1.7-1.61-1.98-.17-.29-.02-.45.13-.6.14-.14.29-.35.44-.53.15-.18.2-.29.29-.49.1-.2.05-.37-.02-.53-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.08-.81.37-.29.29-1.07 1.05-1.07 2.56 0 1.5 1.09 2.95 1.24 3.16.15.2 2.14 3.27 5.19 4.58.72.31 1.29.49 1.73.63.73.23 1.39.2 1.92.12.59-.09 1.71-.7 1.95-1.37.24-.67.24-1.25.17-1.37-.07-.12-.27-.2-.56-.35z"/>
-    </svg>
-  </a>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
-  <!-- Back to top -->
-  <button id="backTop" aria-label="Volver arriba"
-    style="position:fixed;right:16px;bottom:86px;z-index:9998;width:44px;height:44px;border-radius:50%;
-           border:none;background:#d8b973;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer;display:none;">
-    ↑
-  </button>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+
+  <!-- Inicialización + openShop -->
   <script>
-  (function(){
-    const b = document.getElementById('backTop');
-    window.addEventListener('scroll', ()=> {
-      b.style.display = window.scrollY > 600 ? 'block' : 'none';
-    });
-    b.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
-  })();
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY",
+      authDomain: "TU_AUTH_DOMAIN",
+      projectId: "TU_PROJECT_ID",
+      appId: "TU_APP_ID",
+    };
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function openShop() {
+      const isLoggedIn = !!auth.currentUser;
+      if (isLoggedIn) {
+        window.location.href = "https://manosmagiastudio.mitiendanube.com/";
+        return;
+      }
+      window.location.href = "/login.html";
+    }
+    window.__openShop = openShop;
   </script>
+
+  <!-- Enganche de botones -->
+  <script>
+    (function attachShopButtons(){
+      function onClick(e){ e.preventDefault(); openShop(); }
+      document.getElementById('openShopBtn')?.addEventListener('click', onClick);
+      document.getElementById('menu-tienda')?.addEventListener('click', onClick);
+    })();
+  </script>
+
+  <script src="./script.js" defer></script>
 </body>
 </html>
