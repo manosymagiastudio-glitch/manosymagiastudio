@@ -442,9 +442,9 @@
   <!-- =================== Scripts UX ya existentes =================== -->
   <script>
   (function(){
-    const LS_KEY = "mm_popup_seen_v2";   // marca para no repetir el pop-up
-    const SHOW_AFTER_MS = 100;           // 0.1s para test (podés subirlo a 3000)
-    const SEEN_DAYS = 7;                 // no volver a mostrar por 7 días
+    const LS_KEY = "mm_popup_seen_v2";
+    const SHOW_AFTER_MS = 100;
+    const SEEN_DAYS = 7;
 
     const popup = document.getElementById('mm-popup');
     const overlay = document.getElementById('mm-overlay');
@@ -467,7 +467,6 @@
     closeBtn && closeBtn.addEventListener('click', closePopup);
     document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePopup(); });
 
-    // Helpers para pruebas (opcional)
     window.mmPopup = {
       open: openPopup,
       reset: () => localStorage.removeItem(LS_KEY),
@@ -550,10 +549,18 @@
   })();
   </script>
 
-  <!-- Botones que abren la tienda/login -->
+  <!-- Botones que abren la tienda/login (con espera si aún no cargó Firebase) -->
   <script>
     (function(){
-      function onClick(e){ e.preventDefault(); window.__openShop && window.__openShop(); }
+      function triggerOpenShop(){
+        if (window.__openShop) { window.__openShop(); return; }
+        // Si aún no existe, nos enganchamos a un evento que dispara Firebase cuando queda listo
+        window.addEventListener('mm:openShopReady', function once(){
+          window.removeEventListener('mm:openShopReady', once);
+          window.__openShop && window.__openShop();
+        }, { once: true });
+      }
+      function onClick(e){ e.preventDefault(); triggerOpenShop(); }
       document.getElementById('openShopBtn')?.addEventListener('click', onClick);
       document.getElementById('menu-tienda')?.addEventListener('click', onClick);
     })();
@@ -565,88 +572,94 @@
   <script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
 
   <script>
-  (function(){
-    // Config real de tu proyecto
-    const FIREBASE_CONFIG = {
-      apiKey: "AIzaSyAsg3eLYef-KVXWU1QSyaCId2oWQV48xbg",
-      authDomain: "manosymagiastudio-66912.firebaseapp.com",
-      projectId: "manosymagiastudio-66912",
-      storageBucket: "manosymagiastudio-66912.firebasestorage.app",
-      messagingSenderId: "255624716715",
-      appId: "1:255624716715:web:cd97b355bfa6d202e7f2ee",
-      measurementId: "G-BLG93VB9F1"
-    };
+  // ⚠️ Se inicializa cuando el DOM está listo para que existan #authModal y #authClose
+  document.addEventListener('DOMContentLoaded', function(){
+    (function(){
+      // Config real de tu proyecto
+      const FIREBASE_CONFIG = {
+        apiKey: "AIzaSyAsg3eLYef-KVXWU1QSyaCId2oWQV48xbg",
+        authDomain: "manosymagiastudio-66912.firebaseapp.com",
+        projectId: "manosymagiastudio-66912",
+        storageBucket: "manosymagiastudio-66912.firebasestorage.app",
+        messagingSenderId: "255624716715",
+        appId: "1:255624716715:web:cd97b355bfa6d202e7f2ee",
+        measurementId: "G-BLG93VB9F1"
+      };
 
-    const TIENDA_URL = "https://manosmagiastudio.mitiendanube.com/";
+      const TIENDA_URL = "https://manosmagiastudio.mitiendanube.com/";
 
-    // Inicializar Firebase
-    firebase.initializeApp(FIREBASE_CONFIG);
-    const auth = firebase.auth();
+      // Inicializar Firebase
+      firebase.initializeApp(FIREBASE_CONFIG);
+      const auth = firebase.auth();
 
-    // FirebaseUI
-    const ui = new firebaseui.auth.AuthUI(auth);
-    const uiConfig = {
-      signInFlow: 'popup',
-      signInOptions: [
-        firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID
-      ],
-      callbacks: {
-        signInSuccessWithAuthResult: function() {
-          closeModal();
-          goShop();
-          return false;
+      // FirebaseUI
+      const ui = new firebaseui.auth.AuthUI(auth);
+      const uiConfig = {
+        signInFlow: 'popup',
+        signInOptions: [
+          firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID
+        ],
+        callbacks: {
+          signInSuccessWithAuthResult: function() {
+            closeModal();
+            goShop();
+            return false;
+          }
         }
+      };
+
+      // Modal helpers
+      const modal = document.getElementById('authModal');
+      const btnClose = document.getElementById('authClose');
+      function openModal(){
+        modal.setAttribute('aria-hidden','false');
+        modal.style.display='flex';
+        document.body.style.overflow='hidden';
+        ui.start('#firebaseui-auth-container', uiConfig);
       }
-    };
-
-    // Modal helpers
-    const modal = document.getElementById('authModal');
-    const btnClose = document.getElementById('authClose');
-    function openModal(){
-      modal.setAttribute('aria-hidden','false');
-      modal.style.display='flex';
-      document.body.style.overflow='hidden';
-      ui.start('#firebaseui-auth-container', uiConfig);
-    }
-    function closeModal(){
-      modal.setAttribute('aria-hidden','true');
-      modal.style.display='none';
-      document.body.style.overflow='';
-      try{ ui.reset(); }catch(e){}
-    }
-    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
-    btnClose.addEventListener('click', closeModal);
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
-
-    // Redirección a Tienda
-    function goShop(){
-      const user = auth.currentUser;
-      const email = user?.email ? encodeURIComponent(user.email) : "";
-      const url = email ? `${TIENDA_URL}?utm_source=web&utm_medium=auth&utm_campaign=tienda&user=${email}` : TIENDA_URL;
-      window.location.href = url;
-    }
-    function openShop(){ if (auth.currentUser) goShop(); else openModal(); }
-    window.__openShop = openShop;
-
-    // UI “Hola, …” y logout
-    const pill = document.getElementById('user-pill');
-    const logoutLink = document.getElementById('logout-link');
-    auth.onAuthStateChanged((user)=>{
-      if(user){
-        pill.style.display='inline-block';
-        pill.textContent = user.displayName ? `Hola, ${user.displayName}` : user.email;
-      }else{
-        pill.style.display='none';
-        pill.textContent = '';
+      function closeModal(){
+        modal.setAttribute('aria-hidden','true');
+        modal.style.display='none';
+        document.body.style.overflow='';
+        try{ ui.reset(); }catch(e){}
       }
-    });
-    logoutLink.addEventListener('click', function(e){
-      e.preventDefault();
-      if(auth.currentUser){ auth.signOut(); alert("Sesión cerrada."); }
-      else { alert("No hay sesión iniciada."); }
-    });
-  })();
+      modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+      btnClose.addEventListener('click', closeModal);
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+      // Redirección a Tienda
+      function goShop(){
+        const user = auth.currentUser;
+        const email = user?.email ? encodeURIComponent(user.email) : "";
+        const url = email ? `${TIENDA_URL}?utm_source=web&utm_medium=auth&utm_campaign=tienda&user=${email}` : TIENDA_URL;
+        window.location.href = url;
+      }
+      function openShop(){ if (auth.currentUser) goShop(); else openModal(); }
+      window.__openShop = openShop;
+
+      // 🔔 Avisamos que __openShop ya está listo (por si alguien hizo click antes)
+      try { window.dispatchEvent(new Event('mm:openShopReady')); } catch(e){}
+
+      // UI “Hola, …” y logout
+      const pill = document.getElementById('user-pill');
+      const logoutLink = document.getElementById('logout-link');
+      auth.onAuthStateChanged((user)=>{
+        if(user){
+          pill.style.display='inline-block';
+          pill.textContent = user.displayName ? `Hola, ${user.displayName}` : user.email;
+        }else{
+          pill.style.display='none';
+          pill.textContent = '';
+        }
+      });
+      logoutLink.addEventListener('click', function(e){
+        e.preventDefault();
+        if(auth.currentUser){ auth.signOut(); alert("Sesión cerrada."); }
+        else { alert("No hay sesión iniciada."); }
+      });
+    })();
+  });
   </script>
 
   <!-- =============== MODAL AUTH (FirebaseUI) ================= -->
