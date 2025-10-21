@@ -1,80 +1,77 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>¡Gracias por unirte a la magia! ✨</title>
-    <style>
-      body {
-        font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-        background: linear-gradient(180deg, #fff7f9 0%, #ffeef5 100%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-        text-align: center;
-        color: #333;
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>¡Gracias! | Manos & Magia Studio</title>
+  <meta name="description" content="Gracias por tu mensaje. Te responderemos a la brevedad." />
+  <link rel="icon" href="./img/logo.png" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="./" class="logo" aria-label="Manos & Magia Studio">
+        <img src="./img/logo.png" alt="Manos & Magia Studio" height="40" />
+      </a>
+      <ul class="menu">
+        <li><a href="./">Inicio</a></li>
+        <li><a href="./catalogo.html">Catálogo</a></li>
+        <li><a href="#" id="menu-tienda">Tienda</a></li>
+      </ul>
+      <button id="openShopBtn" class="btn btn-primary">Tienda</button>
+    </nav>
+  </header>
 
-      h1 {
-        font-size: 2rem;
-        color: #ff9cc5;
-        margin-bottom: 10px;
-      }
+  <main>
+    <section class="thanks">
+      <h1>¡Gracias por tu mensaje! ✨</h1>
+      <p>En breve nos pondremos en contacto.</p>
+      <p><a class="btn" href="./">Volver al inicio</a></p>
+    </section>
+  </main>
 
-      p {
-        font-size: 1.1rem;
-        color: #555;
-        max-width: 480px;
-        line-height: 1.6;
-        margin: 0 auto 20px;
-      }
+  <footer class="site-footer">
+    <small>© <span id="year"></span> Manos & Magia Studio.</small>
+  </footer>
 
-      a {
-        display: inline-block;
-        background-color: #ffb6c1;
-        color: #fff;
-        text-decoration: none;
-        padding: 10px 22px;
-        border-radius: 8px;
-        font-weight: 600;
-        box-shadow: 0 4px 10px rgba(255, 182, 193, 0.4);
-        transition: all 0.3s ease;
-      }
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
-      a:hover {
-        background-color: #ff9cc5;
-        box-shadow: 0 6px 16px rgba(255, 156, 197, 0.6);
-        transform: translateY(-2px);
-      }
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 
-      .sparkle {
-        font-size: 1.4rem;
-        animation: twinkle 2.5s infinite ease-in-out;
-      }
+  <!-- Inicialización + openShop -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY",
+      authDomain: "TU_AUTH_DOMAIN",
+      projectId: "TU_PROJECT_ID",
+      appId: "TU_APP_ID",
+    };
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
 
-      @keyframes twinkle {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.4; }
+    function openShop() {
+      const isLoggedIn = !!auth.currentUser;
+      if (isLoggedIn) {
+        window.location.href = "https://manosmagiastudio.mitiendanube.com/";
+        return;
       }
+      window.location.href = "/login.html";
+    }
+    window.__openShop = openShop;
+  </script>
 
-      footer {
-        position: absolute;
-        bottom: 20px;
-        font-size: 0.9rem;
-        color: #999;
-      }
-    </style>
-  </head>
+  <!-- Enganche de botones -->
+  <script>
+    (function attachShopButtons(){
+      function onClick(e){ e.preventDefault(); openShop(); }
+      document.getElementById('openShopBtn')?.addEventListener('click', onClick);
+      document.getElementById('menu-tienda')?.addEventListener('click', onClick);
+    })();
+  </script>
 
-  <body>
-    <h1>✨ ¡Gracias por unirte a la magia! ✨</h1>
-    <p>
-      Ya sos parte del mundo de <strong>Manos & Magia Studio</strong> 💌<br>
-      Te enviaremos nuestras novedades, lanzamientos y descuentos exclusivos.
-    </p>
-    <a href="/">Volver al sitio</a>
-    <footer>#HechoConAmor · Manos & Magia Studio</footer>
-  </body>
+  <script src="./script.js" defer></script>
+</body>
+</html>
