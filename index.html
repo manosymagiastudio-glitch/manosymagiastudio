@@ -3,54 +3,41 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>Manos & Magia Studio | Papelería creativa y decoración personalizada</title>
   <meta name="description" content="Papelería creativa, toppers con luz, letras 3D, bolsitas y combos hechos a mano. Diseños personalizados con amor. Envíos a toda Argentina." />
-  <meta name="keywords" content="papelería creativa, toppers con luz, letras 3D, decoración personalizada, bolsitas golosineras, combos, artesanal, Argentina" />
-  <link rel="icon" href="/img/favicon.png" />
-
-  <!-- Tus estilos existentes -->
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" href="./img/logo.png" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <!-- ========================= -->
-  <!-- Header / Nav existente   -->
-  <!-- ========================= -->
   <header class="site-header">
     <nav class="nav">
-      <a href="/" class="logo" aria-label="Manos & Magia Studio">
-        <img src="/img/logo.png" alt="Manos & Magia Studio" height="40" />
+      <a href="./" class="logo" aria-label="Manos & Magia Studio">
+        <img src="./img/logo.png" alt="Manos & Magia Studio" height="40" />
       </a>
-
       <ul class="menu">
         <li><a href="#catalogo">Catálogo</a></li>
         <li><a href="#contacto">Contacto</a></li>
-        <!-- Importante: este es el ítem de menú que abre la tienda -->
         <li><a href="#" id="menu-tienda">Tienda</a></li>
+        <li><a href="./catalogo.html">Ver catálogo completo</a></li>
       </ul>
-
-      <!-- Importante: este es el botón que abre la tienda -->
       <button id="openShopBtn" class="btn btn-primary">Tienda</button>
     </nav>
   </header>
 
-  <!-- ========================= -->
-  <!-- Hero / Contenido          -->
-  <!-- ========================= -->
   <main>
-    <!-- Dejá todo tu contenido existente: hero, secciones, catálogo, etc. -->
-    <!-- ................................................................ -->
-    <!-- ....................... TU HTML EXISTENTE ........................ -->
-    <!-- ................................................................ -->
+    <section id="hero">
+      <h1>Papelería creativa hecha con amor</h1>
+      <p>Toppers con luz, letras 3D, bolsitas y más — personalizados para tu evento.</p>
+    </section>
 
     <section id="catalogo">
       <h2>Catálogo</h2>
-      <!-- Tu catálogo embebido/JS que ya tenés -->
+      <!-- Aquí tu listado/preview de productos -->
     </section>
 
     <section id="contacto">
       <h2>Contacto</h2>
-      <!-- Tu formulario/contacto existente -->
+      <!-- Tu formulario de contacto -->
     </section>
   </main>
 
@@ -58,95 +45,45 @@
     <small>© <span id="year"></span> Manos & Magia Studio. Hecho con amor.</small>
   </footer>
 
-  <script>
-    // Utilidad mínima: año en footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
-  <!-- ================================================================== -->
-  <!-- (1) NO PEGAR NADA QUE ENGANCHE BOTONES ANTES DE INICIALIZAR FIREBASE -->
-  <!--     Este era el bloque viejo que hay que BORRAR si lo tenías arriba:
-        <script>
-          (function(){
-            function onClick(e){ e.preventDefault(); window.__openShop && window.__openShop(); }
-            document.getElementById('openShopBtn')?.addEventListener('click', onClick);
-            document.getElementById('menu-tienda')?.addEventListener('click', onClick);
-          })();
-        </script>
-       FIN BLOQUE A ELIMINAR
-  -->
-  <!-- ================================================================== -->
-
-  <!-- ========================= -->
-  <!-- SDKs de Firebase          -->
-  <!-- (Usá los mismos que ya     tenías; los dejo como ejemplo.) -->
-  <!-- ========================= -->
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-  <!-- Agregá otros SDKs si ya los usás: firestore, analytics, etc. -->
 
-  <!-- ========================= -->
-  <!-- (2) Inicialización + openShop -->
-  <!-- Definimos openShop y window.__openShop -->
-  <!-- ========================= -->
+  <!-- Inicialización + openShop -->
   <script>
-    // >>>>>>> Reemplazá con tu config real <<<<<<<
     const firebaseConfig = {
       apiKey: "TU_API_KEY",
       authDomain: "TU_AUTH_DOMAIN",
       projectId: "TU_PROJECT_ID",
       appId: "TU_APP_ID",
     };
-
-    // Inicializar Firebase (usa compat si tus otros scripts usan compat)
     const app = firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
-    // Modal/login redir: ajustá según tu lógica actual
-    // - Si está logueado: redirige a la tienda
-    // - Si no: abrí tu modal de login (o popup)
     function openShop() {
       const isLoggedIn = !!auth.currentUser;
       if (isLoggedIn) {
-        // Redirigir directo a tu Tienda Nube (o la ruta que uses)
         window.location.href = "https://manosmagiastudio.mitiendanube.com/";
         return;
       }
-
-      // Mostrar tu modal de login (ejemplo simple):
-      // Si ya tenés un modal propio, invocalo acá en vez de alert.
-      // showLoginModal();
-      // Ejemplo placeholder:
-      const go = confirm("Para continuar a la tienda, iniciá sesión. ¿Querés loguearte ahora?");
-      if (go) {
-        // Ejemplo: login anónimo / Google / lo que uses
-        // auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(()=>openShop());
-        // Placeholder: redirigir a una ruta /login tuya
-        window.location.href = "/login.html";
-      }
+      // reemplazá por tu modal o página de login
+      window.location.href = "/login.html";
     }
-
-    // Exponer global (por compatibilidad con otros scripts que lo llamen)
     window.__openShop = openShop;
   </script>
 
-  <!-- ========================= -->
-  <!-- (3) Enganchar botones DESPUÉS de definir openShop -->
-  <!-- ========================= -->
+  <!-- Enganche de botones DESPUÉS de definir openShop -->
   <script>
-    // Engancha los botones una vez que openShop ya existe
     (function attachShopButtons(){
-      function onClick(e){ e.preventDefault(); openShop(); } // usa la función definida arriba
+      function onClick(e){ e.preventDefault(); openShop(); }
       document.getElementById('openShopBtn')?.addEventListener('click', onClick);
       document.getElementById('menu-tienda')?.addEventListener('click', onClick);
     })();
   </script>
 
-  <!-- ========================= -->
-  <!-- Tus otros scripts         -->
-  <!-- (dejá todo lo que ya tenías: catálogo, UI, etc.) -->
-  <!-- ========================= -->
-  <script src="/js/ui.js" defer></script>
-  <script src="/js/catalogo.js" defer></script>
+  <!-- Tu JS principal en raíz -->
+  <script src="./script.js" defer></script>
 </body>
 </html>
