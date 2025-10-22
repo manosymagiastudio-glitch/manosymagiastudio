@@ -1,30 +1,56 @@
-# robots.txt para https://www.manosymagiastudio.com.ar
-# Última actualización: 22/10/2025
-# Configurado para Netlify + SEO optimizado
-
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>robots.txt · Manos & Magia Studio</title>
+  <meta name="description" content="Configuración del archivo robots.txt para el sitio manosymagiastudio.com.ar">
+  <meta name="robots" content="noindex, follow">
+  <style>
+    body {
+      font-family: monospace;
+      background: #fffafc;
+      color: #222;
+      padding: 40px;
+      line-height: 1.6;
+    }
+    h1 {
+      font-family: system-ui, sans-serif;
+      font-size: 1.6rem;
+      color: #d47ba3;
+      margin-bottom: 0.5em;
+    }
+    pre {
+      background: #fff;
+      border: 1px solid #f3d6e1;
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      overflow-x: auto;
+    }
+    footer {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <h1>robots.txt — Manos & Magia Studio</h1>
+  <pre>
 User-agent: *
-# ✅ Permitir que Google indexe el sitio completo
 Allow: /
-
-# 🚫 Evitar indexar secciones internas del CMS o formularios
 Disallow: /admin/
 Disallow: /gracias.html
 Disallow: /404.html
 Disallow: /error/
-
-# 🪄 Archivos y carpetas no relevantes para SEO
 Disallow: /img/temp/
 Disallow: /drafts/
 Disallow: /test/
 
-# 📍 Priorizar URLs canónicas con HTTPS
 Host: https://www.manosymagiastudio.com.ar
-
-# 🗺️ Incluir el sitemap para facilitar el rastreo
 Sitemap: https://www.manosymagiastudio.com.ar/sitemap.xml
 
-# 🔍 Extra: recomendaciones SEO amigables
-# Googlebot y Bingbot pueden usar HTTP/2 y cachear recursos
 User-agent: Googlebot
 Allow: /img/
 Allow: /css/
@@ -34,3 +60,10 @@ User-agent: Bingbot
 Allow: /img/
 Allow: /css/
 Allow: /js/
+  </pre>
+
+  <footer>
+    © 2025 Manos & Magia Studio — Archivo robots.txt visual · Actualizado el 22/10/2025
+  </footer>
+</body>
+</html>
