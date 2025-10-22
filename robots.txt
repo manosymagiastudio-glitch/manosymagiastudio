@@ -1,3 +1,36 @@
+# robots.txt para https://www.manosymagiastudio.com.ar
+# Última actualización: 22/10/2025
+# Configurado para Netlify + SEO optimizado
+
 User-agent: *
+# ✅ Permitir que Google indexe el sitio completo
 Allow: /
-Sitemap: https://manosymagiastudio.netlify.app/sitemap.xml
+
+# 🚫 Evitar indexar secciones internas del CMS o formularios
+Disallow: /admin/
+Disallow: /gracias.html
+Disallow: /404.html
+Disallow: /error/
+
+# 🪄 Archivos y carpetas no relevantes para SEO
+Disallow: /img/temp/
+Disallow: /drafts/
+Disallow: /test/
+
+# 📍 Priorizar URLs canónicas con HTTPS
+Host: https://www.manosymagiastudio.com.ar
+
+# 🗺️ Incluir el sitemap para facilitar el rastreo
+Sitemap: https://www.manosymagiastudio.com.ar/sitemap.xml
+
+# 🔍 Extra: recomendaciones SEO amigables
+# Googlebot y Bingbot pueden usar HTTP/2 y cachear recursos
+User-agent: Googlebot
+Allow: /img/
+Allow: /css/
+Allow: /js/
+
+User-agent: Bingbot
+Allow: /img/
+Allow: /css/
+Allow: /js/
