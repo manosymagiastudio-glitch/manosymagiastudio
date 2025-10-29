@@ -1,48 +1,211 @@
-/* Estilos del sitio (resumen) */ 
+/* ========= Sistema visual Manos & Magia ========= */
 :root{
-  --bg:#fff; --text:#222; --muted:#666; --brand:#ff7eb6; --brand-2:#7ed7ff; --brand-3:#ffd37e;
-  --surface:#f9fbff; --radius:14px; --shadow:0 6px 30px rgba(0,0,0,.08);
+  /* Colores marca */
+  --pink-50:#fff6f9;
+  --pink-100:#ffe9f1;
+  --pink-300:#ffb8d2;
+  --pink-500:#ff7fb2;     /* principal */
+  --pink-700:#d85c8e;
+  --lila-400:#b79cff;
+  --gold:#d8b973;
+  --ink:#1d1b1e;
+  --ink-soft:#4b444f;
+  --glow:#ffd7f0;
+  --bg:#fffdfd;
+
+  /* Tipografías */
+  --ff-head:"Poppins", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ff-body:"Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Escalas */
+  --fs-900:clamp(2.15rem, 1.15rem + 3vw, 3.3rem); /* H1 */
+  --fs-700:1.75rem;   /* H2 */
+  --fs-600:1.35rem;   /* H3 */
+  --fs-500:1.125rem;  /* Texto destacado */
+  --fs-400:1rem;      /* Base */
+  --fs-300:.9375rem;  /* Auxiliar */
+
+  /* Otros */
+  --radius-blob:22px;
+  --radius-card:18px;
+  --radius-pill:999px;
+  --shadow-1:0 6px 18px rgba(255,127,178,.20);
+  --shadow-2:0 12px 32px rgba(183,156,255,.22);
 }
-*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.5}
-.wrap{max-width:1100px;margin:auto;padding:0 20px}
-.site-header{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid #eee;z-index:10}
-.site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--text);font-weight:700}
-.brand img{width:40px;height:40px;border-radius:8px;object-fit:cover;background:#fff}
-nav a{margin-left:14px;text-decoration:none;color:var(--text);font-weight:600}
-nav .btn{margin-left:16px}
-.btn{display:inline-block;padding:12px 18px;border-radius:999px;background:var(--brand);color:#000;text-decoration:none;font-weight:800;box-shadow:var(--shadow)}
-.btn.ghost{background:#fff;border:2px solid var(--brand);}
-.hero{background:linear-gradient(180deg,#fff, var(--surface));padding:48px 0}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
-.hero h1{font-size:clamp(28px,4vw,46px);line-height:1.1;margin:.2em 0}
-.resaltado{background:linear-gradient(90deg,var(--brand),var(--brand-2),var(--brand-3));-webkit-background-clip:text;background-clip:text;color:transparent}
-.badges{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0;padding:0;list-style:none}
-.badges li{padding:8px 12px;border-radius:999px;background:#fff;border:1px dashed #ddd;font-weight:700;color:#333}
-.section{padding:54px 0}
-.section.alt{background:var(--surface)}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{padding:18px;border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);text-align:center}
-.card img{width:100%;height:160px;object-fit:contain}
-.desde{color:var(--muted);font-weight:700}
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 8px}
-.chip{padding:10px 14px;border-radius:999px;background:#fff;box-shadow:var(--shadow);font-weight:700}
-.grid-2{display:grid;grid-template-columns:1fr .9fr;gap:24px;align-items:start}
-.box{padding:18px;border-radius:var(--radius);background:#fff;box-shadow:var(--shadow)}
-.pasos{padding-left:20px}
-.nota{color:var(--muted);margin-top:6px}
-.masonry{columns:2;gap:12px}
-.masonry img{width:100%;margin:0 0 12px;border-radius:12px;background:#fff;box-shadow:var(--shadow);}
-.quotes{display:grid;gap:14px}
-blockquote{margin:0;padding:16px 18px;border-left:4px solid var(--brand);background:#fff;border-radius:8px;box-shadow:var(--shadow)}
-.site-footer{background:#111;color:#eee;padding:36px 0 12px;margin-top:24px}
-.site-footer a{color:#fff;text-decoration:none}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px}
-.copy{text-align:center;color:#aaa;font-size:14px}
-.brand-sub{display:block;font-weight:600;font-size:12px;color:var(--muted);margin-top:-6px}
-@media (max-width:900px){
-  .hero-grid,.grid-2{grid-template-columns:1fr}
-  .cards{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
-  .brand-sub{display:none}
+
+html{ scroll-behavior:smooth }
+body{
+  font-family:var(--ff-body);
+  color:var(--ink);
+  background:
+    radial-gradient(1100px 520px at 12% -8%, var(--pink-50), transparent 60%),
+    radial-gradient(900px 420px at 88% 2%, #f7f1ff, transparent 50%),
+    var(--bg);
+  line-height:1.6;
 }
+
+/* Contenedor general */
+.wrap{ max-width:1100px; margin-inline:auto; padding-inline:1rem; }
+
+/* --------- Header / Nav --------- */
+.site-header{
+  position:sticky; top:0; z-index:1000;
+  backdrop-filter:saturate(140%) blur(10px);
+  background:rgba(255,255,255,.72);
+  border-bottom:1px solid #f2e8ee;
+}
+.site-header .wrap{
+  display:flex; align-items:center; justify-content:space-between; gap:.75rem; padding:.8rem 1rem;
+}
+.brand{
+  display:flex; align-items:center; gap:.6rem; text-decoration:none; color:inherit;
+}
+.brand span{ font-family:var(--ff-head); font-weight:700; letter-spacing:.2px }
+.brand-sub{ display:block; font-size:.72rem; color:var(--ink-soft) }
+
+.site-header nav{ display:flex; flex-wrap:wrap; gap:.25rem }
+.site-header nav a{
+  text-decoration:none; font-weight:600; color:var(--ink-soft);
+  padding:.55rem .85rem; border-radius:var(--radius-pill);
+}
+.site-header nav a:hover{ background:var(--pink-100); color:var(--ink) }
+
+/* --------- Botones --------- */
+.btn{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.8rem 1.1rem; border-radius:var(--radius-pill);
+  background:linear-gradient(180deg, var(--pink-500), var(--pink-700));
+  color:#fff; font-weight:700; font-size:var(--fs-400);
+  border:1px solid rgba(255,255,255,.25); box-shadow:var(--shadow-1);
+  transition:transform .15s ease, box-shadow .15s ease, opacity .15s;
+}
+.btn:hover{ transform:translateY(-1px); box-shadow:var(--shadow-2) }
+.btn.ghost{
+  background:linear-gradient(180deg, #fff, #fff0f6);
+  color:#a3326b; border:1px solid #ffd1e6; box-shadow:none;
+}
+.btn.ghost:hover{ box-shadow:0 10px 20px rgba(255,127,178,.18) }
+
+/* --------- Hero --------- */
+.hero{
+  border-radius:var(--radius-blob);
+  margin-top:10px;
+  background:
+    radial-gradient(900px 300px at 20% 0%, rgba(255,215,240,.6), transparent 60%),
+    linear-gradient(180deg, #ffffffcc, #fff6fb);
+  box-shadow:var(--shadow-1);
+}
+.hero .wrap{ padding: clamp(1.5rem, 1rem + 3vw, 3rem) }
+.hero-grid{
+  display:grid; gap: clamp(1rem, .6rem + 2vw, 2rem);
+  grid-template-columns: 1.15fr .85fr;
+}
+@media (max-width: 900px){ .hero-grid{ grid-template-columns: 1fr } }
+.hero h1{
+  font-family:var(--ff-head); font-size:var(--fs-900); letter-spacing:.2px; margin:0 0 .5rem
+}
+.hero p{ font-size:var(--fs-500); color:var(--ink-soft); max-width:62ch }
+.resaltado{
+  background:linear-gradient(90deg, var(--pink-700), var(--lila-400));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero-img{
+  display:grid; place-items:center;
+  background:linear-gradient(180deg,#fff,#fff7fb);
+  border:1px solid #f3e7ef; border-radius:20px; padding:14px;
+  box-shadow:0 4px 18px rgba(255,127,178,.15);
+}
+.hero-img img{ width:100%; height:auto; border-radius:14px }
+
+/* --------- Secciones --------- */
+.section{ padding-block: clamp(2rem, 1.2rem + 3vw, 4rem) }
+.section.alt{ background: #fff7f9 }
+.section h2{
+  font-family:var(--ff-head); font-size:var(--fs-700);
+  margin:0 0 .75rem; letter-spacing:.2px;
+}
+.nota{ color:var(--ink-soft); font-size:var(--fs-300) }
+
+/* --------- Chips (temáticas) --------- */
+.chips{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.35rem }
+.chip{
+  display:inline-block; padding:.45rem .75rem; border-radius:var(--radius-pill);
+  background:linear-gradient(180deg,#fff,#fff0f6);
+  border:1px solid #ffd1e6; font-weight:600; color:#a3326b; font-size:.9rem;
+}
+
+/* --------- Cards (productos/combos) --------- */
+.cards{
+  display:grid; gap: clamp(1rem, .6rem + 2vw, 2rem);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.cards .card{
+  background:#fff; border:1px solid #f3e7ef; border-radius:var(--radius-card);
+  padding:16px; box-shadow:0 1px 0 rgba(0,0,0,.02);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.cards .card:hover{ transform:translateY(-3px); box-shadow:0 12px 24px rgba(255,127,178,.18) }
+.cards .card img{
+  width:100%; aspect-ratio: 4/3; object-fit:cover;
+  border-radius:14px; margin-bottom:.6rem;
+}
+
+/* --------- FAQ fancy (ya tenés) – retoques suaves --------- */
+.faq.fancy details{ border-radius:14px }
+.faq.fancy summary{ font-weight:600 }
+.faq.fancy .faq-a{ color:var(--ink-soft) }
+
+/* --------- Galería (masonry simple) --------- */
+.masonry{
+  column-count: 3;
+  column-gap: 14px;
+}
+.masonry img{
+  width:100%; margin:0 0 14px; border-radius:12px;
+  break-inside:avoid; box-shadow:0 6px 20px rgba(0,0,0,.10);
+}
+@media (max-width:900px){ .masonry{ column-count:2 } }
+@media (max-width:560px){ .masonry{ column-count:1 } }
+
+/* --------- Testimonios --------- */
+.quotes{
+  display:grid; gap:16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.quotes blockquote{
+  margin:0; padding:16px 18px; background:#fff; border:1px solid #f3e7ef; border-radius:14px;
+  box-shadow:0 8px 22px rgba(255,127,178,.12);
+}
+.quotes cite{ display:block; margin-top:8px; font-style:normal; color:var(--ink-soft); font-size:.9rem }
+
+/* --------- Footer --------- */
+.site-footer{
+  background:#fff; border-top:1px solid #f2e8ee; color:var(--ink-soft);
+}
+.footer-grid{
+  display:grid; gap:16px;
+  grid-template-columns: 1.2fr .9fr .9fr;
+  padding-block: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+}
+@media (max-width:900px){ .footer-grid{ grid-template-columns:1fr } }
+.site-footer h3, .site-footer h4{
+  font-family:var(--ff-head); color:var(--ink); margin:.2rem 0 .6rem
+}
+.site-footer .contact{ list-style:none; padding:0; margin:0; display:grid; gap:.35rem }
+.site-footer .contact a{ color:var(--ink-soft); text-decoration:none; font-weight:600 }
+.site-footer .contact a:hover{ color:var(--pink-700) }
+.copy{ text-align:center; font-size:.85rem; padding:8px 0 18px }
+
+/* --------- Utilidades --------- */
+.badges{ display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.75rem }
+.badges li{
+  list-style:none; padding:.35rem .6rem; border-radius:var(--radius-pill);
+  background:linear-gradient(180deg,#fff,#fff0f6); border:1px solid #ffd1e6; color:#a3326b; font-weight:700;
+}
+.cta-group{ display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1rem }
+
+/* Back to top y Shop Fab (respetando tus estilos) */
+#backTop{ transition:opacity .2s ease, transform .2s ease }
+#backTop[style*="display: block"]{ opacity:1; transform:translateY(0) }
+#backTop[style*="display: none"]{ opacity:0; transform:translateY(6px) }
+.shop-fab{ background:var(--gold) }
