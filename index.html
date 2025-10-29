@@ -185,6 +185,20 @@
 
     /* Shop FAB tono marca */
     .shop-fab{ background:var(--gold) }
+      /* ====== Mobile-first refinements ====== */
+    @media (max-width: 560px){
+      .site-header .wrap{ padding:.6rem .75rem }
+      .site-header nav{ gap:.2rem; overflow:auto; -webkit-overflow-scrolling:touch }
+      .btn{ padding:.7rem .95rem; font-size:.95rem }
+      .hero p{ font-size:1rem }
+      .cta-group{ gap:.5rem }
+    }
+    @media (max-width: 400px){
+      .brand-sub{ display:none }
+    }
+    /* Evitar solapamiento FAB / WhatsApp */
+    #backTop{ bottom: 86px }
+    .shop-fab{ bottom: 16px }
   </style>
 
   <!-- Google Analytics -->
@@ -242,6 +256,13 @@
     {"@type":"ListItem","position":8,"name":"Centros de mesa"}
   ]}
   </script>
+  <!-- 🔧 Performance & SEO técnico -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="//www.gstatic.com">
+  <link rel="dns-prefetch" href="//www.canva.com">
+  <link rel="canonical" href="https://www.manosymagiastudio.com.ar/">
+  <meta name="theme-color" content="#ff7fb2">
 </head>
 
 <body>
@@ -284,7 +305,7 @@
           </ul>
         </div>
         <div class="hero-img">
-          <img src="img/hero-placeholder.svg" alt="Decoración personalizada" loading="lazy">
+          <img src="img/hero-placeholder.svg" alt="Decoración personalizada" width="960" height="720" fetchpriority="high">
         </div>
       </div>
     </section>
@@ -331,6 +352,44 @@
       </div>
     </section>
     <!-- === /Sección Catálogo === -->
+
+    <!-- === Sección TIENDA (puente visual a Tienda Nube) === -->
+    <section id="tienda" class="section">
+      <div class="wrap">
+        <h2>Tienda online</h2>
+        <p class="nota">Explorá y comprá con la misma estética de Manos &amp; Magia. Podés iniciar sesión y seguir tu compra en nuestra tienda.</p>
+        <div class="cards" id="shop-bridge">
+          <article class="card">
+            <img src="img/shop-topper.jpg" alt="Toppers con luz">
+            <h3 style="margin:.25rem 0 .35rem 0">Toppers con luz</h3>
+            <p class="nota">Personalizados, resistentes y con LED cálida.</p>
+            <div class="cta-group">
+              <a class="btn" href="#" onclick="window.__openShop && window.__openShop(); return false;">Abrir Tienda</a>
+              <a class="btn ghost" href="https://manosmagiastudio.mitiendanube.com/?utm_source=web&utm_medium=bridge&utm_campaign=topper" target="_blank" rel="noopener">Ver en Tienda</a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="img/shop-letras3d.jpg" alt="Letras 3D">
+            <h3 style="margin:.25rem 0 .35rem 0">Letras 3D</h3>
+            <p class="nota">Con texturas, brillos y altura perfecta.</p>
+            <div class="cta-group">
+              <a class="btn" href="#" onclick="window.__openShop && window.__openShop(); return false;">Abrir Tienda</a>
+              <a class="btn ghost" href="https://manosmagiastudio.mitiendanube.com/?utm_source=web&utm_medium=bridge&utm_campaign=letras3d" target="_blank" rel="noopener">Ver en Tienda</a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="img/shop-pinatas.jpg" alt="Piñatas artesanales">
+            <h3 style="margin:.25rem 0 .35rem 0">Piñatas</h3>
+            <p class="nota">Artesanales y súper resistentes.</p>
+            <div class="cta-group">
+              <a class="btn" href="#" onclick="window.__openShop && window.__openShop(); return false;">Abrir Tienda</a>
+              <a class="btn ghost" href="https://manosmagiastudio.mitiendanube.com/?utm_source=web&utm_medium=bridge&utm_campaign=pinatas" target="_blank" rel="noopener">Ver en Tienda</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- === /Sección TIENDA ===>
 
     <section id="como-comprar" class="section">
       <div class="wrap grid-2">
